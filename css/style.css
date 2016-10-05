@@ -421,7 +421,7 @@ body >header a {
 }
 #textlogo {
   float: left;
-  width: 75%;
+  width: 42%;
   margin-left: 0.5em;
 }
 #textlogo h1.site-name {
@@ -1720,7 +1720,7 @@ footer {
   padding: 0 2% 0.5em;
 }
 #footer {
-  width: 95%;
+  width: 60%;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
