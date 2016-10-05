@@ -1714,11 +1714,11 @@ section.comment {
   -ms-transition: color 0.25s;
   transition: color 0.25s;
 }
-footer {
+/*footer {
   margin-top: 1em;
   background: #1f1f1f;
   padding: 0 2% 0.5em;
-}
+}*/
 #footer {
   width: 95%;
   margin-top: 80px;
