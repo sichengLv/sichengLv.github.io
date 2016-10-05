@@ -1721,7 +1721,7 @@ footer {
 }
 #footer {
   width: 95%;
-  margin: 0 auto;
+  margin-top: 80px;
   overflow: hidden;
   position: relative;
 }
