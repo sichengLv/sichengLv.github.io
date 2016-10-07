@@ -367,7 +367,7 @@ body >header {
   width: 100%;
   -webkit-box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
   box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
-  background: #2085c5;
+  background: #ea6753;
   color: #fff;
   padding: 1em 0 0.8em;
 }
@@ -421,7 +421,7 @@ body >header a {
 }
 #textlogo {
   float: left;
-  width: 42%;
+  width: 75%;
   margin-left: 0.5em;
 }
 #textlogo h1.site-name {
@@ -1721,7 +1721,7 @@ footer {
 }
 #footer {
   width: 95%;
-  margin-top: 80px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
 }
