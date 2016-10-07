@@ -178,12 +178,16 @@
   
 
   
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a>
-    </div>
-  </div>
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爱情/" title="爱情">爱情<sup>1</sup></a></li>
+		
+		</ul>
+</div>
 
 
   <div class="rsspart">
@@ -368,7 +372,44 @@ $(document).ready(function(){
 
 
 
+<!-- mathjax -->  
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script src="/js/mathjax.js"></script>
 
 
+<!-- totop -->  
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
   </body>
 </html>
