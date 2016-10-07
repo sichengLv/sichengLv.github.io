@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2016-10-07T05:28:55.368Z</updated>
+  <updated>2016-10-07T07:49:34.163Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -20,14 +20,13 @@
     <link href="https://sichenglv.github.io/2016/10/07/MatrixChain/"/>
     <id>https://sichenglv.github.io/2016/10/07/MatrixChain/</id>
     <published>2016-10-07T03:08:19.000Z</published>
-    <updated>2016-10-07T05:28:55.368Z</updated>
+    <updated>2016-10-07T07:49:34.163Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h2><h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>$$J_\alpha(x)=\sum _{m=0}^\infty \frac{(-1)^ m}{m! \, \Gamma (m + \alpha + 1)}{\left({\frac{x}{2}}\right)}^{2 m + \alpha }$$</p>
-]]></content>
+    <content type="html"><![CDATA[<h2 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h2>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;动态规划-——-矩阵连乘积问题&quot;&gt;&lt;a href=&quot;#动态规划-——-矩阵连乘积问题&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 矩阵连乘积问题&quot;&gt;&lt;/a&gt;动态规划 —— 矩阵连乘积问题&lt;/h2&gt;&lt;h2 id=&quot;公式&quot;&gt;&lt;a href=&quot;
+      &lt;h2 id=&quot;动态规划-——-矩阵连乘积问题&quot;&gt;&lt;a href=&quot;#动态规划-——-矩阵连乘积问题&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 矩阵连乘积问题&quot;&gt;&lt;/a&gt;动态规划 —— 矩阵连乘积问题&lt;/h2&gt;
     
     </summary>
     
