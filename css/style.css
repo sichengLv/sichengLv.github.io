@@ -80,12 +80,18 @@ table {
   vertical-align: middle;
 }
 caption,
-th,
-td {
+th {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
+td {
+  text-align: left;
+  font-weight: normal;
+  color: yellow;
+  vertical-align: middle;
+}
+
 a img {
   border: none;
 }
@@ -1020,6 +1026,7 @@ article .article-content table th {
   padding-bottom: 0.5em;
 }
 article .article-content table td {
+  background: #403d75;
   border-bottom: 1px solid #dbdbdb;
   padding: 10px 0;
 }
