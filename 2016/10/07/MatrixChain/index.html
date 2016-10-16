@@ -9,7 +9,11 @@
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="动态规划 —— 矩阵连乘积问题">
+    <meta name="description" content="动态规划 —— 矩阵连乘积问题问题描述：
+给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
+
+算法分析：问题的解空间：
+n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)">
     
     
     
@@ -77,7 +81,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-10-07T03:08:19.000Z" itemprop="datePublished">2016-10-07</time>
-    更新日期:<time datetime="2016-10-07T07:49:34.163Z" itemprop="dateModified">2016-10-07</time>
+    更新日期:<time datetime="2016-10-16T06:49:01.834Z" itemprop="dateModified">2016-10-16</time>
     
   </p>
 </header>
@@ -86,10 +90,98 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态规划-——-矩阵连乘积问题"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 矩阵连乘积问题</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-矩阵连乘积问题"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 矩阵连乘积问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题的解空间："><span class="toc-number">1.2.1.</span> <span class="toc-text">问题的解空间：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优子结构："><span class="toc-number">1.2.2.</span> <span class="toc-text">最优子结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重叠子问题："><span class="toc-number">1.2.3.</span> <span class="toc-text">重叠子问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据动态规划方程设计数据结构："><span class="toc-number">1.2.4.</span> <span class="toc-text">根据动态规划方程设计数据结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算最优值"><span class="toc-number">1.2.5.</span> <span class="toc-text">计算最优值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造最优解"><span class="toc-number">1.2.6.</span> <span class="toc-text">构造最优解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自顶向下的递归算法-备忘录"><span class="toc-number">1.3.</span> <span class="toc-text">自顶向下的递归算法(备忘录)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种算法的比较与总结"><span class="toc-number">1.4.</span> <span class="toc-text">两种算法的比较与总结</span></a></li></ol></li></ol>
 		</div>
 		
-		<h2 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h2>  
+		<h1 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
+<p>给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
+</blockquote>
+<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><h3 id="问题的解空间："><a href="#问题的解空间：" class="headerlink" title="问题的解空间："></a>问题的解空间：</h3><blockquote>
+<p>n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。</p>
+<h3 id="最优子结构："><a href="#最优子结构：" class="headerlink" title="最优子结构："></a>最优子结构：</h3><p> 设计算A[i:j]，1≤i≤j≤n，所需要的最少数乘次数m[i,j]，则原问题的最优值为m[1,n]。</p>
+<p>当i=j时，A[i:j]=Ai，因此，m[i][i]=0，i=1,2,…,n</p>
+<p>当i&lt;j时，若A[i:j]的最优次序在Ak和Ak+1之间断开，i&lt;=k&lt;j,则：m[i][j]=m[i][k]+m[k+1][j]+pi-1pkpj。</p>
+<p>由于在计算是并不知道断开点k的位置，所以k还未定。不过k的位置只有j-i个可能。因此，k是这j-i个位置使计算量达到最小的那个位置。</p>
+<blockquote>
+<p>递归的定义最优解<br><img src="http://i.imgur.com/UK0G4Fo.jpg" alt=""></p>
+</blockquote>
+</blockquote>
+<h3 id="重叠子问题："><a href="#重叠子问题：" class="headerlink" title="重叠子问题："></a>重叠子问题：</h3><blockquote>
+<p>一般取原问题规模为4-6的来验证是否存在重叠子问题<br><img src="http://i.imgur.com/nxpDdiH.jpg" alt=""></p>
+</blockquote>
+<h3 id="根据动态规划方程设计数据结构："><a href="#根据动态规划方程设计数据结构：" class="headerlink" title="根据动态规划方程设计数据结构："></a>根据动态规划方程设计数据结构：</h3><blockquote>
+<p>很显然这里使用二维数组，然后根据递归方程的特点确定填表的方式，这里采用 <strong> 对角线填法</strong><br><strong> 填充顺序原则：</strong> 要保证当前填充的这个格子的子问题都已经计算出来了。</p>
+</blockquote>
+<h3 id="计算最优值"><a href="#计算最优值" class="headerlink" title="计算最优值"></a>计算最优值</h3><pre><code>/* 计算矩阵连乘积的动态规划算法 */
+#define N 51
+
+int p[N];        //存放矩阵的阶 
+int m[N][N];    //m[i][j]代表A[i,j]最少的乘法次数, 即最优值 
+int s[N][N];    //s[i][j]代表A[i,j]的最优次序中的断开位置 k, 根据s[i][j]的值可构造出相应的最优解
+
+void MatrixChain(int n)        //n表示矩阵个数 
+{
+    for(int i = 1; i &lt;= n; i++)
+    {
+        m[i][i] = 0;    //r = 1, 只有一个矩阵的情况 
+    }
+
+    // 填表：对角线填法 
+    // r表示矩阵链的长度 
+    for(int r = 2; r &lt;= n; r++)
+    {
+        for(int i = 1; i &lt;= n-r+1; i++)    // n-r+1是对角线的长度 
+        {
+            int j = i + r - 1;            //i, j表示对角线的下标 
+            m[i][j] = 2000000000;
+            //搜寻最优值 
+            for(int k = i; k &lt; j; k++)    //寻找代价最小的那个 k 
+            {
+                int t = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j];
+                if( t &lt; m[i][j] )
+                {
+                    m[i][j] = t;        //保存最优值 
+                    s[i][j] = k;        //记录最优值的那个k 
+                }
+            }
+        }
+    }
+}
+</code></pre><h3 id="构造最优解"><a href="#构造最优解" class="headerlink" title="构造最优解"></a>构造最优解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/* 构造最优解 */</div><div class="line">void TrackBack(int i, int j)</div><div class="line">&#123;</div><div class="line">	if( i == j )</div><div class="line">		printf(&quot;A%d&quot;, i);</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; &quot;(&quot;;</div><div class="line">		TrackBack(i, s[i][j]);</div><div class="line">		TrackBack(s[i][j]+1, j);</div><div class="line">		cout &lt;&lt; &quot;)&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="自顶向下的递归算法-备忘录"><a href="#自顶向下的递归算法-备忘录" class="headerlink" title="自顶向下的递归算法(备忘录)"></a>自顶向下的递归算法(备忘录)</h2><pre><code>#define N 51
+
+int p[N];        //存放矩阵的阶 
+int m[N][N];    //m[i][j]代表A[i,j]最少的乘法次数, 即最优值 
+int s[N][N];    //s[i][j]代表A[i,j]的最优次序中的断开位置 k, 根据s[i][j]的值可构造出相应的最优解
+
+int Recurve(int i, int j)
+{
+    if(m[i][j] &gt; 0)
+        return m[i][j];
+    if(i == j)
+        return 0;
+
+    int u = Recurve(i, i) + Recurve(i+1, j) + p[i-1] * p[i] * p[j];
+    s[i][j] = i;
+
+    for(int k = i+1; k &lt; j; k++)
+    {
+        int t = Recurve(i, k) + Recurve(k+1, j) + p[i-1] * p[k] * p[j];
+        if(t &lt; u)
+        {
+            u = t;
+            s[i][j] = k;
+        }
+    }
+    m[i][j] = u;    //将结果存入备忘录 
+    return u;
+}
+</code></pre><h2 id="两种算法的比较与总结"><a href="#两种算法的比较与总结" class="headerlink" title="两种算法的比较与总结"></a>两种算法的比较与总结</h2><blockquote>
+<p>动态规划算法采用的是自底向上的非递归式</p>
+<p>备忘录方法采用的是自顶向下的递归方式</p>
+<p>两者的时间复杂度都是O(n^3)</p>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -133,7 +225,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态规划-——-矩阵连乘积问题"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 矩阵连乘积问题</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-矩阵连乘积问题"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 矩阵连乘积问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题的解空间："><span class="toc-number">1.2.1.</span> <span class="toc-text">问题的解空间：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优子结构："><span class="toc-number">1.2.2.</span> <span class="toc-text">最优子结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重叠子问题："><span class="toc-number">1.2.3.</span> <span class="toc-text">重叠子问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据动态规划方程设计数据结构："><span class="toc-number">1.2.4.</span> <span class="toc-text">根据动态规划方程设计数据结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算最优值"><span class="toc-number">1.2.5.</span> <span class="toc-text">计算最优值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造最优解"><span class="toc-number">1.2.6.</span> <span class="toc-text">构造最优解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自顶向下的递归算法-备忘录"><span class="toc-number">1.3.</span> <span class="toc-text">自顶向下的递归算法(备忘录)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种算法的比较与总结"><span class="toc-number">1.4.</span> <span class="toc-text">两种算法的比较与总结</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
