@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2016-10-22T12:01:24.163Z</updated>
+  <updated>2016-10-22T12:07:51.066Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -16,14 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ZOJ-1206 Win the Bonus</title>
+    <title>ZJU-1206 Win the Bonus</title>
     <link href="https://sichenglv.github.io/2016/10/22/ZOJ-1206-Win-the-Bonus/"/>
     <id>https://sichenglv.github.io/2016/10/22/ZOJ-1206-Win-the-Bonus/</id>
     <published>2016-10-22T11:28:36.000Z</published>
-    <updated>2016-10-22T12:01:24.163Z</updated>
+    <updated>2016-10-22T12:07:51.066Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p><strong> 原题链接: </strong><a href="http://http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;id=26497" target="_blank" rel="external">ZOJ 12067</a> </p>
+<p><strong> 原题链接: </strong><a href="http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;id=26497" target="_blank" rel="external">ZJU 1206</a> </p>
 <p>给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。</p>
 <p>要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。</p>
 <p>求一个权值最大的字符串。</p>
@@ -61,7 +61,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt; 原题链接: &lt;/strong&gt;&lt;a href=&quot;http://http://ac
+&lt;p&gt;&lt;strong&gt; 原题链接: &lt;/strong&gt;&lt;a href=&quot;http://acm.hrbus
     
     </summary>
     
