@@ -1,0 +1,431 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ZOJ-1206 Win the Bonus | sicheng Lv&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="sicheng Lv">
+    
+    <meta name="description" content="问题描述
+ 原题链接: ZOJ 12067 
+给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。
+要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。
+求一个权值最大的字符串。
+
+ 输入样例： 
+2 5
+
+356 20
+
+674 -10">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="sicheng Lv&#39;s blog" title="sicheng Lv&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="sicheng Lv&#39;s blog">sicheng Lv&#39;s blog</a></h1>
+				<h2 class="blog-motto">静止了所有的花开，你好久都没有再来 、</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:sichenglv.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZOJ-1206 Win the Bonus" itemprop="url">ZOJ-1206 Win the Bonus</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-10-22T11:28:36.000Z" itemprop="datePublished">2016-10-22</time>
+    更新日期:<time datetime="2016-10-22T12:01:24.163Z" itemprop="dateModified">2016-10-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析"><span class="toc-number">2.</span> <span class="toc-text">算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构定义"><span class="toc-number">2.1.</span> <span class="toc-text">数据结构定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dp算法的实现"><span class="toc-number">3.1.</span> <span class="toc-text">dp算法的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造最优解，返回最优值"><span class="toc-number">3.2.</span> <span class="toc-text">构造最优解，返回最优值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主函数"><span class="toc-number">3.3.</span> <span class="toc-text">主函数</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
+<p><strong> 原题链接: </strong><a href="http://http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;id=26497" target="_blank" rel="external">ZOJ 12067</a> </p>
+<p>给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。</p>
+<p>要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。</p>
+<p>求一个权值最大的字符串。</p>
+</blockquote>
+<p><strong> 输入样例： </strong></p>
+<pre><code>2 5
+
+356 20
+
+674 -10
+</code></pre><p><strong> 输出样例：</strong></p>
+<pre><code>00356
+</code></pre><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><blockquote>
+<p>于 n多达 10 000位，枚举和搜索方法都很容易实现超时。</p>
+<p>如果前 k位数字串能够得到最优值，则构成 k+1(k~[3,n])位时肯定也能得到最优值。</p>
+<p>所以本题具有最优子结构，可使用动态规划算法求解。</p>
+</blockquote>
+<h3 id="数据结构定义"><a href="#数据结构定义" class="headerlink" title="数据结构定义"></a>数据结构定义</h3><p>设银行职员的人数为m，玩家的字符串长度为n</p>
+<p><strong> int banker, point;  //每个银行职员的数字串及相应的分值 </strong></p>
+<p><strong> int cost[1000];  //存放银行职员的数字串及相应的分值，数字串的长度为3 </strong></p>
+<p>//三维数组，opt[l][i][j]表示：当前长度为 l(l~[3-10000])的数字串，第一位数字是 i，第二位数字是 j(i,j~[1-9])的最优值 </p>
+<p><strong> int opt[10001][10][10]; </strong></p>
+<p><strong> 边界条件 </strong></p>
+<p>当数字串长度为 1,2时，最优值为0</p>
+<p>即opt[l][i][j] = 0; (l=1,2; i,j~[0-9])</p>
+<p><strong> 递推公式 </strong></p>
+<p>从右往左dp,只有这样才能保证最后得出的字符串是字典序最小的, ijk组成一个数字串</p>
+<p><strong> opt[l][i][j] = max {opt[l-1][j][k] + cost[i<em>100+j</em>10+k]}  (k~[3,n], i,j~[0-9]) </strong></p>
+<p><strong> 辅助数组 </strong></p>
+<p>int path[10001][10][10];  //记录 k值 </p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h3 id="dp算法的实现"><a href="#dp算法的实现" class="headerlink" title="dp算法的实现"></a>dp算法的实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">void DP(int n) </div><div class="line">&#123;</div><div class="line">	int l, i, j, k;</div><div class="line">	int max = 0;</div><div class="line">	//边界条件 ,只有一个字符和两个字符 </div><div class="line">	for(l = 1; l &lt;= 2; l++)</div><div class="line">		for(i = 0; i &lt;= 9; i++)</div><div class="line">			for(j = 0; j &lt;= 9; j++)</div><div class="line">				opt[l][i][j] = 0;</div><div class="line">	//递推计算3-n个字符时的最优值 </div><div class="line">	for(l = 3; l &lt;= n; l++)</div><div class="line">		for(i = 0; i &lt;= 9; i++)</div><div class="line">			for(j = 0; j &lt;= 9; j++)</div><div class="line">			&#123;</div><div class="line">				//长度为 l个字符时，计算由 ijk构成数字串的最优值</div><div class="line">				 opt[l][i][j] = -INF;</div><div class="line">				 for(k = 0; k &lt;= 9; k++) &#123;</div><div class="line">				 	max = opt[l-1][j][k] + cost[i*100+j*10+k];	//从右往左dp</div><div class="line">				 	if(max &gt; opt[l][i][j])</div><div class="line">				 	&#123;</div><div class="line">				 		opt[l][i][j] = max;</div><div class="line">				 		path[l][i][j] = k;</div><div class="line">				 	&#125;</div><div class="line">				 &#125;</div><div class="line">			&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="构造最优解，返回最优值"><a href="#构造最优解，返回最优值" class="headerlink" title="构造最优解，返回最优值"></a>构造最优解，返回最优值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">int traceback(int n)</div><div class="line">&#123;</div><div class="line">	int i, j;</div><div class="line">	int p, q;		//记录最优值对应数字串的第一第二个数字 </div><div class="line">	int ans = -INF;	//最优值 </div><div class="line">	</div><div class="line">	for(i = 0; i &lt;= 9; i++)</div><div class="line">		for(j = 0; j &lt;= 9; j++)</div><div class="line">		&#123;</div><div class="line">			if(opt[n][i][j] &gt; ans)</div><div class="line">			&#123;</div><div class="line">				ans = opt[n][i][j];</div><div class="line">				p = i;</div><div class="line">				q = j;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	for(i = n; i &gt;= 3; i--)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; p;</div><div class="line">		int k = path[i][p][q];	//找到后一个数字 </div><div class="line">		p = q;</div><div class="line">		q = k;	</div><div class="line">	&#125;	</div><div class="line">	//输出最后两位数字</div><div class="line">	cout &lt;&lt; p &lt;&lt; q &lt;&lt; endl; </div><div class="line">	return ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	freopen(&quot;zoj1206.txt&quot;, &quot;r&quot;, stdin);</div><div class="line">	</div><div class="line">	int m, n;	// m是银行职员的人数，n是玩家数字串长度 </div><div class="line">	int banker, point;</div><div class="line">	cin &gt;&gt; m &gt;&gt; n;</div><div class="line">	</div><div class="line">	int i;</div><div class="line">	for(i = 0; i &lt; m; i++) &#123;</div><div class="line">		cin &gt;&gt; banker &gt;&gt; point;</div><div class="line">		cost[banker] = point;		//将分值存入以银行职员的数字串为下标的元素中 </div><div class="line">	&#125;</div><div class="line">	//调用dp算法</div><div class="line">	DP(n) ;</div><div class="line">	//输出最优解</div><div class="line">	cout &lt;&lt; &quot;获胜字符串为：&quot;;</div><div class="line">	int ans = traceback(n);</div><div class="line">	cout &lt;&lt; &quot;最优值为：&quot; &lt;&lt; ans &lt;&lt; endl; </div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/动态规划/">动态规划</a><a href="/tags/dp/">dp</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://sichenglv.github.io/2016/10/22/ZOJ-1206-Win-the-Bonus/" data-title="ZOJ-1206 Win the Bonus | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/10/09/POJ-1050-To-the-Max/"  title="POJ-1050 To the Max">
+ <strong>NEXT:</strong><br/> 
+ <span>POJ-1050 To the Max
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析"><span class="toc-number">2.</span> <span class="toc-text">算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构定义"><span class="toc-number">2.1.</span> <span class="toc-text">数据结构定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dp算法的实现"><span class="toc-number">3.1.</span> <span class="toc-text">dp算法的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造最优解，返回最优值"><span class="toc-number">3.2.</span> <span class="toc-text">构造最优解，返回最优值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主函数"><span class="toc-number">3.3.</span> <span class="toc-text">主函数</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>2</sup></a></li>
+		
+			<li><a href="/tags/dp/" title="dp">dp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动态规划/" title="动态规划">动态规划<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://github.com" target="_blank" title="GitHub">GitHub</a></li>
+      <li><a href="http://www.jianshu.com/users/b775f1bcda84/latest_articles" target="_blank">Lv_小诚的简书</a></li>
+      <li><a href="http://www.mrvstudio.icoc.me" target="_blank">Mr_V微电影工作室</a></li>
+    </ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/动态规划/" style="font-size: 20px;">动态规划</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+
+	
+	<section class="info">
+		<p> Hello ! I&#39;m sicheng Lv ~ This is my blog on Github. <br/>
+			I will share what I have learned with you at this blog.</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/5373593069" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/sichengLv" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="https://sichenglv.github.io" target="_blank" title="sicheng Lv">sicheng Lv</a>
+		
+		</p>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span></footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sichenglv"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<!-- totop -->  
+<div id="totop" style="position:fixed;bottom:150px;right:120px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+  </body>
+</html>
