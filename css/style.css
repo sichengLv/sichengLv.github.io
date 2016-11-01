@@ -1877,20 +1877,18 @@ footer {
 }
 .article-content pre,
 .article-content .highlight {
-  background: #393939;
-  margin: 0 -20px;
-  padding: 15px 20px;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px 0;
+  background: #fff2f2;
+  margin: 0.5em 0;
+  padding: 1em 2%;
+  border-radius: 5px;
   overflow: auto;
-  color: #ccc;
-  line-height: 150%;
+  color: #000;
+  line-height: 1.5;
   font-size: 100%;
 }
 .article-content .highlight .gutter pre,
 .article-content .gist .gist-file .gist-data .line-numbers {
-  color: #666;
+  color: #225fdb;
   font-size: 0.85em;
   line-height: 1.5;
   font-size: 100%;
@@ -1899,7 +1897,7 @@ footer {
   font-family: Monaco, Menlo, Consolas, Courier New, monospace;
 }
 .article-content pre code {
-  background: none;
+  background: #fff2f2;
   text-shadow: none;
   padding: 0;
 }
@@ -1942,7 +1940,7 @@ footer {
 }
 .article-content .gist {
   margin: 0.5em 0;
-  background: #393939;
+  background: #fff2f2;
   padding: 1em 2%;
 }
 .article-content .gist .gist-file {
@@ -1968,7 +1966,7 @@ footer {
   border: none;
 }
 .article-content .gist .gist-file .gist-meta {
-  background: #393939;
+  background: #fff2f2;
   color: #999;
   font: 0.85em "Georgia", serif;
   padding: 0;
@@ -2035,7 +2033,7 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #b294bb;
 }
 pre .coffeescript .javascript,
 pre .javascript .xml,
