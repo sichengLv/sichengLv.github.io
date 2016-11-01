@@ -1877,17 +1877,20 @@ footer {
 }
 .article-content pre,
 .article-content .highlight {
-  background: #403d75;
-  margin: 0.5em 0;
-  padding: 1em 2%;
+  background: #393939;
+  margin: 0 -20px;
+  padding: 15px 20px;
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 0;
   overflow: auto;
-  color: #c5c8c6;
-  line-height: 1.5;
+  color: #ccc;
+  line-height: 150%;
   font-size: 100%;
 }
 .article-content .highlight .gutter pre,
 .article-content .gist .gist-file .gist-data .line-numbers {
-  color: #dee325;
+  color: #666;
   font-size: 0.85em;
   line-height: 1.5;
   font-size: 100%;
@@ -1917,7 +1920,7 @@ footer {
   zoom: 1;
   font-size: 0.85em;
   text-align: left;
-  color: #969896;
+  color: #999;
   line-height: 1em;
   padding: 0.5em 0;
   margin-bottom: 0.5em;
@@ -1939,7 +1942,7 @@ footer {
 }
 .article-content .gist {
   margin: 0.5em 0;
-  background: #403d75;
+  background: #393939;
   padding: 1em 2%;
 }
 .article-content .gist .gist-file {
@@ -1965,8 +1968,8 @@ footer {
   border: none;
 }
 .article-content .gist .gist-file .gist-meta {
-  background: #403d75;
-  color: #969896;
+  background: #393939;
+  color: #999;
   font: 0.85em "Georgia", serif;
   padding: 0;
   margin-top: 1em;
@@ -1980,7 +1983,7 @@ footer {
   color: #466ab3;
 }
 pre .comment {
-  color: #969896;
+  color: #999;
 }
 pre .title,
 pre .variable,
@@ -2003,11 +2006,11 @@ pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #de935f;
+  color: #f99157;
 }
 pre .class .title,
 pre .rules .attribute {
-  color: #f0c674;
+  color: #fc6;
 }
 pre .string,
 pre .value,
@@ -2015,10 +2018,10 @@ pre .inheritance,
 pre .header,
 pre .symbol,
 pre .cdata {
-  color: #b5bd68;
+  color: #9c9;
 }
 pre .css .hexcolor {
-  color: #8abeb7;
+  color: #6cc;
 }
 pre .function,
 pre .function .title,
@@ -2028,11 +2031,11 @@ pre .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #81a2be;
+  color: #69c;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #b294bb;
+  color: #c9c;
 }
 pre .coffeescript .javascript,
 pre .javascript .xml,
