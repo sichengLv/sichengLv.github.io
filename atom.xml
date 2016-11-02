@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2016-10-23T03:53:54.995Z</updated>
+  <updated>2016-11-02T13:22:52.690Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux下C/C++正则表达式详解</title>
+    <link href="https://sichenglv.github.io/2016/11/02/linux%E4%B8%8BC-C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://sichenglv.github.io/2016/11/02/linux下C-C-正则表达式详解/</id>
+    <published>2016-11-02T13:07:25.000Z</published>
+    <updated>2016-11-02T13:22:52.690Z</updated>
+    
+    <content type="html"><![CDATA[<p>标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux c下如何使用正则表达式</p>
+<p>C语言处理正则表达式常用的函数有regcomp()、regexec()、regfree()和regerror()，一般分为三个步骤，如下所示：</p>
+<p><strong> C语言中使用正则表达式一般分为三步： </strong></p>
+<blockquote>
+<p>编译正则表达式 regcomp()</p>
+<p>匹配正则表达式 regexec()</p>
+<p>释放正则表达式 regfree()</p>
+</blockquote>
+<p><strong> 1、编译正则表达式： </strong></p>
+<p>int Regcomp(regex_t <em>preg, const char </em>regex, int cflags);</p>
+<p>这个函数把指定的正则表达式pattern编译成一种特定的数据格式compiled，这样可以使匹配更有效。函数regexec 会使用这个数据在目标文本串中进行模式匹配。执行成功返回０。</p>
+<p>参数说明：</p>
+<p>　　preg:</p>
+<p><strong> 2、匹配正则表达式： </strong></p>
+<p><strong> 3、报告错误信息： </strong></p>
+<p><strong> 4、释放正则表达式： </strong></p>
+<p><strong> 5、正则表达式框架： </strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://sichenglv.github.io/tags/linux/"/>
+    
+      <category term="正则表达式" scheme="https://sichenglv.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+      <category term="C/C++" scheme="https://sichenglv.github.io/tags/C-C/"/>
+    
+  </entry>
   
   <entry>
     <title>ZJU-1206 Win the Bonus</title>
