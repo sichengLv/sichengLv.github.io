@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2016-11-02T13:22:52.690Z</updated>
+  <updated>2016-11-03T07:54:25.912Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -16,30 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>linux下C/C++正则表达式详解</title>
+    <title>Linux下C/C++正则表达式详解</title>
     <link href="https://sichenglv.github.io/2016/11/02/linux%E4%B8%8BC-C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%A6%E8%A7%A3/"/>
     <id>https://sichenglv.github.io/2016/11/02/linux下C-C-正则表达式详解/</id>
     <published>2016-11-02T13:07:25.000Z</published>
-    <updated>2016-11-02T13:22:52.690Z</updated>
+    <updated>2016-11-03T07:54:25.912Z</updated>
     
-    <content type="html"><![CDATA[<p>标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux c下如何使用正则表达式</p>
+    <content type="html"><![CDATA[<p>标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux C下如何使用正则表达式</p>
 <p>C语言处理正则表达式常用的函数有regcomp()、regexec()、regfree()和regerror()，一般分为三个步骤，如下所示：</p>
-<p><strong> C语言中使用正则表达式一般分为三步： </strong></p>
-<blockquote>
+<h3 id="C语言中使用正则表达式一般分为三步："><a href="#C语言中使用正则表达式一般分为三步：" class="headerlink" title="C语言中使用正则表达式一般分为三步："></a>C语言中使用正则表达式一般分为三步：</h3><blockquote>
 <p>编译正则表达式 regcomp()</p>
 <p>匹配正则表达式 regexec()</p>
 <p>释放正则表达式 regfree()</p>
 </blockquote>
-<p><strong> 1、编译正则表达式： </strong></p>
-<p>int Regcomp(regex_t <em>preg, const char </em>regex, int cflags);</p>
+<h4 id="1、编译正则表达式："><a href="#1、编译正则表达式：" class="headerlink" title="1、编译正则表达式："></a>1、编译正则表达式：</h4><blockquote>
+<p>int Regcomp(regex_t <em>compiled, const char </em>pattern, int cflags);</p>
+</blockquote>
 <p>这个函数把指定的正则表达式pattern编译成一种特定的数据格式compiled，这样可以使匹配更有效。函数regexec 会使用这个数据在目标文本串中进行模式匹配。执行成功返回０。</p>
-<p>参数说明：</p>
-<p>　　preg:</p>
-<p><strong> 2、匹配正则表达式： </strong></p>
-<p><strong> 3、报告错误信息： </strong></p>
-<p><strong> 4、释放正则表达式： </strong></p>
-<p><strong> 5、正则表达式框架： </strong></p>
-]]></content>
+<p><strong> 参数说明：</strong><br>　　①compiled: regex_t 是一个结构体数据类型，用来存放编译后的正则表达式，它的成员re_nsub 用来存储正则表达式中的子正则表达式的个数，子正则表达式就是用圆括号包起来的部分表达式。</p>
+<p>　　②pattern: 指向我们写好的正则表达式的指针。</p>
+<p>　　③cflags: 编译开关控制细节，有如下4个值或者是它们或运算(|)后的值：<br>　　　　　REG_EXTENDED 以功能更加强大的扩展正则表达式的方式进行匹配。<br>　　　　　REG_ICASE 匹配字母时忽略大小写。<br>　　　　　REG_NOSUB 不用存储匹配后的结果。<br>　　　　　REG_NEWLINE 识别换行符，这样’$’就可以从行尾开始匹配，’^’就可以从行的开头开始匹配。</p>
+<hr>
+<h4 id="2、匹配正则表达式："><a href="#2、匹配正则表达式：" class="headerlink" title="2、匹配正则表达式： **"></a>2、匹配正则表达式： **</h4><blockquote>
+<p>int regexec(regex_t <em>compiled, char </em>string, size_t nmatch, regmatch_t pmatch [], int eflags);</p>
+</blockquote>
+<p>当我们编译好正则表达式后，就可以用regexec 匹配我们的目标文本串了，如果在编译正则表达式的时候没有指定cflags的参数为REG_NEWLINE，则默认情况下是忽略换行符的，也就是把整个文本串当作一个字符串处理。执行成功返回０。</p>
+<p>regmatch_t 是一个结构体数据类型，在regex.h中定义：<br>typedef struct<br>{<br>   regoff_t rm_so;<br>   regoff_t rm_eo;<br>} regmatch_t;</p>
+<p>成员rm_so 存放匹配文本串在目标串中的开始位置，rm_eo 存放结束位置。通常我们以数组的形式定义一组这样的结构。因为往往我们的正则表达式中还包含子正则表达式。数组0单元存放主正则表达式位置，后边的单元依次存放子正则表达式位置。</p>
+<p><strong> 参数说明：</strong><br>　　①compiled: 是已经用regcomp函数编译好的正则表达式。</p>
+<p>　　②string: 是待匹配的字符串。</p>
+<p>　　③nmatch: 是regmatch_t结构体数组的长度，被匹配的个数。</p>
+<p>　　④pmatch: 匹配的结果数组。</p>
+<p>　　⑤eflags: 匹配的特性<br>　　　　　REG_NOTBOL 是否是第一行<br>      REG_NOTEOL 是否是最后一行</p>
+<hr>
+<h4 id="3、释放正则表达式："><a href="#3、释放正则表达式：" class="headerlink" title="3、释放正则表达式： **"></a>3、释放正则表达式： **</h4><blockquote>
+<p>void regfree(regex_t *compiled);</p>
+</blockquote>
+<p>当我们使用完编译好的正则表达式后，或者要重新编译其他正则表达式的时候，我们可以用这个函数清空compiled指向的regex_t结构体的内容，<strong> 请记住，如果是重新编译的话，一定要先清空regex_t结构体。</strong></p>
+<h4 id="4、报告错误信息："><a href="#4、报告错误信息：" class="headerlink" title="4、报告错误信息："></a>4、报告错误信息：</h4><blockquote>
+<p>size_t regerror(int errcode, regex_t <em>compiled, char </em>buffer, size_t length);</p>
+</blockquote>
+<p>当执行regcomp 或者regexec 产生错误的时候，就可以调用这个函数而返回一个包含错误信息的字符串。</p>
+<p><strong> 参数说明：</strong><br>　　①errcode 是由regcomp 和 regexec 函数返回的错误代号。</p>
+<p>　　②compiled 是已经用regcomp函数编译好的正则表达式，这个值可以为NULL。</p>
+<p>　　③buffer 指向用来存放错误信息的字符串的内存空间。</p>
+<p>　　④length 指明buffer的长度，如果这个错误信息的长度大于这个值，则regerror 函数会自动截断超出的字符串，但他仍然会返回完整的字符串的长度。所以我们可以用如下的方法先得到错误字符串的长度。<br>　　size_t length = regerror (errcode, compiled, NULL, 0);</p>
+<hr>
+<h4 id="5、正则表达式框架："><a href="#5、正则表达式框架：" class="headerlink" title="5、正则表达式框架："></a>5、正则表达式框架：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">int mymatch(char *buf)</div><div class="line">&#123;</div><div class="line">    const char *pattern = &quot;&quot;;</div><div class="line">    regex_t reg;</div><div class="line">    </div><div class="line">    regmatch_t pmatch[10];</div><div class="line">    const size_t nmatch = 10;</div><div class="line"></div><div class="line">    int cflag = REG_EXTENDED;</div><div class="line"></div><div class="line">    /* 编译正则表达式 */</div><div class="line">    if(regcomp(&amp;reg, pattern, cflag) != 0) &#123;  //如果编译正则表达式失败</div><div class="line">       perror(&quot;regcomp failed!&quot;);</div><div class="line">       exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int status, i;</div><div class="line">    /* 执行匹配 */</div><div class="line">    status = regexec(&amp;reg, buf, nmatch, pmatch, 0);</div><div class="line">    if(status == REG_NOMATCH) &#123;</div><div class="line">       printf(&quot;No Match\n&quot;);</div><div class="line">       return 0;</div><div class="line">    &#125;</div><div class="line">    else if(status == 0) &#123;</div><div class="line">       printf(&quot;Match: \n&quot;);</div><div class="line">       /* 把匹配的字符串都提取出来 */</div><div class="line">       for(i = 0; i &lt; nmatch &amp;&amp; pmatch[i].rm_so != -1; i++) &#123;</div><div class="line"></div><div class="line">           //对匹配的字符串进行的操作</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">    regfree(&amp;reg); //释放正则表达式</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="6、正则表达式实例："><a href="#6、正则表达式实例：" class="headerlink" title="6、正则表达式实例："></a>6、正则表达式实例：</h4>]]></content>
     
     <summary type="html">
     
@@ -48,11 +73,11 @@
     </summary>
     
     
-      <category term="linux" scheme="https://sichenglv.github.io/tags/linux/"/>
-    
       <category term="正则表达式" scheme="https://sichenglv.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
       <category term="C/C++" scheme="https://sichenglv.github.io/tags/C-C/"/>
+    
+      <category term="Linux" scheme="https://sichenglv.github.io/tags/Linux/"/>
     
   </entry>
   
