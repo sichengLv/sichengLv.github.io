@@ -78,7 +78,7 @@ which 命令 whi">
     </p>
   <p class="article-time">
     <time datetime="2016-11-22T08:09:19.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T08:13:45.221Z" itemprop="dateModified">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:27:57.812Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -126,14 +126,29 @@ which 命令 whi">
 </blockquote>
 <p><em>默认路径是当前目录，默认表达式为-print。<br>表达式可能由下列成份组成：操作符、选项、测试表达式以及动作。</em></p>
 <p><strong> 常用参数：</strong></p>
-<blockquote>
-<p>-print  find 命令将匹配的文件输出到标准输出<br>-exec command {} \;   find 命令对匹配的文件执行<strong>该参数所给出的 shell 命令</strong>，即command操作，{}是占位符，\;是结束符，但是分号要转义<br>-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行</p>
-<p>-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写<br>-type b/d/c/p/l/f   查找某一类型的文件<br>-size n[c]  查长度为n块[或n字节]的文件<br>-depth  使查找在进入子目录前先行查找完本目录<br>-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略<br>-inum  根据 i节点查找</p>
-<p>-user username   按照文件所有者来查找文件<br>-group groupname 按照文件所属组来查找文件<br>-perm  按执行权限来查找</p>
-<p>-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前<br>-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前<br>-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前</p>
-<p>-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前<br>-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前<br>-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前</p>
-</blockquote>
-<p><strong> For example：</strong></p>
+<pre><code>-print  find 命令将匹配的文件输出到标准输出
+-exec command {} \;   find 命令对匹配的文件执行**该参数所给出的 shell 命令**，即command操作，{}是占位符，\;是结束符，但是分号要转义
+-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行
+
+-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写
+-type b/d/c/p/l/f   查找某一类型的文件
+-size n[c]  查长度为n块[或n字节]的文件
+-depth  使查找在进入子目录前先行查找完本目录
+-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略
+-inum  根据 i节点查找
+
+-user username   按照文件所有者来查找文件
+-group groupname 按照文件所属组来查找文件
+-perm  按执行权限来查找
+
+-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前
+-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前
+-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前
+
+-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前
+-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前
+-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前
+</code></pre><p><strong> For example：</strong></p>
 <pre><code>find . -print 打印当前目录下所有文件的目录列表
 find . -name &quot;*.txt&quot; -print 打印当前目录下所有以.txt 结尾的文件名
 find ~ \(-name &quot;*.pdf&quot; or -name &quot;*.txt&quot;\) 打印主目录下所有**以.txt 或.pdf 结尾**的文件名

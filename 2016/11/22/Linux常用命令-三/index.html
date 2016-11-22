@@ -77,7 +77,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-11-22T08:09:07.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T08:13:26.140Z" itemprop="dateModified">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:25:38.460Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -91,16 +91,14 @@
 		
 		<h3 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h3><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
 <p><strong>常用参数:</strong></p>
-<blockquote>
-<p>+n 从笫 n 行开始显示</p>
-<p>-n 定义屏幕大小为 n 行</p>
-<p>+/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示</p>
-<p>-c 从顶部清屏，然后显示</p>
-<p>-d 提示“Press space to continue，’q’ to quit”，禁用响铃功能</p>
-<p>-p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似</p>
-<p>-s 把连续的多个空行显示为一行</p>
-</blockquote>
-<p><strong>常用操作:</strong></p>
+<pre><code>+n 从笫 n 行开始显示
+-n 定义屏幕大小为 n 行
++/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示
+-c 从顶部清屏，然后显示
+-d 提示“Press space to continue，’q’ to quit”，禁用响铃功能
+-p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似
+-s 把连续的多个空行显示为一行
+</code></pre><p><strong>常用操作:</strong></p>
 <blockquote>
 <p>=:   输出当前行的行号</p>
 <p>q:   退出 more </p>
@@ -116,15 +114,13 @@
 <p>-m  显示类似 more 命令的百分比<br>-N  显示每行的行号</p>
 </blockquote>
 <p><strong>常用操作:</strong></p>
-<blockquote>
-<p>/字符串 向下搜索“字符串”</p>
-<p>?字符串 向上搜索“字符串”</p>
-<p>b 向前翻一页</p>
-<p>d 向后翻半页</p>
-<p>向上键 向上翻动一行</p>
-</blockquote>
-<p><strong> ps -f | less </strong></p>
-<p>ps 查看进程信息并通过 less 分页显示</p>
+<pre><code>/字符串 向下搜索“字符串”
+?字符串 向上搜索“字符串”
+b 向前翻一页
+d 向后翻半页
+向上键 向上翻动一行
+</code></pre><p><strong> ps -f | less </strong></p>
+<p><strong>ps 查看进程信息并通过 less 分页显示</strong></p>
 <hr>
 <p><strong> less more cat 的区别 </strong></p>
 <ol>

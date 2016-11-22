@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2016-11-22T08:13:45.221Z</updated>
+  <updated>2016-11-22T08:27:57.812Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%9B%9B/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-四/</id>
     <published>2016-11-22T08:09:19.000Z</published>
-    <updated>2016-11-22T08:13:45.221Z</updated>
+    <updated>2016-11-22T08:27:57.812Z</updated>
     
     <content type="html"><![CDATA[<p>在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing</p>
 <h3 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h3><p><strong> which - locate a command </strong><br>在 PATH 变量指定的路径中搜索可执行文件的所在位置</p>
@@ -58,14 +58,29 @@
 </blockquote>
 <p><em>默认路径是当前目录，默认表达式为-print。<br>表达式可能由下列成份组成：操作符、选项、测试表达式以及动作。</em></p>
 <p><strong> 常用参数：</strong></p>
-<blockquote>
-<p>-print  find 命令将匹配的文件输出到标准输出<br>-exec command {} \;   find 命令对匹配的文件执行<strong>该参数所给出的 shell 命令</strong>，即command操作，{}是占位符，\;是结束符，但是分号要转义<br>-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行</p>
-<p>-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写<br>-type b/d/c/p/l/f   查找某一类型的文件<br>-size n[c]  查长度为n块[或n字节]的文件<br>-depth  使查找在进入子目录前先行查找完本目录<br>-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略<br>-inum  根据 i节点查找</p>
-<p>-user username   按照文件所有者来查找文件<br>-group groupname 按照文件所属组来查找文件<br>-perm  按执行权限来查找</p>
-<p>-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前<br>-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前<br>-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前</p>
-<p>-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前<br>-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前<br>-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前</p>
-</blockquote>
-<p><strong> For example：</strong></p>
+<pre><code>-print  find 命令将匹配的文件输出到标准输出
+-exec command {} \;   find 命令对匹配的文件执行**该参数所给出的 shell 命令**，即command操作，{}是占位符，\;是结束符，但是分号要转义
+-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行
+
+-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写
+-type b/d/c/p/l/f   查找某一类型的文件
+-size n[c]  查长度为n块[或n字节]的文件
+-depth  使查找在进入子目录前先行查找完本目录
+-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略
+-inum  根据 i节点查找
+
+-user username   按照文件所有者来查找文件
+-group groupname 按照文件所属组来查找文件
+-perm  按执行权限来查找
+
+-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前
+-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前
+-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前
+
+-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前
+-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前
+-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前
+</code></pre><p><strong> For example：</strong></p>
 <pre><code>find . -print 打印当前目录下所有文件的目录列表
 find . -name &quot;*.txt&quot; -print 打印当前目录下所有以.txt 结尾的文件名
 find ~ \(-name &quot;*.pdf&quot; or -name &quot;*.txt&quot;\) 打印主目录下所有**以.txt 或.pdf 结尾**的文件名
@@ -174,20 +189,18 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%89/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-三/</id>
     <published>2016-11-22T08:09:07.000Z</published>
-    <updated>2016-11-22T08:13:26.140Z</updated>
+    <updated>2016-11-22T08:25:38.460Z</updated>
     
     <content type="html"><![CDATA[<h3 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h3><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
 <p><strong>常用参数:</strong></p>
-<blockquote>
-<p>+n 从笫 n 行开始显示</p>
-<p>-n 定义屏幕大小为 n 行</p>
-<p>+/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示</p>
-<p>-c 从顶部清屏，然后显示</p>
-<p>-d 提示“Press space to continue，’q’ to quit”，禁用响铃功能</p>
-<p>-p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似</p>
-<p>-s 把连续的多个空行显示为一行</p>
-</blockquote>
-<p><strong>常用操作:</strong></p>
+<pre><code>+n 从笫 n 行开始显示
+-n 定义屏幕大小为 n 行
++/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示
+-c 从顶部清屏，然后显示
+-d 提示“Press space to continue，’q’ to quit”，禁用响铃功能
+-p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似
+-s 把连续的多个空行显示为一行
+</code></pre><p><strong>常用操作:</strong></p>
 <blockquote>
 <p>=:   输出当前行的行号</p>
 <p>q:   退出 more </p>
@@ -203,15 +216,13 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
 <p>-m  显示类似 more 命令的百分比<br>-N  显示每行的行号</p>
 </blockquote>
 <p><strong>常用操作:</strong></p>
-<blockquote>
-<p>/字符串 向下搜索“字符串”</p>
-<p>?字符串 向上搜索“字符串”</p>
-<p>b 向前翻一页</p>
-<p>d 向后翻半页</p>
-<p>向上键 向上翻动一行</p>
-</blockquote>
-<p><strong> ps -f | less </strong></p>
-<p>ps 查看进程信息并通过 less 分页显示</p>
+<pre><code>/字符串 向下搜索“字符串”
+?字符串 向上搜索“字符串”
+b 向前翻一页
+d 向后翻半页
+向上键 向上翻动一行
+</code></pre><p><strong> ps -f | less </strong></p>
+<p><strong>ps 查看进程信息并通过 less 分页显示</strong></p>
 <hr>
 <p><strong> less more cat 的区别 </strong></p>
 <ol>
@@ -252,16 +263,14 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%BA%8C/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-二/</id>
     <published>2016-11-22T08:08:54.000Z</published>
-    <updated>2016-11-22T08:12:55.820Z</updated>
+    <updated>2016-11-22T08:24:33.035Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><blockquote>
-<p>mkdir -m 777 lv  设置权限</p>
-<p>mkdir -p lvsicheng/test/abc/java  递归创建多个目录</p>
-<p>mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息</p>
-</blockquote>
-<h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+    <content type="html"><![CDATA[<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><pre><code>mkdir -m 777 lv  设置权限
+mkdir -p lvsicheng/test/abc/java  递归创建多个目录
+mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
+</code></pre><h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
-</code></pre><p>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</p>
+</code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
 <h3 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h3><blockquote>
 <p>rm -r lv/  –recursive 递归地删除</p>
 <p>rm -f a.txt  强势删除</p>
@@ -286,13 +295,11 @@ tree shiyanlou/
 <p>-i –interactive 交互式</p>
 <p>-u –update 若目标文件已经存在，且源文件比较新，才会更新</p>
 </blockquote>
-<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><blockquote>
-<p>-t –target-directory 指定目标目录</p>
-<p>-n –no-clobber 不要覆盖已存在的文件</p>
-<p>-s –symbolic-link 对源文件建立符号链接，而非复制文件</p>
-<p>-u –update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件</p>
-</blockquote>
-<p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
+<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><pre><code>-t --target-directory 指定目标目录
+-n --no-clobber 不要覆盖已存在的文件
+-s --symbolic-link 对源文件建立符号链接，而非复制文件
+-u --update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件
+</code></pre><p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
 <p><strong> cp -i test1/* test2 </strong></p>
 <h3 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h3><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
 <blockquote>
@@ -330,9 +337,8 @@ nl -n rz -w 3 a.txt
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1-mkdir命令&quot;&gt;&lt;a href=&quot;#1-mkdir命令&quot; class=&quot;headerlink&quot; title=&quot;1. mkdir命令&quot;&gt;&lt;/a&gt;1. mkdir命令&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;mkdir -m 777 lv  设置权限&lt;/p&gt;
-&lt;
+      &lt;h3 id=&quot;1-mkdir命令&quot;&gt;&lt;a href=&quot;#1-mkdir命令&quot; class=&quot;headerlink&quot; title=&quot;1. mkdir命令&quot;&gt;&lt;/a&gt;1. mkdir命令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;mkdir -m 777 lv  设置权限
+mkdir -p l
     
     </summary>
     
@@ -348,12 +354,16 @@ nl -n rz -w 3 a.txt
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%80/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-一/</id>
     <published>2016-11-22T08:08:38.000Z</published>
-    <updated>2016-11-22T08:12:11.331Z</updated>
+    <updated>2016-11-22T08:22:31.304Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h3><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
+    <content type="html"><![CDATA[<h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
 <p><strong>常用参数：</strong></p>
-<blockquote>
-<p>-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br>-l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来<br>-d –directory 将目录象文件一样显示，而不是显示其下的文件<br>-h –human-readable 以容易理解的格式列出文件大小 (例如 1K 234M 2G)<br>-t 以文件修改时间排序</p>
+<pre><code>-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件
+-l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
+-d –directory 将目录象文件一样显示，而不是显示其下的文件
+-h –human-readable 以容易理解的格式列出文件大小 (例如 1K 234M 2G)
+-t 以文件修改时间排序
+</code></pre><blockquote>
 <p>ls -l 详解</p>
 </blockquote>
 <p><img src="http://i.imgur.com/yRaIXh2.png" alt=""></p>
@@ -363,12 +373,14 @@ nl -n rz -w 3 a.txt
 <p><strong>-rw-rw-r– 1 shiyanlou shiyanlou 12 Nov 22 14:39 a.txt</strong></p>
 <p>文件属性字段总共有10个字母组成；第一个字符代表文件的类型；剩下九个字母分别为该文件或目录的权限位</p>
 <p><strong>文件类型有： - d c b l p s</strong></p>
-<blockquote>
-<ul>
-<li>表示该文件是一个普通文件<br>d  directory表示该文件是一个目录<br>c  character表示该文件是一个字符设备文件，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节<br>b  block表示块设备文件，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)<br>l  link表示该文件是一个链接文件<br>p  pipe表示该文件为命令管道文件。与shell编程有关的文件<br>s  socket表示该文件为socket文件。与shell编程有关的文件</li>
-</ul>
-</blockquote>
-<p><strong>第二字段：文件硬链接数</strong></p>
+<pre><code>-  表示该文件是一个普通文件
+d  directory表示该文件是一个目录
+c  character表示该文件是一个字符设备文件，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节
+b  block表示块设备文件，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)
+l  link表示该文件是一个链接文件
+p  pipe表示该文件为命令管道文件。与shell编程有关的文件
+s  socket表示该文件为socket文件。与shell编程有关的文件
+</code></pre><p><strong>第二字段：文件硬链接数</strong></p>
 <p>如果一个文件不是目录，此时这一字段表示这个文件所具有的硬链接数。</p>
 <p>如果是一个目录，则代表当前目录下所有目录的总个数，包括(.和..)</p>
 <h2 id="补充知识：软链接-amp-amp-硬链接"><a href="#补充知识：软链接-amp-amp-硬链接" class="headerlink" title="补充知识：软链接 &amp;&amp; 硬链接"></a>补充知识：软链接 &amp;&amp; 硬链接</h2><p>在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号inode 。<br>软连接，其实就是新建立一个文件，这个文件就是专门用来指向别的文件的（那就和windows 下的快捷方式的那个文件有很接近的意味）。<br>软连接产生的是一个新的文件，但这个文件的作用就是专门指向某个文件的，删了这个软连接文件，那就等于不需要这个连接，和原来的存在的实体原文件没有任何关系，<br>但删除原来的文件，则相应的软连接不可用（cat那个软链接文件，则提示“没有该文件或目录“）</p>
@@ -390,7 +402,7 @@ nl -n rz -w 3 a.txt
 <li>硬链接只有在同一个文件系统中才能创建</li>
 </ol>
 <hr>
-<h3 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h3><p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.<br>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，<br>我们只要在某个固定的目录，放上该文件，然后在其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+<h2 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h2><p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.<br>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，<br>我们只要在某个固定的目录，放上该文件，然后在其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
 <p><strong>命令格式：</strong></p>
 <blockquote>
 <p>ln [选项][源文件或目录][目标文件或目录]</p>
@@ -403,13 +415,14 @@ nl -n rz -w 3 a.txt
 <p><strong>第六字段：文件（目录）最近访问（修改）时间</strong></p>
 <p><strong>第七字段：文件名，如果是一个符号链接，那么会有一个 “-&gt;” 箭头符号，后面根一个它指向的文件名</strong></p>
 <hr>
-<h3 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h3><blockquote>
-<p>cd<br>cd -<br>cd ~</p>
-</blockquote>
-<hr>
+<h3 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h3><pre><code>cd    回到当前用户主目录
+cd -  回到上一个工作目录
+cd ~  回到当前用户主目录
+</code></pre><hr>
 <h3 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h3><p>pwd 命令是 print working directory 的缩写</p>
 <blockquote>
-<p>-P 显示实际物理路径，而非使用连接（link）路径<br>-L 当目录为连接路径时，显示连接路径</p>
+<p>-P 显示实际物理路径，而非使用连接（link）路径</p>
+<p>-L 当目录为连接路径时，显示连接路径</p>
 </blockquote>
 <h2 id="思考题？"><a href="#思考题？" class="headerlink" title="思考题？"></a>思考题？</h2><p><img src="http://i.imgur.com/ArnopfI.jpg" alt=""></p>
 <p><strong><em>在当前目录下创建一个 lv/目录，然后cd 进入 lv/目录，然后删除这个目录，<br>再用 pwd命令查看当前工作目录时，任然在 lv/目录下。</em></strong></p>
@@ -418,7 +431,7 @@ nl -n rz -w 3 a.txt
     
     <summary type="html">
     
-      &lt;h3 id=&quot;ls-命令&quot;&gt;&lt;a href=&quot;#ls-命令&quot; class=&quot;headerlink&quot; title=&quot;ls 命令&quot;&gt;&lt;/a&gt;ls 命令&lt;/h3&gt;&lt;p&gt;ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。&lt;br&gt;ls 用来打印出当前目录的清单。
+      &lt;h2 id=&quot;ls-命令&quot;&gt;&lt;a href=&quot;#ls-命令&quot; class=&quot;headerlink&quot; title=&quot;ls 命令&quot;&gt;&lt;/a&gt;ls 命令&lt;/h2&gt;&lt;p&gt;ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。&lt;br&gt;ls 用来打印出当前目录的清单。
     
     </summary>
     
@@ -723,9 +736,9 @@ int main()
     </summary>
     
     
-      <category term="algorithm" scheme="https://sichenglv.github.io/tags/algorithm/"/>
-    
       <category term="动态规划" scheme="https://sichenglv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="algorithm" scheme="https://sichenglv.github.io/tags/algorithm/"/>
     
   </entry>
   

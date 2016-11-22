@@ -9,12 +9,10 @@
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="1. mkdir命令
-mkdir -m 777 lv  设置权限
+    <meta name="description" content="1. mkdir命令mkdir -m 777 lv  设置权限
 mkdir -p lvsicheng/test/abc/java  递归创建多个目录
 mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
-
-思考题mkdir -vp shiyanlou/{li">
+思考题mkdir -vp shiyanlou/{lib/">
     
     
     
@@ -82,7 +80,7 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
     </p>
   <p class="article-time">
     <time datetime="2016-11-22T08:08:54.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T08:12:55.820Z" itemprop="dateModified">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:24:33.035Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -94,14 +92,12 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">6.</span> <span class="toc-text">heredoc = here document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nl命令"><span class="toc-number">7.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">8.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
 		</div>
 		
-		<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><blockquote>
-<p>mkdir -m 777 lv  设置权限</p>
-<p>mkdir -p lvsicheng/test/abc/java  递归创建多个目录</p>
-<p>mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息</p>
-</blockquote>
-<h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+		<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><pre><code>mkdir -m 777 lv  设置权限
+mkdir -p lvsicheng/test/abc/java  递归创建多个目录
+mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
+</code></pre><h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
-</code></pre><p>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</p>
+</code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
 <h3 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h3><blockquote>
 <p>rm -r lv/  –recursive 递归地删除</p>
 <p>rm -f a.txt  强势删除</p>
@@ -126,13 +122,11 @@ tree shiyanlou/
 <p>-i –interactive 交互式</p>
 <p>-u –update 若目标文件已经存在，且源文件比较新，才会更新</p>
 </blockquote>
-<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><blockquote>
-<p>-t –target-directory 指定目标目录</p>
-<p>-n –no-clobber 不要覆盖已存在的文件</p>
-<p>-s –symbolic-link 对源文件建立符号链接，而非复制文件</p>
-<p>-u –update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件</p>
-</blockquote>
-<p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
+<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><pre><code>-t --target-directory 指定目标目录
+-n --no-clobber 不要覆盖已存在的文件
+-s --symbolic-link 对源文件建立符号链接，而非复制文件
+-u --update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件
+</code></pre><p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
 <p><strong> cp -i test1/* test2 </strong></p>
 <h3 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h3><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
 <blockquote>
