@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>POJ-1050 To the Max | sicheng Lv&#39;s blog</title>
+    <title>Linux常用命令(二) | sicheng Lv&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="动态规划 —— 最大子矩阵和问题描述：
-给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。原题地址: POJ-1050 To the Max
+    <meta name="description" content="1. mkdir命令
+mkdir -m 777 lv  设置权限
+mkdir -p lvsicheng/test/abc/java  递归创建多个目录
+mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 
-算法分析：
-
-首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)
-利用求最大子段和的算法， 将二维动态规划问题转化为一维动态规划">
+思考题mkdir -vp shiyanlou/{li">
     
     
     
@@ -75,15 +74,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/09/POJ-1050-To-the-Max/" title="POJ-1050 To the Max" itemprop="url">POJ-1050 To the Max</a>
+      <a href="/2016/11/22/Linux常用命令-二/" title="Linux常用命令(二)" itemprop="url">Linux常用命令(二)</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
-    更新日期:<time datetime="2016-10-16T08:27:38.115Z" itemprop="dateModified">2016-10-16</time>
+    <time datetime="2016-11-22T08:08:54.000Z" itemprop="datePublished">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:12:55.820Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -92,149 +91,88 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">6.</span> <span class="toc-text">heredoc = here document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nl命令"><span class="toc-number">7.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">8.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
 		</div>
 		
-		<h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050" target="_blank" rel="external">POJ-1050 To the Max</a></p>
+		<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><blockquote>
+<p>mkdir -m 777 lv  设置权限</p>
+<p>mkdir -p lvsicheng/test/abc/java  递归创建多个目录</p>
+<p>mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息</p>
 </blockquote>
-<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
-<ol>
-<li>首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)</li>
-<li>利用求最大子段和的算法，<strong> 将二维动态规划问题转化为一维动态规划问题 </strong><br>设一维数组b是二维数组a的i~j(0&lt;=i&lt;j&lt;n)行，对应列元素的和，然后对数组b计算最大子段和。</li>
-<li>构造最优解</li>
-</ol>
+<h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+tree shiyanlou/
+</code></pre><p>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</p>
+<h3 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h3><blockquote>
+<p>rm -r lv/  –recursive 递归地删除</p>
+<p>rm -f a.txt  强势删除</p>
+<p>rm -vrf lv/  详细显示进行的步骤</p>
 </blockquote>
-<h2 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h2><p><strong> 计算最大子段和算法 </strong></p>
-<pre><code>/* besti, bestj 记录最大子段和的范围，用于构造最优解 */
-int DP(int a[], int n, int&amp; besti, int&amp; bestj)
-{
-    int i;
-    int max = -200000000;
-
-    //当b[i-1]&lt;=0时，记录b[i]=a[i]的位置
-    int begin = 0;
-    for(i = 1 ; i &lt;= n ; i++ )
-    {
-        if (b &gt; 0)
-            b += a[i];
-        else
-        {
-            b = a[i];
-            begin = i;        //新的起始边界
-        }
-        if (b &gt; max)
-        {
-            max = b;
-            besti = begin;
-            bestj = i;        //更新左右边界
-        }
-    }
-    return max;
+<pre><code>myrm() { 
+   D=/tmp/$(date +%Y%m%d%H%M%S); 
+   mkdir -p $D; 
+   mv &quot;$@&quot; $D &amp;&amp; echo &quot;moved to $D ok&quot;;
 }
-</code></pre><p><strong> 计算最大子矩阵和的动态规划算法 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];            // N*N矩阵 
-    int sum[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;            //最大子矩阵的行号
-    int rowJ = 0;            //最大子矩阵的行号
-    int col = 0;             //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-    int i, j, k;
-    for(i = 1; i &lt;= n; i++)
-        for(j = 1; j &lt;= n; j++)
-            cin &gt;&gt; a[i][j];
-
-    int max = -128;
-    for( i = 1 ; i &lt;= n ; i++ )
-    {
-        memset(sum, 0, sizeof(sum));        //数组置零
-        for(j = i ; j &lt;= n ; j++ )
-        {
-            for( k = 1 ; k &lt;= n ; k++ )
-                sum[k] += a[j][k];    //取出第 i, j两行，将这两行之间的列对应相加，形成另外一个数组sum，对数组 sum求最大子段和
-            int maxSum = DP(sum, n);
-            if(maxSum &gt; max)                //找出最大子矩阵和
-            {
-                rowI = i;
-                rowJ = j;
-                col = bestj;                //记录子矩阵的位置
-                max = maxSum;
-            }
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    /* 构造最优解: 打印出最大和的子矩阵 */
-    for(i = rowI; i &lt;= rowJ; i++)
-    {
-        for(j = 1; j &lt;= col; j++)
-        {
-            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
-        }
-        cout &lt;&lt; endl;
-    }
-    return 0;
-}
-</code></pre><p><strong> 可以将以上代码简化 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];        // N*N矩阵 
-    int b[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;        //最大子矩阵的行号
-    int rowJ = 0;        //最大子矩阵的行号
-    int col = 0;         //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-
-    int max = -128;
-    for( i = 1; i &lt;= n; i++ )
-    {
-        memset(b, 0, sizeof(b));        //数组置零
-        for(j = i; j &lt;= n; j++ )
-        {
-            //下面是针对数组b求最大子段和的算法 
-            int sum = 0; 
-            for( k = 1; k &lt;= n; k++ )
-            {
-                b[k] += a[j][k];
-                sum += b[k];
-                if(sum &lt; b[k]) sum = b[k];
-                if(sum &gt; max)                //找出最大子矩阵和
-                {
-                    rowI = i;
-                    rowJ = j;
-                    col = bestj;            //记录子矩阵的位置
-                    max = sum;
-                }
-            }
-
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    return 0;
-}
-</code></pre><h2 id="算法的时间复杂度："><a href="#算法的时间复杂度：" class="headerlink" title="算法的时间复杂度："></a>算法的时间复杂度：</h2><blockquote>
-<p>有三重循环，时间复杂度为O(n^3)</p>
+</code></pre><p><em>在/tmp目录下创建一个由时间命名的目录，然后将当前目录下的一个文件或目录mv过去，实现自定义的myrm函数 </em></p>
+<h3 id="3-mv命令"><a href="#3-mv命令" class="headerlink" title="3. mv命令"></a>3. mv命令</h3><blockquote>
+<p>mv [选项] 源文件或目录  目标文件或目录</p>
 </blockquote>
+<ul>
+<li>当第二个参数类型是文件时，mv完成文件重命名</li>
+<li>当第二个参数类型是目录时，mv将各参数指定的源文件均移至目标目录中</li>
+</ul>
+<p><strong> 常用参数 </strong></p>
+<blockquote>
+<p>-b –back 若需覆盖文件，则覆盖前先行备份</p>
+<p>-i –interactive 交互式</p>
+<p>-u –update 若目标文件已经存在，且源文件比较新，才会更新</p>
+</blockquote>
+<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><blockquote>
+<p>-t –target-directory 指定目标目录</p>
+<p>-n –no-clobber 不要覆盖已存在的文件</p>
+<p>-s –symbolic-link 对源文件建立符号链接，而非复制文件</p>
+<p>-u –update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件</p>
+</blockquote>
+<p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
+<p><strong> cp -i test1/* test2 </strong></p>
+<h3 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h3><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
+<blockquote>
+<p>-A –show-all 等价于 -vET</p>
+<p>-v –show-nonprinting </p>
+<p>-E –show-ends 在每行结束处显示 $</p>
+<p>-T –show-tabs 将跳格字符显示为 ^I</p>
+<p>-b –number-nonblank 对非空输出行编号</p>
+<p>-n –number 对输出的所有行编号,由 1 开始对所有输出的行数编号</p>
+<p>-s –squeeze-blank 有连续两行以上的空白行，就代换为一行的空白行 </p>
+</blockquote>
+<h4 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h4><pre><code>cat -A &lt;&lt; EOF
+&gt; `ls -l`
+&gt; EOF
+</code></pre><p>执行该命令会输出什么？</p>
+<p><em>想知道这题答案，必须要先了解什么是heredoc</em></p>
+<h3 id="heredoc-here-document"><a href="#heredoc-here-document" class="headerlink" title="heredoc = here document"></a>heredoc = here document</h3><p>Here Document 是在Linux Shell中的一种特殊的重定向方式，它的基本形式如下：</p>
+<pre><code>cmd &lt;&lt; delimiter(这里一定是&quot;&lt;&lt;&quot;)
+    Here Document Content
+delimiter
+</code></pre><p>它的作用就是将两个 delimiter 之间的内容(Here Document Content 部分) 传递给cmd 作为输入参数。</p>
+<h3 id="6-nl命令"><a href="#6-nl命令" class="headerlink" title="6. nl命令"></a>6. nl命令</h3><p><strong> nl = numbers of lines </strong></p>
+<pre><code>nl 命令在 linux 系统中用来计算文件中行号。
+nl 可以将输出的文件内容自动的加上行号。
+其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，
+包括位数与是否自动补齐 0 等等的功能
+</code></pre><p><strong> eg: </strong></p>
+<pre><code>nl -n ln a.txt
+nl -n rn a.txt
+nl -n rz a.txt
+nl -n rz -w 3 a.txt
+</code></pre><h3 id="Bash实用技巧"><a href="#Bash实用技巧" class="headerlink" title="Bash实用技巧"></a>Bash实用技巧</h3><p><a href="http://www.cnblogs.com/napoleon_liu/articles/1952228.html" target="_blank" rel="external">Bash实用技巧</a></p>
+<p><a href="http://www.techug.com/ten-tips-for-wonderful-bash-productivity" target="_blank" rel="external">Bash十大技巧</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/algorithm/">algorithm</a><a href="/tags/动态规划/">动态规划</a>
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Linux常用命令/">Linux常用命令</a>
   </div>
 
 
@@ -242,7 +180,7 @@ int main()
 
 <div class="article-share" id="share">
 
-  <div data-url="https://sichenglv.github.io/2016/10/09/POJ-1050-To-the-Max/" data-title="POJ-1050 To the Max | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-二/" data-title="Linux常用命令(二) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -252,18 +190,18 @@ int main()
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZJU-1206 Win the Bonus">
+ <a href="/2016/11/22/Linux常用命令-三/" title="Linux常用命令(三)">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  ZJU-1206 Win the Bonus</span>
+  Linux常用命令(三)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/10/07/MatrixChain/"  title="MatrixChain">
+<a href="/2016/11/22/Linux常用命令-一/"  title="Linux常用命令(一)">
  <strong>NEXT:</strong><br/> 
- <span>MatrixChain
+ <span>Linux常用命令(一)
 </span>
 </a>
 </div>
@@ -280,7 +218,7 @@ int main()
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">6.</span> <span class="toc-text">heredoc = here document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nl命令"><span class="toc-number">7.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">8.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
   </div>
 
 <div id="asidepart">

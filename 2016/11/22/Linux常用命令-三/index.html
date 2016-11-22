@@ -4,18 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>POJ-1050 To the Max | sicheng Lv&#39;s blog</title>
+    <title>Linux常用命令(三) | sicheng Lv&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="动态规划 —— 最大子矩阵和问题描述：
-给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。原题地址: POJ-1050 To the Max
-
-算法分析：
-
-首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)
-利用求最大子段和的算法， 将二维动态规划问题转化为一维动态规划">
+    <meta name="description" content="1. more命令more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能more 命令从前向后读取">
     
     
     
@@ -75,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/09/POJ-1050-To-the-Max/" title="POJ-1050 To the Max" itemprop="url">POJ-1050 To the Max</a>
+      <a href="/2016/11/22/Linux常用命令-三/" title="Linux常用命令(三)" itemprop="url">Linux常用命令(三)</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
-    更新日期:<time datetime="2016-10-16T08:27:38.115Z" itemprop="dateModified">2016-10-16</time>
+    <time datetime="2016-11-22T08:09:07.000Z" itemprop="datePublished">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:13:26.140Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -92,149 +86,72 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">head and tail命令</span></a></li></ol>
 		</div>
 		
-		<h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050" target="_blank" rel="external">POJ-1050 To the Max</a></p>
+		<h3 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h3><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
+<p><strong>常用参数:</strong></p>
+<blockquote>
+<p>+n 从笫 n 行开始显示</p>
+<p>-n 定义屏幕大小为 n 行</p>
+<p>+/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示</p>
+<p>-c 从顶部清屏，然后显示</p>
+<p>-d 提示“Press space to continue，’q’ to quit”，禁用响铃功能</p>
+<p>-p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似</p>
+<p>-s 把连续的多个空行显示为一行</p>
 </blockquote>
-<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
+<p><strong>常用操作:</strong></p>
+<blockquote>
+<p>=:   输出当前行的行号</p>
+<p>q:   退出 more </p>
+<p>空格键:   向下滚动一屏</p>
+<p>Ctrl+F或者b(back):   返回上一屏</p>
+</blockquote>
+<p><strong> ls -l /ect | more -dc -10 </strong> </p>
+<p>每页显示 10 个文件信息，按 Ctrl+F 或者 空格键 将会显示下 10 条文件信息。</p>
+<hr>
+<h3 id="2-less命令"><a href="#2-less命令" class="headerlink" title="2. less命令"></a>2. less命令</h3><p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是 linux 正统查看文件内容的工具，功能极其强大</p>
+<p><strong>常用参数:</strong></p>
+<blockquote>
+<p>-m  显示类似 more 命令的百分比<br>-N  显示每行的行号</p>
+</blockquote>
+<p><strong>常用操作:</strong></p>
+<blockquote>
+<p>/字符串 向下搜索“字符串”</p>
+<p>?字符串 向上搜索“字符串”</p>
+<p>b 向前翻一页</p>
+<p>d 向后翻半页</p>
+<p>向上键 向上翻动一行</p>
+</blockquote>
+<p><strong> ps -f | less </strong></p>
+<p>ps 查看进程信息并通过 less 分页显示</p>
+<hr>
+<p><strong> less more cat 的区别 </strong></p>
 <ol>
-<li>首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)</li>
-<li>利用求最大子段和的算法，<strong> 将二维动态规划问题转化为一维动态规划问题 </strong><br>设一维数组b是二维数组a的i~j(0&lt;=i&lt;j&lt;n)行，对应列元素的和，然后对数组b计算最大子段和。</li>
-<li>构造最优解</li>
+<li>less命令允许用户向前或向后浏览文件，而more命令只能向前浏览。用less命令显示文件时，用PageUp键向上翻页，用PageDown键向下翻页</li>
+<li>more不能显示行号，但是可以限制显示的行数，可以选择清屏显示</li>
+<li>less的搜索功能比more好用</li>
+<li>cat 可以实现多个文件合并输出</li>
 </ol>
-</blockquote>
-<h2 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h2><p><strong> 计算最大子段和算法 </strong></p>
-<pre><code>/* besti, bestj 记录最大子段和的范围，用于构造最优解 */
-int DP(int a[], int n, int&amp; besti, int&amp; bestj)
-{
-    int i;
-    int max = -200000000;
-
-    //当b[i-1]&lt;=0时，记录b[i]=a[i]的位置
-    int begin = 0;
-    for(i = 1 ; i &lt;= n ; i++ )
-    {
-        if (b &gt; 0)
-            b += a[i];
-        else
-        {
-            b = a[i];
-            begin = i;        //新的起始边界
-        }
-        if (b &gt; max)
-        {
-            max = b;
-            besti = begin;
-            bestj = i;        //更新左右边界
-        }
-    }
-    return max;
-}
-</code></pre><p><strong> 计算最大子矩阵和的动态规划算法 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];            // N*N矩阵 
-    int sum[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;            //最大子矩阵的行号
-    int rowJ = 0;            //最大子矩阵的行号
-    int col = 0;             //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-    int i, j, k;
-    for(i = 1; i &lt;= n; i++)
-        for(j = 1; j &lt;= n; j++)
-            cin &gt;&gt; a[i][j];
-
-    int max = -128;
-    for( i = 1 ; i &lt;= n ; i++ )
-    {
-        memset(sum, 0, sizeof(sum));        //数组置零
-        for(j = i ; j &lt;= n ; j++ )
-        {
-            for( k = 1 ; k &lt;= n ; k++ )
-                sum[k] += a[j][k];    //取出第 i, j两行，将这两行之间的列对应相加，形成另外一个数组sum，对数组 sum求最大子段和
-            int maxSum = DP(sum, n);
-            if(maxSum &gt; max)                //找出最大子矩阵和
-            {
-                rowI = i;
-                rowJ = j;
-                col = bestj;                //记录子矩阵的位置
-                max = maxSum;
-            }
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    /* 构造最优解: 打印出最大和的子矩阵 */
-    for(i = rowI; i &lt;= rowJ; i++)
-    {
-        for(j = 1; j &lt;= col; j++)
-        {
-            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
-        }
-        cout &lt;&lt; endl;
-    }
-    return 0;
-}
-</code></pre><p><strong> 可以将以上代码简化 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];        // N*N矩阵 
-    int b[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;        //最大子矩阵的行号
-    int rowJ = 0;        //最大子矩阵的行号
-    int col = 0;         //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-
-    int max = -128;
-    for( i = 1; i &lt;= n; i++ )
-    {
-        memset(b, 0, sizeof(b));        //数组置零
-        for(j = i; j &lt;= n; j++ )
-        {
-            //下面是针对数组b求最大子段和的算法 
-            int sum = 0; 
-            for( k = 1; k &lt;= n; k++ )
-            {
-                b[k] += a[j][k];
-                sum += b[k];
-                if(sum &lt; b[k]) sum = b[k];
-                if(sum &gt; max)                //找出最大子矩阵和
-                {
-                    rowI = i;
-                    rowJ = j;
-                    col = bestj;            //记录子矩阵的位置
-                    max = sum;
-                }
-            }
-
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    return 0;
-}
-</code></pre><h2 id="算法的时间复杂度："><a href="#算法的时间复杂度：" class="headerlink" title="算法的时间复杂度："></a>算法的时间复杂度：</h2><blockquote>
-<p>有三重循环，时间复杂度为O(n^3)</p>
-</blockquote>
+<hr>
+<h3 id="head-and-tail命令"><a href="#head-and-tail命令" class="headerlink" title="head and tail命令"></a>head and tail命令</h3><p>head 命令主要是用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
+<p>tail 命令主要用于显示指定文件末尾内容。常用查看日志文件。</p>
+<p><strong> head -n 5 a.txt </strong> 文件中的前 5 行内容</p>
+<p><strong> head -n -5 a.txt </strong> 文件中除了最后 5 行的内容</p>
+<p><strong> tail -n 5 a.txt </strong> 文件中的最后 5 行内容</p>
+<p><strong> tail -n 5 -f lv.log </strong> </p>
+<p>当 lv.log 文件有新内容增加，自动更新显示</p>
+<p><img src="http://i.imgur.com/Pl6tYir.png" alt=""><br>ping 127.0.0.1 &gt;&gt; ping.log 这条命令作用是，ping 本地主机，并将信息追加到 ping.log 文件中</p>
+<p>使用 tail 命令的-f 选项可以即时输出文件变化后追加的内容，tail -f filename 会把 filename 里最尾部的内容显示在屏幕上，并且不但刷新，使你看到最新的文件内容</p>
+<p><img src="http://i.imgur.com/4NGM3VE.png" alt=""></p>
+<p>jobs 命令可以查看正在后台运行的任务。kill 命令可以杀死一个任务，但要使用任务的 id。任务的 id 可以通过 ps 命令查看获得</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/algorithm/">algorithm</a><a href="/tags/动态规划/">动态规划</a>
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Linux常用命令/">Linux常用命令</a>
   </div>
 
 
@@ -242,7 +159,7 @@ int main()
 
 <div class="article-share" id="share">
 
-  <div data-url="https://sichenglv.github.io/2016/10/09/POJ-1050-To-the-Max/" data-title="POJ-1050 To the Max | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-三/" data-title="Linux常用命令(三) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -252,18 +169,18 @@ int main()
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZJU-1206 Win the Bonus">
+ <a href="/2016/11/22/Linux常用命令-四/" title="Linux常用命令(四)">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  ZJU-1206 Win the Bonus</span>
+  Linux常用命令(四)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/10/07/MatrixChain/"  title="MatrixChain">
+<a href="/2016/11/22/Linux常用命令-二/"  title="Linux常用命令(二)">
  <strong>NEXT:</strong><br/> 
- <span>MatrixChain
+ <span>Linux常用命令(二)
 </span>
 </a>
 </div>
@@ -280,7 +197,7 @@ int main()
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">head and tail命令</span></a></li></ol>
   </div>
 
 <div id="asidepart">

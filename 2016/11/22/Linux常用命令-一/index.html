@@ -4,18 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>POJ-1050 To the Max | sicheng Lv&#39;s blog</title>
+    <title>Linux常用命令(一) | sicheng Lv&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="动态规划 —— 最大子矩阵和问题描述：
-给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。原题地址: POJ-1050 To the Max
-
-算法分析：
-
-首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)
-利用求最大子段和的算法， 将二维动态规划问题转化为一维动态规划">
+    <meta name="description" content="ls 命令ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看">
     
     
     
@@ -75,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/10/09/POJ-1050-To-the-Max/" title="POJ-1050 To the Max" itemprop="url">POJ-1050 To the Max</a>
+      <a href="/2016/11/22/Linux常用命令-一/" title="Linux常用命令(一)" itemprop="url">Linux常用命令(一)</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
-    更新日期:<time datetime="2016-10-16T08:27:38.115Z" itemprop="dateModified">2016-10-16</time>
+    <time datetime="2016-11-22T08:08:38.000Z" itemprop="datePublished">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:12:11.331Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -92,149 +86,80 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-命令"><span class="toc-number">1.</span> <span class="toc-text">ls 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识：软链接-amp-amp-硬链接"><span class="toc-number"></span> <span class="toc-text">补充知识：软链接 && 硬链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ln-命令"><span class="toc-number">1.</span> <span class="toc-text">ln 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-命令"><span class="toc-number">2.</span> <span class="toc-text">cd 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd-命令"><span class="toc-number">3.</span> <span class="toc-text">pwd 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题？"><span class="toc-number"></span> <span class="toc-text">思考题？</span></a>
 		</div>
 		
-		<h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050" target="_blank" rel="external">POJ-1050 To the Max</a></p>
+		<h3 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h3><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
+<p><strong>常用参数：</strong></p>
+<blockquote>
+<p>-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件<br>-l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来<br>-d –directory 将目录象文件一样显示，而不是显示其下的文件<br>-h –human-readable 以容易理解的格式列出文件大小 (例如 1K 234M 2G)<br>-t 以文件修改时间排序</p>
+<p>ls -l 详解</p>
 </blockquote>
-<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
+<p><img src="http://i.imgur.com/yRaIXh2.png" alt=""></p>
+<p><strong>第一行：总计(total)</strong></p>
+<p>当前目录下所有文件所占用的空间总和</p>
+<p><strong>第一字段：文件属性</strong></p>
+<p><strong>-rw-rw-r– 1 shiyanlou shiyanlou 12 Nov 22 14:39 a.txt</strong></p>
+<p>文件属性字段总共有10个字母组成；第一个字符代表文件的类型；剩下九个字母分别为该文件或目录的权限位</p>
+<p><strong>文件类型有： - d c b l p s</strong></p>
+<blockquote>
+<ul>
+<li>表示该文件是一个普通文件<br>d  directory表示该文件是一个目录<br>c  character表示该文件是一个字符设备文件，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节<br>b  block表示块设备文件，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)<br>l  link表示该文件是一个链接文件<br>p  pipe表示该文件为命令管道文件。与shell编程有关的文件<br>s  socket表示该文件为socket文件。与shell编程有关的文件</li>
+</ul>
+</blockquote>
+<p><strong>第二字段：文件硬链接数</strong></p>
+<p>如果一个文件不是目录，此时这一字段表示这个文件所具有的硬链接数。</p>
+<p>如果是一个目录，则代表当前目录下所有目录的总个数，包括(.和..)</p>
+<h2 id="补充知识：软链接-amp-amp-硬链接"><a href="#补充知识：软链接-amp-amp-硬链接" class="headerlink" title="补充知识：软链接 &amp;&amp; 硬链接"></a>补充知识：软链接 &amp;&amp; 硬链接</h2><p>在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号inode 。<br>软连接，其实就是新建立一个文件，这个文件就是专门用来指向别的文件的（那就和windows 下的快捷方式的那个文件有很接近的意味）。<br>软连接产生的是一个新的文件，但这个文件的作用就是专门指向某个文件的，删了这个软连接文件，那就等于不需要这个连接，和原来的存在的实体原文件没有任何关系，<br>但删除原来的文件，则相应的软连接不可用（cat那个软链接文件，则提示“没有该文件或目录“）</p>
+<p>硬连接是不会建立inode的，他只是在文件原来的inode link count域再增加1而已，也因此硬链接是不可以跨越文件系统的。<br>相反都是软连接会重新建立一个inode，当然inode的结构跟其他的不一样，他只是一个指明源文件的字符串信息。<br>一旦删除源文件，那么软连接将变得毫无意义。而硬链接删除源文件的时候，系统调用会检查inode link count的数值，<br>如果他大于等于1，那么inode不会被回收，因此文件的内容不会被删除，相当于删除了一个索引。</p>
+<p>硬链接实际上是为文件建一个别名，链接文件和原文件实际上是同一个文件。<br>可以通过ls -i来查看一下，这两个文件的inode号是同一个，说明它们是同一个文件；<br>而软链接建立的是一个指向，即链接文件内的内容是指向原文件的指针，它们是两个文件。</p>
+<p>两种链接都可以通过命令 ln 来创建。ln 默认创建的是硬链接。使用 -s 开关可以创建软链接</p>
+<hr>
+<p><strong>软链接：</strong></p>
 <ol>
-<li>首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)</li>
-<li>利用求最大子段和的算法，<strong> 将二维动态规划问题转化为一维动态规划问题 </strong><br>设一维数组b是二维数组a的i~j(0&lt;=i&lt;j&lt;n)行，对应列元素的和，然后对数组b计算最大子段和。</li>
-<li>构造最优解</li>
+<li>软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式</li>
+<li>软链接可以 跨文件系统 ，硬链接不可以</li>
+<li>软链接可以对一个不存在的文件名进行链接</li>
+<li>软链接可以对目录进行链接</li>
 </ol>
+<p><strong>硬链接：</strong></p>
+<ol>
+<li>硬链接，以文件副本的形式存在。但不占用实际空间</li>
+<li>不允许给目录创建硬链接</li>
+<li>硬链接只有在同一个文件系统中才能创建</li>
+</ol>
+<hr>
+<h3 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h3><p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.<br>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，<br>我们只要在某个固定的目录，放上该文件，然后在其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>ln [选项][源文件或目录][目标文件或目录]</p>
 </blockquote>
-<h2 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h2><p><strong> 计算最大子段和算法 </strong></p>
-<pre><code>/* besti, bestj 记录最大子段和的范围，用于构造最优解 */
-int DP(int a[], int n, int&amp; besti, int&amp; bestj)
-{
-    int i;
-    int max = -200000000;
-
-    //当b[i-1]&lt;=0时，记录b[i]=a[i]的位置
-    int begin = 0;
-    for(i = 1 ; i &lt;= n ; i++ )
-    {
-        if (b &gt; 0)
-            b += a[i];
-        else
-        {
-            b = a[i];
-            begin = i;        //新的起始边界
-        }
-        if (b &gt; max)
-        {
-            max = b;
-            besti = begin;
-            bestj = i;        //更新左右边界
-        }
-    }
-    return max;
-}
-</code></pre><p><strong> 计算最大子矩阵和的动态规划算法 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];            // N*N矩阵 
-    int sum[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;            //最大子矩阵的行号
-    int rowJ = 0;            //最大子矩阵的行号
-    int col = 0;             //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-    int i, j, k;
-    for(i = 1; i &lt;= n; i++)
-        for(j = 1; j &lt;= n; j++)
-            cin &gt;&gt; a[i][j];
-
-    int max = -128;
-    for( i = 1 ; i &lt;= n ; i++ )
-    {
-        memset(sum, 0, sizeof(sum));        //数组置零
-        for(j = i ; j &lt;= n ; j++ )
-        {
-            for( k = 1 ; k &lt;= n ; k++ )
-                sum[k] += a[j][k];    //取出第 i, j两行，将这两行之间的列对应相加，形成另外一个数组sum，对数组 sum求最大子段和
-            int maxSum = DP(sum, n);
-            if(maxSum &gt; max)                //找出最大子矩阵和
-            {
-                rowI = i;
-                rowJ = j;
-                col = bestj;                //记录子矩阵的位置
-                max = maxSum;
-            }
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    /* 构造最优解: 打印出最大和的子矩阵 */
-    for(i = rowI; i &lt;= rowJ; i++)
-    {
-        for(j = 1; j &lt;= col; j++)
-        {
-            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
-        }
-        cout &lt;&lt; endl;
-    }
-    return 0;
-}
-</code></pre><p><strong> 可以将以上代码简化 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];        // N*N矩阵 
-    int b[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;        //最大子矩阵的行号
-    int rowJ = 0;        //最大子矩阵的行号
-    int col = 0;         //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-
-    int max = -128;
-    for( i = 1; i &lt;= n; i++ )
-    {
-        memset(b, 0, sizeof(b));        //数组置零
-        for(j = i; j &lt;= n; j++ )
-        {
-            //下面是针对数组b求最大子段和的算法 
-            int sum = 0; 
-            for( k = 1; k &lt;= n; k++ )
-            {
-                b[k] += a[j][k];
-                sum += b[k];
-                if(sum &lt; b[k]) sum = b[k];
-                if(sum &gt; max)                //找出最大子矩阵和
-                {
-                    rowI = i;
-                    rowJ = j;
-                    col = bestj;            //记录子矩阵的位置
-                    max = sum;
-                }
-            }
-
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    return 0;
-}
-</code></pre><h2 id="算法的时间复杂度："><a href="#算法的时间复杂度：" class="headerlink" title="算法的时间复杂度："></a>算法的时间复杂度：</h2><blockquote>
-<p>有三重循环，时间复杂度为O(n^3)</p>
+<p><strong>为 a.txt文件创建一个软链接和硬链接</strong><br><img src="http://i.imgur.com/baU9TBt.png" alt=""></p>
+<p><img src="http://i.imgur.com/iHTyrGf.png" alt=""></p>
+<hr>
+<p><strong>第三、四字段：文件所有者、文件所属组</strong></p>
+<p><strong>第五字段：文件或目录所占磁盘块的大小(默认以字节为单位)</strong></p>
+<p><strong>第六字段：文件（目录）最近访问（修改）时间</strong></p>
+<p><strong>第七字段：文件名，如果是一个符号链接，那么会有一个 “-&gt;” 箭头符号，后面根一个它指向的文件名</strong></p>
+<hr>
+<h3 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h3><blockquote>
+<p>cd<br>cd -<br>cd ~</p>
 </blockquote>
+<hr>
+<h3 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h3><p>pwd 命令是 print working directory 的缩写</p>
+<blockquote>
+<p>-P 显示实际物理路径，而非使用连接（link）路径<br>-L 当目录为连接路径时，显示连接路径</p>
+</blockquote>
+<h2 id="思考题？"><a href="#思考题？" class="headerlink" title="思考题？"></a>思考题？</h2><p><img src="http://i.imgur.com/ArnopfI.jpg" alt=""></p>
+<p><strong><em>在当前目录下创建一个 lv/目录，然后cd 进入 lv/目录，然后删除这个目录，<br>再用 pwd命令查看当前工作目录时，任然在 lv/目录下。</em></strong></p>
+<p><img src="http://i.imgur.com/sX13RgZ.png" alt=""></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/algorithm/">algorithm</a><a href="/tags/动态规划/">动态规划</a>
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Linux常用命令/">Linux常用命令</a>
   </div>
 
 
@@ -242,7 +167,7 @@ int main()
 
 <div class="article-share" id="share">
 
-  <div data-url="https://sichenglv.github.io/2016/10/09/POJ-1050-To-the-Max/" data-title="POJ-1050 To the Max | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-一/" data-title="Linux常用命令(一) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -252,18 +177,18 @@ int main()
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZJU-1206 Win the Bonus">
+ <a href="/2016/11/22/Linux常用命令-二/" title="Linux常用命令(二)">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  ZJU-1206 Win the Bonus</span>
+  Linux常用命令(二)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/10/07/MatrixChain/"  title="MatrixChain">
+<a href="/2016/11/04/Linux下C-C-正则表达式详解-1/"  title="Linux下C/C++正则表达式详解">
  <strong>NEXT:</strong><br/> 
- <span>MatrixChain
+ <span>Linux下C/C++正则表达式详解
 </span>
 </a>
 </div>
@@ -280,7 +205,7 @@ int main()
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-最大子矩阵和"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 最大子矩阵和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码："><span class="toc-number">1.3.</span> <span class="toc-text">参考代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法的时间复杂度："><span class="toc-number">1.4.</span> <span class="toc-text">算法的时间复杂度：</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-命令"><span class="toc-number">1.</span> <span class="toc-text">ls 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识：软链接-amp-amp-硬链接"><span class="toc-number"></span> <span class="toc-text">补充知识：软链接 && 硬链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ln-命令"><span class="toc-number">1.</span> <span class="toc-text">ln 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-命令"><span class="toc-number">2.</span> <span class="toc-text">cd 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd-命令"><span class="toc-number">3.</span> <span class="toc-text">pwd 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题？"><span class="toc-number"></span> <span class="toc-text">思考题？</span></a>
   </div>
 
 <div id="asidepart">

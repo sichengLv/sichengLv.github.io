@@ -1,0 +1,518 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Linux常用命令(四) | sicheng Lv&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="sicheng Lv">
+    
+    <meta name="description" content="在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing
+which 命令 whi">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="sicheng Lv&#39;s blog" title="sicheng Lv&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="sicheng Lv&#39;s blog">sicheng Lv&#39;s blog</a></h1>
+				<h2 class="blog-motto">静止了所有的花开，你好久都没有再来 、</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:sichenglv.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/22/Linux常用命令-四/" title="Linux常用命令(四)" itemprop="url">Linux常用命令(四)</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-11-22T08:09:19.000Z" itemprop="datePublished">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T08:13:45.221Z" itemprop="dateModified">2016-11-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#which-命令"><span class="toc-number">1.</span> <span class="toc-text">which 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识-到底什么是Shell命令？"><span class="toc-number"></span> <span class="toc-text">补充知识: 到底什么是Shell命令？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis-命令"><span class="toc-number">1.</span> <span class="toc-text">whereis 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#locate-命令"><span class="toc-number">2.</span> <span class="toc-text">locate 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find-命令"><span class="toc-number"></span> <span class="toc-text">find 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-命令"><span class="toc-number">1.</span> <span class="toc-text">wc 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep-命令"><span class="toc-number">2.</span> <span class="toc-text">grep 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xargs-命令"><span class="toc-number">3.</span> <span class="toc-text">xargs 命令</span></a></li></ol>
+		</div>
+		
+		<p>在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing</p>
+<h3 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h3><p><strong> which - locate a command </strong><br>在 PATH 变量指定的路径中搜索可执行文件的所在位置</p>
+<p><strong> Usage: </strong></p>
+<blockquote>
+<p>which  可执行文件名称</p>
+</blockquote>
+<h2 id="补充知识-到底什么是Shell命令？"><a href="#补充知识-到底什么是Shell命令？" class="headerlink" title="补充知识: 到底什么是Shell命令？"></a>补充知识: 到底什么是Shell命令？</h2><p>Linux系统中所有的可执行文件都可以作为Shell命令来解释执行</p>
+<p>命令可以是下面四种形式之一：</p>
+<ol>
+<li>是一个可执行程序：包括Linux命令，存放在 /bin, /sbin目录下; 还包括实用程序，存放在 /usr/bin, /usr/sbin, /usr/local/bin等目录下; 还包括经过编译生成的二进制文件，用C、C++语言写的程序</li>
+<li>是一个内建于 shell 自身的命令：bash 支持若干命令，内部叫做 shell 内部命令 (builtins)</li>
+<li>是一个 shell 函数：这些是小规模的 shell 脚本，它们混合到环境变量中</li>
+<li>是一个命令别名：我们可以定义自己的命令，建立在其它命令之上</li>
+</ol>
+<hr>
+<h3 id="whereis-命令"><a href="#whereis-命令" class="headerlink" title="whereis 命令"></a>whereis 命令</h3><p>whereis 命令主要用于定位可执行文件、源代码文件、帮助文件在文件系统中的位置。whereis 命令还具有搜索源代码、指定备用搜索路径和搜索不寻常项的能力</p>
+<p>whereis 命令查找速度非常快，这是因为它根本不是在磁盘中漫无目的乱找，而是在一个数据库中（<strong>/var/lib/mlocate/mlocate.db</strong>）查询。这个数据库是 Linux 系统自动创建的，包含有本地所有文件的信息，并且每天通过自动执行 updatedb 命令更新一次。也正是因为这个数据库要每天才更新一次，就会使得 whereis 命令的搜索结果有时候会不准确，比如刚添加的文件可能搜不到</p>
+<p><strong> whereis - locate the binary, source, and manual page files for a command </strong></p>
+<p><strong> whereis [-bmsu] [-BMS directory… -f] filename </strong></p>
+<p><strong> 常用参数：</strong></p>
+<blockquote>
+<p>-b 定位可执行文件<br>-m 定位帮助文件<br>-s 定位源代码文件<br>-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件</p>
+</blockquote>
+<hr>
+<h3 id="locate-命令"><a href="#locate-命令" class="headerlink" title="locate 命令"></a>locate 命令</h3><p><strong> locate - find files by name </strong></p>
+<p>locate 命令跟 whereis 命令类似，且它们使用的是相同的数据库。但 whereis 命令只能搜索可执行文件、联机帮助文件和源代码文件，如果要获得更全面的搜索结果，可以使用 locate 命令。</p>
+<p>locate 命令使用了十分复杂的匹配语法，可以使用特殊字元（如’*’和’?’）来指定需要查找的样本。</p>
+<hr>
+<h2 id="find-命令"><a href="#find-命令" class="headerlink" title="find 命令"></a>find 命令</h2><p><strong>find - search for files in a directory hierarchy</strong></p>
+<p>find 命令主要作用是沿着文件层次结构向下遍历，匹配符合条件的文件，并执行相应的操作。<br>Linux 下 find 命令提供了相当多的查找条件，功能很强大，对应的学习难度也比较大</p>
+<p><strong> 命令格式：</strong></p>
+<blockquote>
+<p>find 【选项】 【搜索路径】 【表达式】</p>
+</blockquote>
+<p><em>默认路径是当前目录，默认表达式为-print。<br>表达式可能由下列成份组成：操作符、选项、测试表达式以及动作。</em></p>
+<p><strong> 常用参数：</strong></p>
+<blockquote>
+<p>-print  find 命令将匹配的文件输出到标准输出<br>-exec command {} \;   find 命令对匹配的文件执行<strong>该参数所给出的 shell 命令</strong>，即command操作，{}是占位符，\;是结束符，但是分号要转义<br>-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行</p>
+<p>-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写<br>-type b/d/c/p/l/f   查找某一类型的文件<br>-size n[c]  查长度为n块[或n字节]的文件<br>-depth  使查找在进入子目录前先行查找完本目录<br>-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略<br>-inum  根据 i节点查找</p>
+<p>-user username   按照文件所有者来查找文件<br>-group groupname 按照文件所属组来查找文件<br>-perm  按执行权限来查找</p>
+<p>-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前<br>-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前<br>-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前</p>
+<p>-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前<br>-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前<br>-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前</p>
+</blockquote>
+<p><strong> For example：</strong></p>
+<pre><code>find . -print 打印当前目录下所有文件的目录列表
+find . -name &quot;*.txt&quot; -print 打印当前目录下所有以.txt 结尾的文件名
+find ~ \(-name &quot;*.pdf&quot; or -name &quot;*.txt&quot;\) 打印主目录下所有**以.txt 或.pdf 结尾**的文件名
+</code></pre><p><img src="http://i.imgur.com/FZ2QDry.jpg" alt=""></p>
+<pre><code>find . -type l -name &quot;*.txt&quot; 以.txt 结尾的符号链接
+find . -type f -name &quot;*.php&quot; -perm 777 所有权限为 777 的 php 文件
+find . -type f -user root 当前目录下 root 用户拥有的所有文件
+find . -type f \( ! -perm 777 -and ! -perm 644 \) 当前目录下权限不是 777 和 664 的所有文件
+find /etc -cmin -5 在/etc下查找5分钟内被修改过属性的文件和目录
+</code></pre><p><img src="http://i.imgur.com/ut3PZ55.jpg" alt="">    </p>
+<pre><code>find / -size +204800 在根目录下查找大于100MB的文件
+</code></pre><p><img src="http://i.imgur.com/M2NPFAu.png" alt=""><br>注意：<strong>默认单位是b，而它代表的是512字节，所以2表示1K，1M则是2048</strong>，如果不想自己转换，可以使用其他单位，如c、K、M等。</p>
+<pre><code>查找当前目录下文件大小为2048(2k)字节的文件
+find . -size 4
+find . -size 2048c
+find . -size 2K
+find / -size +10M -a -size -20M 在根目录下查找大于10M小于20M的文件
+
+find /etc -perm 777 -exec ls -l {} \; 在/ect目录下查找权限为777的文件，并显示其详细信息
+find /work -name &quot;*.c&quot; -exec cat {} \; &gt; all_c_file 先查找到所有的 c 语言代码文件，然后将这些文件内容写入到一个文件中
+</code></pre><p>默认下，<strong>-exec 后面只能使用单个命令，如果想要多个命令，可以将多个命令写入脚本文件中</strong>，然后在-exec 中使用这个脚本，可以使用如下命令:</p>
+<blockquote>
+<p>find . -name “*.c” -exec sh ./command.sh {} \;</p>
+</blockquote>
+<p><strong>脚本内容：</strong></p>
+<pre><code>#! /bin/bash
+ls -l $1    # $1表示传进来的第一个参数
+cat $1
+</code></pre><p><img src="http://i.imgur.com/JM2k6xs.png" alt=""></p>
+<hr>
+<h3 id="wc-命令"><a href="#wc-命令" class="headerlink" title="wc 命令"></a>wc 命令</h3><p>wc 命令是一个统计的工具，主要用来显示文件所包含的行、字和字节数。</p>
+<p>wc 命令是 word count 的缩写</p>
+<p><strong> 命令格式：</strong></p>
+<blockquote>
+<p>wc [选项] [文件]</p>
+</blockquote>
+<p><strong> 常用参数：</strong></p>
+<blockquote>
+<p>-l  统计行数<br>-w  统计字数，一个字被定义为由空白、跳格或换行字符分隔的字符串<br>-c  统计字节数<br>-m  统计字符数，注意中文字符，不能与 -c 标志一起使用<br>-L  打印最长行的长度</p>
+</blockquote>
+<p><strong> 注意每行结尾的换行符也算一个字符，空格也算一个字符。另外，由于系统采用 UTF-8 编码，所以一个汉字为 3 字节，9 个汉字加上一个换行，一共 28 个字节 </strong></p>
+<p><strong> 统计/bin 目录下的命令个数，可以使用如下命令: ls /bin | wc -l </strong></p>
+<hr>
+<h3 id="grep-命令"><a href="#grep-命令" class="headerlink" title="grep 命令"></a>grep 命令</h3><p><strong> grep - print lines matching a pattern </strong></p>
+<p>grep 是个很强大的命令，用来找到文件中的匹配文本，并且能够接受正则表达式和通配符，同时可以用多个 grep 命令选项来生成各种格式的输出。</p>
+<p>grep 的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件内容。</p>
+<p>grep 可用于 shell 脚本，因为 grep 通过返回一个状态值来说明搜索的状态，如果模板搜索成功，则返回 0，如果搜索不成功，则返回 1，如果搜索的文件不存在，则返回 2。我们利用这些返回值就可进行一些自动化的文本处理工作。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>grep 【选项】 pattern [file]</p>
+</blockquote>
+<p><strong>常用参数：</strong></p>
+<blockquote>
+<p>-c  计算找到 ‘搜寻字符串’(即 pattern) 的次数<br>-i  忽略大小写的不同，所以大小写视为相同<br>-n  输出行号<br>-v  反向选择，打印不匹配的行<br>-r  递归搜索<br>–color=auto  将找到的关键词部分加上颜色显示</p>
+</blockquote>
+<p><strong>常用范例：</strong></p>
+<pre><code>将/etc/passwd 文件中出现 root 的行取出来，关键词部分加上颜色显示
+grep &quot;root&quot; /etc/passwd [--color=auto]
+cat /etc/passwd | grep &quot;root&quot;
+
+验证固定电话，打印符合条件的电话
+grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
+</code></pre><p><strong>grep 与正则表达式</strong></p>
+<p><img src="http://i.imgur.com/p5BlFsB.jpg" alt=""></p>
+<hr>
+<h3 id="xargs-命令"><a href="#xargs-命令" class="headerlink" title="xargs 命令"></a>xargs 命令</h3><p>我们可以用管道将一个命令的stdout重定向到另一个命令的stdin，但有些命令只能以命令行参数<br>的形式接收数据，而无法通过stdin接收数据流。在这种情况下，无法通过管道将数据重定向给这些命令。</p>
+<p>这时 xargs 就可以发挥它的作用了，xargs命令可以从标准输入接收输入，并把输入转换为一个特定的参数列表。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>command | xargs [选项] [command]</p>
+</blockquote>
+<p>xargs 命令应该紧跟在管道操作符之后，因为它以标准输入作为主要的源数据流</p>
+<p><strong>常用参数：</strong></p>
+<pre><code>-n  指定每行最大的参数数量
+-d  指定分割符
+</code></pre><p><strong>常用范例：</strong></p>
+<pre><code>cat a.txt | xargs 
+将多行输入转换为单行输出
+</code></pre><p><img src="http://i.imgur.com/e1CDOQN.png" alt=""></p>
+<pre><code>echo &quot;1 2 3 4 5 6 7&quot; | xargs -n 3
+将单行输入转换为多行输出
+</code></pre><p><img src="http://i.imgur.com/HYLI0Ro.png" alt=""></p>
+<pre><code>cat b.txt | xargs -d i -n 3
+将单行输入转换为多行输出，指定分隔符为 i
+</code></pre><p><img src="http://i.imgur.com/vCzB4TC.png" alt=""></p>
+<pre><code>find . -type f -name &quot;*.c&quot; | xargs wc -l
+查找当前目录下所有 c 代码文件，统计总行数
+</code></pre><p><img src="http://i.imgur.com/SJkXf5L.png" alt=""></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Linux常用命令/">Linux常用命令</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-四/" data-title="Linux常用命令(四) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/22/Linux常用命令-三/"  title="Linux常用命令(三)">
+ <strong>NEXT:</strong><br/> 
+ <span>Linux常用命令(三)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#which-命令"><span class="toc-number">1.</span> <span class="toc-text">which 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识-到底什么是Shell命令？"><span class="toc-number"></span> <span class="toc-text">补充知识: 到底什么是Shell命令？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis-命令"><span class="toc-number">1.</span> <span class="toc-text">whereis 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#locate-命令"><span class="toc-number">2.</span> <span class="toc-text">locate 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find-命令"><span class="toc-number"></span> <span class="toc-text">find 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-命令"><span class="toc-number">1.</span> <span class="toc-text">wc 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep-命令"><span class="toc-number">2.</span> <span class="toc-text">grep 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xargs-命令"><span class="toc-number">3.</span> <span class="toc-text">xargs 命令</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		
+			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>4</sup></a></li>
+		
+			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>2</sup></a></li>
+		
+			<li><a href="/tags/dp/" title="dp">dp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动态规划/" title="动态规划">动态规划<sup>2</sup></a></li>
+		
+			<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+  </div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://github.com" target="_blank" title="GitHub">GitHub</a></li>
+      <li><a href="http://www.jianshu.com/users/b775f1bcda84/latest_articles" target="_blank">Lv_小诚的简书</a></li>
+      <li><a href="http://www.mrvstudio.icoc.me" target="_blank">Mr_V微电影工作室</a></li>
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+
+	
+	<section class="info">
+		<p> Hello ! I&#39;m sicheng Lv ~ This is my blog on Github. <br/>
+			I will share what I have learned with you at this blog.</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/5373593069" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/sichengLv" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="https://sichenglv.github.io" target="_blank" title="sicheng Lv">sicheng Lv</a>
+		
+		</p>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span></footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sichenglv"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<!-- totop -->  
+<div id="totop" style="position:fixed;bottom:150px;right:120px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+  </body>
+</html>
