@@ -4,20 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux常用命令（五） | sicheng Lv&#39;s blog</title>
+    <title>Linux常用命令(六) | sicheng Lv&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="Linux系统下常用的文件压缩和备份命令
-1. bzip2 命令bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生.bz2的压缩文件，并删除原文件
-命令格式：
-
-bzip2 [选项] [要压缩的文件]
-
-常用选项：
-
--c: –stdout将压缩或解压缩的结果送到标准输出-d">
+    <meta name="description" content="cut 命令cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。
+如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -">
     
     
     
@@ -77,15 +70,15 @@ bzip2 [选项] [要压缩的文件]
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/23/Linux常用命令（五）/" title="Linux常用命令（五）" itemprop="url">Linux常用命令（五）</a>
+      <a href="/2016/11/23/Linux常用命令-六/" title="Linux常用命令(六)" itemprop="url">Linux常用命令(六)</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-11-23T13:03:32.000Z" itemprop="datePublished">2016-11-23</time>
-    更新日期:<time datetime="2016-11-23T13:07:30.884Z" itemprop="dateModified">2016-11-23</time>
+    <time datetime="2016-11-23T13:04:43.000Z" itemprop="datePublished">2016-11-23</time>
+    更新日期:<time datetime="2016-11-24T06:19:15.070Z" itemprop="dateModified">2016-11-24</time>
     
   </p>
 </header>
@@ -94,81 +87,76 @@ bzip2 [选项] [要压缩的文件]
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-bzip2-命令"><span class="toc-number">1.</span> <span class="toc-text">1. bzip2 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gzip-命令"><span class="toc-number">2.</span> <span class="toc-text">2. gzip 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tar-命令-–-tape-archive"><span class="toc-number">3.</span> <span class="toc-text">3. tar 命令 – tape archive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩和解压"><span class="toc-number">4.</span> <span class="toc-text">压缩和解压</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cut-命令"><span class="toc-number">1.</span> <span class="toc-text">cut 命令</span></a></li></ol>
 		</div>
 		
-		<p>Linux系统下常用的文件压缩和备份命令</p>
-<h2 id="1-bzip2-命令"><a href="#1-bzip2-命令" class="headerlink" title="1. bzip2 命令"></a>1. bzip2 命令</h2><p>bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生<strong>.bz2</strong>的压缩文件，并删除原文件</p>
+		<h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
+<p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br>如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！</p>
 <p><strong>命令格式：</strong></p>
 <blockquote>
-<p>bzip2 [选项] [要压缩的文件]</p>
+<p>cut [选项] [文件名]</p>
 </blockquote>
 <p><strong>常用选项：</strong></p>
+<pre><code>**-b(bytes):** 以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志
+**-c(characters):** 以字符为单位进行分割
+**-d(delimiters):** 自定义分隔符，默认为制表符
+**-f(fields):** 与-d一起使用，指定显示哪些字段(区域)
+**-n:** 取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除
+</code></pre><p><strong><br>    <font style="background: #ffff99"> cut一般以什么为依据呢? 也就是说，我怎么告诉cut我想定位到的剪切内容呢?</font><br></strong></p>
+
+
+<p><strong>以字节定位：</strong></p>
+<p>cut命令如果使用了-b选项，那么执行此命令时，cut会先把-b后面所有的定位进行从小到大排序，然后再提取。可不能颠倒定位的顺序哦~</p>
+<pre><code>cat stu.txt | cut -b 3-5,8  提取第3，第4、第5和第8个字节，怎么办?
+cat stu.txt | cut -b 8,3-5  提取第3，第4、第5和第8个字节，结果还是一样
+
+cat stu.txt | cut -b -3        提取第一个字节到第三个字节
+cat stu.txt | cut -b 3-        提取从第三个字节到结尾
+
+想必你也看到了，-3表示从第一个字节到第三个字节，而3-表示从第三个字节到行尾。如果你细心，你可以看到这两种情况下，都包括了第三个字节“c”
+
+如果我执行who|cut -b -3,3-，你觉得会如何呢？答案是输出整行，不会出现连续两个重叠的c的
+cat stu.txt | cut -b -3,3-
+</code></pre><p><img src="http://i.imgur.com/Y2kgKxG.png" alt=""></p>
+<p><strong>以字符定位：</strong></p>
+<p>-b和-c的区别：如果你提取中文，区别就看出来了</p>
+<p><strong>域是怎么回事呢？解释解释:)</strong></p>
+<p>为什么会有“域”的提取呢，因为刚才提到的-b和-c只能在固定格式的文档中提取信息，而对于非固定格式的信息则束手无策。这时候“域”就派上用场了。如果你观察过/etc/passwd文件，你会发现，它并不像who的输出信息那样具有固定格式，而是比较零散的排放。但是，冒号在这个文件的每一行中都起到了非常重要的作用，冒号用来隔开每一个项。</p>
+<p>我们很幸运，cut命令提供了这样的提取方式，具体的说就是设置“间隔符”，再设置“提取第几个域”，就OK了！</p>
+<p><img src="http://i.imgur.com/9gFLNNM.png" alt=""></p>
 <blockquote>
-<p>-c: –stdout将压缩或解压缩的结果送到标准输出<br>-d: –decompress执行解压缩<br>-f: –force 遇到重复文件则选择覆盖<br>-k: –keep压缩或解压缩后，保留原文件</p>
+<p><strong><em>以/etc/passwd的前五行内容为例，提取文件中的相应字段</em></strong></p>
 </blockquote>
+<p><img src="http://i.imgur.com/voOzGK1.png" alt=""></p>
+<p><strong>cut有哪些缺陷和不足</strong></p>
+<p>如果文件里面的某些域是由若干个空格来间隔的，那么用cut就有点麻烦了，因为cut只擅长处理“以一个字符间隔”的文本内容</p>
+<p><strong><br>    <font style="background: #ccffcc"> 常用范例</font><br></strong></p>
+
+<blockquote>
+<p><strong>给任意一字符串 str，取出其最后一个字符，可以使用如下命令：</strong></p>
+</blockquote>
+<p><img src="http://i.imgur.com/M4vx0g3.png" alt=""></p>
+<font color="#00007f" size="6">补充知识~~</font>
+
+<p><span style="background: #ccffcc;font-size:25"> trailing newline </span></p>
+<p>很多软件或命令都会自动加上一个trailing newline，也就是c语言里的\n，ascii码为10</p>
+<p><strong>举例说明：</strong></p>
+<pre><code>echo abcde &gt; test1
+echo -n abcde &gt; test2
+vim test3，并写入abcde
+vim test4，并写入abcde，回车
+</code></pre><p><img src="http://i.imgur.com/63l3Yzg.png" alt=""></p>
+<p><strong>然后查看这些文件的大小：</strong><br><img src="http://i.imgur.com/n9WCac0.png" alt=""></p>
+<pre><code>文件大小为5，表示只有abcde这5个字符。
+文件大小为6的，表示文件内容为abcde\n。
+文件大小为7的，表示文件内容为abcde\n\n。
+</code></pre><p><strong>在vim和gedit创建文件时，自动加上了一个trailing newline，并且它始终是不可见的</strong></p>
+<p style="color: #0000af"><strong><br>除了vim和gedit，与<newline>有关的还有两个shell命令。一个是echo，一个是 wc -l<br><br>echo在默认情况下是会自动加上\n的，这也是为什么每次使用这个命令的时候最后都会有换行（终端里的\n都是可见的）。如果加上选项-n，则不会自动加上这个\n。<br>wc -l是一个统计<newline>的命令。以前，一直以为它是统计行数的，被欺骗了这么久~~<br></newline></newline></strong></p>
+
 <hr>
-<h2 id="2-gzip-命令"><a href="#2-gzip-命令" class="headerlink" title="2. gzip 命令"></a>2. gzip 命令</h2><p>gzip是一个广泛使用的压缩程序，gzip压缩完文件后会产生<strong>.gz</strong>的压缩文件，并删除原文件</p>
-<p><strong>命令格式：</strong></p>
-<blockquote>
-<p>gzip [选项] [文件列表…]</p>
-</blockquote>
-<p><strong>常用选项：</strong></p>
-<blockquote>
-<p>-d: –decompress执行解压缩<br>-f: –force强行解压缩文件<br>-r: –recursive递归处理，将制定目录下的所以文件及子目录一并处理</p>
-</blockquote>
-<hr>
-<h2 id="3-tar-命令-–-tape-archive"><a href="#3-tar-命令-–-tape-archive" class="headerlink" title="3. tar 命令 – tape archive"></a>3. tar 命令 – tape archive</h2><p>tar是用来建立、还原备份文件的工具程序，可以加入、解开备份文件内的文件</p>
-<p><strong>命令格式：</strong></p>
-<blockquote>
-<p>tar [选项] [文件或目录列表…]</p>
-</blockquote>
-<pre><code>-A: --catenate 新增tar文件到已存在的备份文件
--c: --create 新建备份文件
--x: --extract 从备份文件中还原文件(解压)
--f[文件列表...]: 指定生成的备份文件名
--t: --list 列出备份文件的内容
--v: --verbose 显示指令执行过程
--r: 向压缩归档文件末尾追加文件
--u: 更新原压缩包中的文件
---delete: 从备份文件中删除指定文件
-
--z: 有gzip属性的
--j: 有bz2属性的
--Z: 有compress属性的
-</code></pre><blockquote>
-<p><strong>tar -cf all.tar *.jpg</strong><br>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</p>
-<p><strong>tar -rf all.tar *.gif</strong><br>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
-<p><strong>tar -uf all.tar logo.gif</strong><br>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
-<p><strong>tar -tf all.tar</strong><br>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
-<p><strong>tar -xf all.tar</strong><br>这条命令是解出all.tar包中所有文件，-t是解开的意思</p>
-</blockquote>
-<hr>
-<h2 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h2><p><strong>压缩：</strong></p>
-<pre><code>tar -cvf jpg.tar *.jpg 
-//将目录里所有jpg文件打包成tar.jpg 
-
-tar -czf jpg.tar.gz *.jpg   
-//将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz
-
-tar -cjf jpg.tar.bz2 *.jpg 
-//将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2
-
-tar -cZf jpg.tar.Z *.jpg   
-//将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z
-
-rar a jpg.rar *.jpg 
-//rar格式的压缩，需要先下载rar for linux
-
-zip jpg.zip *.jpg 
-//zip格式的压缩，需要先下载zip for linux
-</code></pre><p><strong>解压：</strong></p>
-<pre><code>tar -xvf file.tar //解压 tar包
-tar -xzvf file.tar.gz //解压tar.gz
-tar -xjvf file.tar.bz2   //解压 tar.bz2
-tar -xZvf file.tar.Z   //解压tar.Z
-unrar e file.rar //解压rar
-unzip file.zip //解压zip
+<pre><code>因此：
+echo abcde | wc -l 结果为1
+echo -n abcde | wc -l 结果为0
 </code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
@@ -183,7 +171,7 @@ unzip file.zip //解压zip
 
 <div class="article-share" id="share">
 
-  <div data-url="https://sichenglv.github.io/2016/11/23/Linux常用命令（五）/" data-title="Linux常用命令（五） | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://sichenglv.github.io/2016/11/23/Linux常用命令-六/" data-title="Linux常用命令(六) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -192,19 +180,11 @@ unzip file.zip //解压zip
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/11/23/Linux常用命令（六）/" title="Linux常用命令（六）">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Linux常用命令（六）</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/11/22/Linux常用命令-四/"  title="Linux常用命令(四)">
+<a href="/2016/11/23/Linux常用命令-五/"  title="Linux常用命令(五)">
  <strong>NEXT:</strong><br/> 
- <span>Linux常用命令(四)
+ <span>Linux常用命令(五)
 </span>
 </a>
 </div>
@@ -221,7 +201,7 @@ unzip file.zip //解压zip
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-bzip2-命令"><span class="toc-number">1.</span> <span class="toc-text">1. bzip2 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gzip-命令"><span class="toc-number">2.</span> <span class="toc-text">2. gzip 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tar-命令-–-tape-archive"><span class="toc-number">3.</span> <span class="toc-text">3. tar 命令 – tape archive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩和解压"><span class="toc-number">4.</span> <span class="toc-text">压缩和解压</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cut-命令"><span class="toc-number">1.</span> <span class="toc-text">cut 命令</span></a></li></ol>
   </div>
 
 <div id="asidepart">
