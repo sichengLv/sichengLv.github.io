@@ -77,7 +77,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-11-22T08:09:07.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T08:25:38.460Z" itemprop="dateModified">2016-11-22</time>
+    更新日期:<time datetime="2016-11-23T13:08:26.304Z" itemprop="dateModified">2016-11-23</time>
     
   </p>
 </header>
@@ -86,10 +86,10 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">head and tail命令</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">3. head and tail命令</span></a></li></ol>
 		</div>
 		
-		<h3 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h3><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
+		<h2 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h2><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
 <p><strong>常用参数:</strong></p>
 <pre><code>+n 从笫 n 行开始显示
 -n 定义屏幕大小为 n 行
@@ -108,10 +108,10 @@
 <p><strong> ls -l /ect | more -dc -10 </strong> </p>
 <p>每页显示 10 个文件信息，按 Ctrl+F 或者 空格键 将会显示下 10 条文件信息。</p>
 <hr>
-<h3 id="2-less命令"><a href="#2-less命令" class="headerlink" title="2. less命令"></a>2. less命令</h3><p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是 linux 正统查看文件内容的工具，功能极其强大</p>
+<h2 id="2-less命令"><a href="#2-less命令" class="headerlink" title="2. less命令"></a>2. less命令</h2><p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是 linux 正统查看文件内容的工具，功能极其强大</p>
 <p><strong>常用参数:</strong></p>
 <blockquote>
-<p>-m  显示类似 more 命令的百分比<br>-N  显示每行的行号</p>
+<p>-i: –ignore-case  搜索时忽略大小写，除非搜索串中包含大写字母<br>-m: –long-prompt  显示读取文件的百分比<br>-M: –LONG-PROMPT  显示读取文件的百分比、行号和总行数<br>-N  显示每行的行号<br>-p pattern:  定义一个字符串，在文件中查找</p>
 </blockquote>
 <p><strong>常用操作:</strong></p>
 <pre><code>/字符串 向下搜索“字符串”
@@ -130,7 +130,7 @@ d 向后翻半页
 <li>cat 可以实现多个文件合并输出</li>
 </ol>
 <hr>
-<h3 id="head-and-tail命令"><a href="#head-and-tail命令" class="headerlink" title="head and tail命令"></a>head and tail命令</h3><p>head 命令主要是用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
+<h2 id="3-head-and-tail命令"><a href="#3-head-and-tail命令" class="headerlink" title="3. head and tail命令"></a>3. head and tail命令</h2><p>head 命令主要是用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
 <p>tail 命令主要用于显示指定文件末尾内容。常用查看日志文件。</p>
 <p><strong> head -n 5 a.txt </strong> 文件中的前 5 行内容</p>
 <p><strong> head -n -5 a.txt </strong> 文件中除了最后 5 行的内容</p>
@@ -193,7 +193,7 @@ d 向后翻半页
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">head and tail命令</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-more命令"><span class="toc-number">1.</span> <span class="toc-text">1. more命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-less命令"><span class="toc-number">2.</span> <span class="toc-text">2. less命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-head-and-tail命令"><span class="toc-number">3.</span> <span class="toc-text">3. head and tail命令</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -209,9 +209,9 @@ d 向后翻半页
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>7</sup></a></li>
 		
-			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>4</sup></a></li>
+			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>6</sup></a></li>
 		
 			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>2</sup></a></li>
 		
@@ -228,7 +228,7 @@ d 向后翻半页
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
   </div>
 
 

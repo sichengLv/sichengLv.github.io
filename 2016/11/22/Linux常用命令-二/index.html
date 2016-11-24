@@ -80,7 +80,7 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
     </p>
   <p class="article-time">
     <time datetime="2016-11-22T08:08:54.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T08:24:33.035Z" itemprop="dateModified">2016-11-22</time>
+    更新日期:<time datetime="2016-11-22T12:14:56.898Z" itemprop="dateModified">2016-11-22</time>
     
   </p>
 </header>
@@ -89,16 +89,16 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">6.</span> <span class="toc-text">heredoc = here document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nl命令"><span class="toc-number">7.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">8.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">5.2.</span> <span class="toc-text">heredoc = here document</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-nl命令"><span class="toc-number">6.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">7.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
 		</div>
 		
-		<h3 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h3><pre><code>mkdir -m 777 lv  设置权限
+		<h2 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h2><pre><code>mkdir -m 777 lv  设置权限
 mkdir -p lvsicheng/test/abc/java  递归创建多个目录
 mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
-</code></pre><h4 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h4><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+</code></pre><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
 </code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
-<h3 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h3><blockquote>
+<h2 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h2><blockquote>
 <p>rm -r lv/  –recursive 递归地删除</p>
 <p>rm -f a.txt  强势删除</p>
 <p>rm -vrf lv/  详细显示进行的步骤</p>
@@ -109,7 +109,7 @@ tree shiyanlou/
    mv &quot;$@&quot; $D &amp;&amp; echo &quot;moved to $D ok&quot;;
 }
 </code></pre><p><em>在/tmp目录下创建一个由时间命名的目录，然后将当前目录下的一个文件或目录mv过去，实现自定义的myrm函数 </em></p>
-<h3 id="3-mv命令"><a href="#3-mv命令" class="headerlink" title="3. mv命令"></a>3. mv命令</h3><blockquote>
+<h2 id="3-mv命令"><a href="#3-mv命令" class="headerlink" title="3. mv命令"></a>3. mv命令</h2><blockquote>
 <p>mv [选项] 源文件或目录  目标文件或目录</p>
 </blockquote>
 <ul>
@@ -122,13 +122,19 @@ tree shiyanlou/
 <p>-i –interactive 交互式</p>
 <p>-u –update 若目标文件已经存在，且源文件比较新，才会更新</p>
 </blockquote>
-<h3 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h3><pre><code>-t --target-directory 指定目标目录
--n --no-clobber 不要覆盖已存在的文件
--s --symbolic-link 对源文件建立符号链接，而非复制文件
--u --update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件
-</code></pre><p><strong> 将 test1 目录下的所有文件复制到 test2 目录下，覆盖前询问 </strong></p>
-<p><strong> cp -i test1/* test2 </strong></p>
-<h3 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h3><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
+<h2 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h2><blockquote>
+<p>cp [选项] 源文件或目录 目标文件或目录</p>
+</blockquote>
+<pre><code>-a: --archive 等同于-dpR
+-d: 复制符号链接时，把目标文件或目录也建立为符号链接
+-p: 复制源文件或目录内容的同时也复制文件属性
+-R: -r --recursive 递归复制目录
+-n: --no-clobber 不要覆盖已存在的文件
+-s: --symbolic-link 对源文件建立符号链接，而非复制文件
+-u: --update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件
+</code></pre><p><strong> 将 test1 目录下的所有文件和子目录复制到 test2 目录下，覆盖前询问 </strong></p>
+<p><strong> cp -iR test1/* test2 </strong></p>
+<h2 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h2><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
 <blockquote>
 <p>-A –show-all 等价于 -vET</p>
 <p>-v –show-nonprinting </p>
@@ -138,7 +144,7 @@ tree shiyanlou/
 <p>-n –number 对输出的所有行编号,由 1 开始对所有输出的行数编号</p>
 <p>-s –squeeze-blank 有连续两行以上的空白行，就代换为一行的空白行 </p>
 </blockquote>
-<h4 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h4><pre><code>cat -A &lt;&lt; EOF
+<h3 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h3><pre><code>cat -A &lt;&lt; EOF
 &gt; `ls -l`
 &gt; EOF
 </code></pre><p>执行该命令会输出什么？</p>
@@ -148,7 +154,7 @@ tree shiyanlou/
     Here Document Content
 delimiter
 </code></pre><p>它的作用就是将两个 delimiter 之间的内容(Here Document Content 部分) 传递给cmd 作为输入参数。</p>
-<h3 id="6-nl命令"><a href="#6-nl命令" class="headerlink" title="6. nl命令"></a>6. nl命令</h3><p><strong> nl = numbers of lines </strong></p>
+<h2 id="6-nl命令"><a href="#6-nl命令" class="headerlink" title="6. nl命令"></a>6. nl命令</h2><p><strong> nl = numbers of lines </strong></p>
 <pre><code>nl 命令在 linux 系统中用来计算文件中行号。
 nl 可以将输出的文件内容自动的加上行号。
 其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，
@@ -158,7 +164,7 @@ nl 可以将输出的文件内容自动的加上行号。
 nl -n rn a.txt
 nl -n rz a.txt
 nl -n rz -w 3 a.txt
-</code></pre><h3 id="Bash实用技巧"><a href="#Bash实用技巧" class="headerlink" title="Bash实用技巧"></a>Bash实用技巧</h3><p><a href="http://www.cnblogs.com/napoleon_liu/articles/1952228.html" target="_blank" rel="external">Bash实用技巧</a></p>
+</code></pre><h2 id="Bash实用技巧"><a href="#Bash实用技巧" class="headerlink" title="Bash实用技巧"></a>Bash实用技巧</h2><p><a href="http://www.cnblogs.com/napoleon_liu/articles/1952228.html" target="_blank" rel="external">Bash实用技巧</a></p>
 <p><a href="http://www.techug.com/ten-tips-for-wonderful-bash-productivity" target="_blank" rel="external">Bash十大技巧</a></p>
   
 	</div>
@@ -212,7 +218,7 @@ nl -n rz -w 3 a.txt
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">6.</span> <span class="toc-text">heredoc = here document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nl命令"><span class="toc-number">7.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">8.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-mkdir命令"><span class="toc-number">1.</span> <span class="toc-text">1. mkdir命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思考题"><span class="toc-number">1.1.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-rm命令"><span class="toc-number">2.</span> <span class="toc-text">2. rm命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-mv命令"><span class="toc-number">3.</span> <span class="toc-text">3. mv命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-cp命令"><span class="toc-number">4.</span> <span class="toc-text">4. cp命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-cat命令-concatenate"><span class="toc-number">5.</span> <span class="toc-text">5. cat命令(concatenate)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思考题-1"><span class="toc-number">5.1.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#heredoc-here-document"><span class="toc-number">5.2.</span> <span class="toc-text">heredoc = here document</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-nl命令"><span class="toc-number">6.</span> <span class="toc-text">6. nl命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bash实用技巧"><span class="toc-number">7.</span> <span class="toc-text">Bash实用技巧</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -228,9 +234,9 @@ nl -n rz -w 3 a.txt
 		
 			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>7</sup></a></li>
 		
-			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>4</sup></a></li>
+			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>6</sup></a></li>
 		
 			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>2</sup></a></li>
 		
@@ -247,7 +253,7 @@ nl -n rz -w 3 a.txt
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
   </div>
 
 

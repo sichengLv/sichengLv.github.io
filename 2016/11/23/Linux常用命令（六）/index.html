@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux常用命令(一) | sicheng Lv&#39;s blog</title>
+    <title>Linux常用命令（六） | sicheng Lv&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="sicheng Lv">
     
-    <meta name="description" content="ls 命令ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看">
+    <meta name="description" content="cut 命令cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。
+如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -">
     
     
     
@@ -69,15 +70,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/11/22/Linux常用命令-一/" title="Linux常用命令(一)" itemprop="url">Linux常用命令(一)</a>
+      <a href="/2016/11/23/Linux常用命令（六）/" title="Linux常用命令（六）" itemprop="url">Linux常用命令（六）</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://sichenglv.github.io" title="sicheng Lv">sicheng Lv</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-11-22T08:08:38.000Z" itemprop="datePublished">2016-11-22</time>
-    更新日期:<time datetime="2016-11-22T12:19:09.482Z" itemprop="dateModified">2016-11-22</time>
+    <time datetime="2016-11-23T13:04:43.000Z" itemprop="datePublished">2016-11-23</time>
+    更新日期:<time datetime="2016-11-23T13:07:36.253Z" itemprop="dateModified">2016-11-23</time>
     
   </p>
 </header>
@@ -86,83 +87,77 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ls-命令"><span class="toc-number">1.</span> <span class="toc-text">ls 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识：软链接-amp-amp-硬链接"><span class="toc-number">2.</span> <span class="toc-text">补充知识：软链接 && 硬链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln-命令"><span class="toc-number">3.</span> <span class="toc-text">ln 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-命令"><span class="toc-number">3.1.</span> <span class="toc-text">cd 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd-命令"><span class="toc-number">3.2.</span> <span class="toc-text">pwd 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题？"><span class="toc-number">4.</span> <span class="toc-text">思考题？</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cut-命令"><span class="toc-number">1.</span> <span class="toc-text">cut 命令</span></a></li></ol>
 		</div>
 		
-		<h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
-<p><strong>常用参数：</strong></p>
-<pre><code>-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件
--l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
--d –directory 将目录象文件一样显示，而不是显示其下的文件
--h –human-readable 以容易理解的格式列出文件大小 (例如 1K 234M 2G)
--t 以文件修改时间排序
--i 显示文件或目录的i节点
--R 递归列出子目录所有内容
-</code></pre><blockquote>
-<p>ls -l 详解</p>
-</blockquote>
-<p><img src="http://i.imgur.com/yRaIXh2.png" alt=""></p>
-<p><strong>第一行：总计(total)</strong></p>
-<p>当前目录下所有文件所占用的空间总和</p>
-<p><strong>第一字段：文件属性</strong></p>
-<p><strong>-rw-rw-r– 1 shiyanlou shiyanlou 12 Nov 22 14:39 a.txt</strong></p>
-<p>文件属性字段总共有10个字母组成；第一个字符代表文件的类型；剩下九个字母分别为该文件或目录的权限位</p>
-<p><strong>文件类型有： - d c b l p s</strong></p>
-<pre><code>-  表示该文件是一个普通文件
-d  directory表示该文件是一个目录
-c  character表示该文件是一个字符设备文件，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节
-b  block表示块设备文件，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)
-l  link表示该文件是一个链接文件
-p  pipe表示该文件为命令管道文件。与shell编程有关的文件
-s  socket表示该文件为socket文件。与shell编程有关的文件
-</code></pre><p><strong>第二字段：文件硬链接数</strong></p>
-<p>如果一个文件不是目录，此时这一字段表示这个文件所具有的硬链接数。</p>
-<p>如果是一个目录，则代表当前目录下所有子目录总个数，包括(.和..)</p>
-<h2 id="补充知识：软链接-amp-amp-硬链接"><a href="#补充知识：软链接-amp-amp-硬链接" class="headerlink" title="补充知识：软链接 &amp;&amp; 硬链接"></a>补充知识：软链接 &amp;&amp; 硬链接</h2><p>在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号inode 。<br>软连接，其实就是新建立一个文件，这个文件就是专门用来指向别的文件的（那就和windows 下的快捷方式的那个文件有很接近的意味）。<br>软连接产生的是一个新的文件，但这个文件的作用就是专门指向某个文件的，删了这个软连接文件，那就等于不需要这个连接，和原来的存在的实体原文件没有任何关系，<br>但删除原来的文件，则相应的软连接不可用（cat那个软链接文件，则提示“没有该文件或目录“）</p>
-<p>硬连接是不会建立inode的，他只是在文件原来的inode link count域再增加1而已，也因此硬链接是不可以跨越文件系统的。<br>相反都是软连接会重新建立一个inode，当然inode的结构跟其他的不一样，他只是一个指明源文件的字符串信息。<br>一旦删除源文件，那么软连接将变得毫无意义。而硬链接删除源文件的时候，系统调用会检查inode link count的数值，<br>如果他大于等于1，那么inode不会被回收，因此文件的内容不会被删除，相当于删除了一个索引。</p>
-<p>硬链接实际上是为文件建一个别名，链接文件和原文件实际上是同一个文件。<br>可以通过ls -i来查看一下，这两个文件的inode号是同一个，说明它们是同一个文件；<br>而软链接建立的是一个指向，即链接文件内的内容是指向原文件的指针，它们是两个文件。</p>
-<p>两种链接都可以通过命令 ln 来创建。ln 默认创建的是硬链接。使用 -s 开关可以创建软链接</p>
-<hr>
-<p><strong>软链接：</strong></p>
-<ol>
-<li>软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式</li>
-<li>软链接可以 跨文件系统 ，硬链接不可以</li>
-<li>软链接可以对一个不存在的文件名进行链接</li>
-<li>软链接可以对目录进行链接</li>
-</ol>
-<p><strong>硬链接：</strong></p>
-<ol>
-<li>硬链接，以文件副本的形式存在。但不占用实际空间</li>
-<li>不允许给目录创建硬链接</li>
-<li>硬链接只有在同一个文件系统中才能创建</li>
-</ol>
-<hr>
-<h2 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h2><p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.<br>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，<br>我们只要在某个固定的目录，放上该文件，然后在其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+		<h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
+<p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br>如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！</p>
 <p><strong>命令格式：</strong></p>
 <blockquote>
-<p>ln [选项][源文件或目录][目标文件或目录]</p>
+<p>cut [选项] [文件名]</p>
 </blockquote>
-<p><strong>为 a.txt文件创建一个软链接和硬链接</strong><br><img src="http://i.imgur.com/baU9TBt.png" alt=""></p>
-<p><img src="http://i.imgur.com/iHTyrGf.png" alt=""></p>
-<hr>
-<p><strong>第三、四字段：文件所有者、文件所属组</strong></p>
-<p><strong>第五字段：文件或目录所占磁盘块的大小(默认以字节为单位)</strong></p>
-<p><strong>第六字段：文件（目录）最近访问（修改）时间</strong></p>
-<p><strong>第七字段：文件名，如果是一个符号链接，那么会有一个 “-&gt;” 箭头符号，后面根一个它指向的文件名</strong></p>
-<hr>
-<h3 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h3><pre><code>cd    回到当前用户主目录
-cd -  回到上一个工作目录
-cd ~  回到当前用户主目录
-</code></pre><hr>
-<h3 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h3><p>pwd 命令是 print working directory 的缩写</p>
+<p><strong>常用选项：</strong></p>
+<pre><code>**-b(bytes):** 以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志
+**-c(characters):** 以字符为单位进行分割
+**-d(delimiters):** 自定义分隔符，默认为制表符
+**-f(fields):** 与-d一起使用，指定显示哪些字段(区域)
+**-n:** 取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除
+</code></pre><p><strong><br>    <font style="background: #ffff99"> cut一般以什么为依据呢? 也就是说，我怎么告诉cut我想定位到的剪切内容呢?</font><br></strong></p>
+
+
+<p><strong>以字节定位：</strong></p>
+<p>cut命令如果使用了-b选项，那么执行此命令时，cut会先把-b后面所有的定位进行从小到大排序，然后再提取。可不能颠倒定位的顺序哦~</p>
+<pre><code>cat stu.txt | cut -b 3-5,8  提取第3，第4、第5和第8个字节，怎么办?
+cat stu.txt | cut -b 8,3-5  提取第3，第4、第5和第8个字节，结果还是一样
+
+cat stu.txt | cut -b -3        提取第一个字节到第三个字节
+cat stu.txt | cut -b 3-        提取从第三个字节到结尾
+
+想必你也看到了，-3表示从第一个字节到第三个字节，而3-表示从第三个字节到行尾。如果你细心，你可以看到这两种情况下，都包括了第三个字节“c”
+
+如果我执行who|cut -b -3,3-，你觉得会如何呢？答案是输出整行，不会出现连续两个重叠的c的
+cat stu.txt | cut -b -3,3-
+</code></pre><p><img src="http://i.imgur.com/Y2kgKxG.png" alt=""></p>
+<p><strong>以字符定位：</strong></p>
+<p>-b和-c的区别：如果你提取中文，区别就看出来了</p>
+<p><strong>域是怎么回事呢？解释解释:)</strong></p>
+<p>为什么会有“域”的提取呢，因为刚才提到的-b和-c只能在固定格式的文档中提取信息，而对于非固定格式的信息则束手无策。这时候“域”就派上用场了。如果你观察过/etc/passwd文件，你会发现，它并不像who的输出信息那样具有固定格式，而是比较零散的排放。但是，冒号在这个文件的每一行中都起到了非常重要的作用，冒号用来隔开每一个项。</p>
+<p>我们很幸运，cut命令提供了这样的提取方式，具体的说就是设置“间隔符”，再设置“提取第几个域”，就OK了！</p>
+<p><img src="http://i.imgur.com/9gFLNNM.png" alt=""></p>
 <blockquote>
-<p>-P 显示实际物理路径，而非使用连接（link）路径</p>
-<p>-L 当目录为连接路径时，显示连接路径</p>
+<p><strong><em>以/etc/passwd的前五行内容为例，提取文件中的相应字段</em></strong></p>
 </blockquote>
-<h2 id="思考题？"><a href="#思考题？" class="headerlink" title="思考题？"></a>思考题？</h2><p><img src="http://i.imgur.com/ArnopfI.jpg" alt=""></p>
-<p><strong><em>在当前目录下创建一个 lv/目录，然后cd 进入 lv/目录，然后删除这个目录，<br>再用 pwd命令查看当前工作目录时，任然在 lv/目录下。</em></strong></p>
-<p><img src="http://i.imgur.com/sX13RgZ.png" alt=""></p>
-  
+<p><img src="http://i.imgur.com/voOzGK1.png" alt=""></p>
+<p><strong>cut有哪些缺陷和不足</strong></p>
+<p>如果文件里面的某些域是由若干个空格来间隔的，那么用cut就有点麻烦了，因为cut只擅长处理“以一个字符间隔”的文本内容</p>
+<p><strong><br>    <font style="background: #ccffcc"> 常用范例</font><br></strong></p>
+
+<blockquote>
+<p><strong>给任意一字符串 str，取出其最后一个字符，可以使用如下命令：</strong></p>
+</blockquote>
+<p><img src="http://i.imgur.com/M4vx0g3.png" alt=""></p>
+<font color="#00007f" size="6">补充知识~~</font>
+
+<p><span style="background: #ccffcc;font-size:25"> trailing newline </span></p>
+<p>很多软件或命令都会自动加上一个trailing newline，也就是c语言里的\n，ascii码为10</p>
+<p><strong>举例说明：</strong></p>
+<pre><code>echo abcde &gt; test1
+echo -n abcde &gt; test2
+vim test3，并写入abcde
+vim test4，并写入abcde，回车
+</code></pre><p><img src="http://i.imgur.com/63l3Yzg.png" alt=""></p>
+<p><strong>然后查看这些文件的大小：</strong><br><img src="http://i.imgur.com/n9WCac0.png" alt=""></p>
+<pre><code>文件大小为5，表示只有abcde这5个字符。
+文件大小为6的，表示文件内容为abcde\n。
+文件大小为7的，表示文件内容为abcde\n\n。
+</code></pre><p><strong>在vim和gedit创建文件时，自动加上了一个trailing newline，并且它始终是不可见的</strong></p>
+<p style="color: #0000af"><strong><br>除了vim和gedit，与<newline>有关的还有两个shell命令。一个是echo，一个是 wc -l<br><br>echo在默认情况下是会自动加上\n的，这也是为什么每次使用这个命令的时候最后都会有换行（终端里的\n都是可见的）。如果加上选项-n，则不会自动加上这个\n。<br>wc -l是一个统计<newline>的命令。以前，一直以为它是统计行数的，被欺骗了这么久~~<br></newline></newline></strong></p>
+
+<hr>
+<pre><code>因此：
+echo abcde | wc -l 结果为1
+echo -n abcde | wc -l 结果为0
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -176,7 +171,7 @@ cd ~  回到当前用户主目录
 
 <div class="article-share" id="share">
 
-  <div data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-一/" data-title="Linux常用命令(一) | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://sichenglv.github.io/2016/11/23/Linux常用命令（六）/" data-title="Linux常用命令（六） | sicheng Lv&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -185,19 +180,11 @@ cd ~  回到当前用户主目录
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/11/22/Linux常用命令-二/" title="Linux常用命令(二)">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Linux常用命令(二)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/11/04/Linux下C-C-正则表达式详解-1/"  title="Linux下C/C++正则表达式详解">
+<a href="/2016/11/23/Linux常用命令（五）/"  title="Linux常用命令（五）">
  <strong>NEXT:</strong><br/> 
- <span>Linux下C/C++正则表达式详解
+ <span>Linux常用命令（五）
 </span>
 </a>
 </div>
@@ -214,7 +201,7 @@ cd ~  回到当前用户主目录
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ls-命令"><span class="toc-number">1.</span> <span class="toc-text">ls 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充知识：软链接-amp-amp-硬链接"><span class="toc-number">2.</span> <span class="toc-text">补充知识：软链接 && 硬链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln-命令"><span class="toc-number">3.</span> <span class="toc-text">ln 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-命令"><span class="toc-number">3.1.</span> <span class="toc-text">cd 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd-命令"><span class="toc-number">3.2.</span> <span class="toc-text">pwd 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题？"><span class="toc-number">4.</span> <span class="toc-text">思考题？</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cut-命令"><span class="toc-number">1.</span> <span class="toc-text">cut 命令</span></a></li></ol>
   </div>
 
 <div id="asidepart">
