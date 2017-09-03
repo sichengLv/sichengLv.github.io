@@ -3,45 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MatrixChain | sicheng Lv&#39;s blog</title>
+  <title>sicheng Lv&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="动态规划 —— 矩阵连乘积问题问题描述：
-给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
-
-算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-
-最优子结构：
- 设计算A[i">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MatrixChain">
-<meta property="og:url" content="https://sichenglv.github.io/2016/10/07/MatrixChain/index.html">
+  <meta name="description" content="des">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sicheng Lv's blog">
+<meta property="og:url" content="https://sichenglv.github.io/page/2/index.html">
 <meta property="og:site_name" content="sicheng Lv's blog">
-<meta property="og:description" content="动态规划 —— 矩阵连乘积问题问题描述：
-给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
-
-算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-
-最优子结构：
- 设计算A[i">
-<meta property="og:image" content="http://i.imgur.com/UK0G4Fo.jpg">
-<meta property="og:image" content="http://i.imgur.com/nxpDdiH.jpg">
-<meta property="og:updated_time" content="2017-09-03T08:56:16.988Z">
+<meta property="og:description" content="des">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MatrixChain">
-<meta name="twitter:description" content="动态规划 —— 矩阵连乘积问题问题描述：
-给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
-
-算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-
-最优子结构：
- 设计算A[i">
-<meta name="twitter:image" content="http://i.imgur.com/UK0G4Fo.jpg">
+<meta name="twitter:title" content="sicheng Lv's blog">
+<meta name="twitter:description" content="des">
   
     <link rel="alternative" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
   
@@ -52,6 +24,9 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
   
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -64,8 +39,8 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
           rootUrl: '/',
           fancybox: true,
           animate: false,
-          isHome: false,
-          isPost: true,
+          isHome: true,
+          isPost: false,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -249,7 +224,201 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-MatrixChain" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-POJ-1050-To-the-Max" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/09/POJ-1050-To-the-Max/" class="article-date">
+      <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/09/POJ-1050-To-the-Max/">POJ-1050 To the Max</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
+<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050" target="_blank" rel="external">POJ-1050 To the Max</a></p>
+</blockquote>
+<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
+<ol>
+<li>首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)</li>
+<li>利用求最大子段和的算法，<strong> 将二维动态规划问题转化为一维动态规划问题 </strong><br>设一维数组b是二维数组a的i~j(0&lt;=i&lt;j&lt;n)行，对应列元素的和，然后对数组b计算最大子段和。</li>
+<li>构造最优解</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<h2 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h2><p><strong> 计算最大子段和算法 </strong></p>
+<pre><code>/* besti, bestj 记录最大子段和的范围，用于构造最优解 */
+int DP(int a[], int n, int&amp; besti, int&amp; bestj)
+{
+    int i;
+    int max = -200000000;
+
+    //当b[i-1]&lt;=0时，记录b[i]=a[i]的位置
+    int begin = 0;
+    for(i = 1 ; i &lt;= n ; i++ )
+    {
+        if (b &gt; 0)
+            b += a[i];
+        else
+        {
+            b = a[i];
+            begin = i;        //新的起始边界
+        }
+        if (b &gt; max)
+        {
+            max = b;
+            besti = begin;
+            bestj = i;        //更新左右边界
+        }
+    }
+    return max;
+}
+</code></pre><p><strong> 计算最大子矩阵和的动态规划算法 </strong></p>
+<pre><code>#define N 101
+int main()
+{
+    int a[N][N];            // N*N矩阵 
+    int sum[N];             // 一维数组 
+
+    //构造最优解
+    int rowI = 0;            //最大子矩阵的行号
+    int rowJ = 0;            //最大子矩阵的行号
+    int col = 0;             //最大子矩阵的列号
+
+    int n;
+    cin &gt;&gt; n;
+    int i, j, k;
+    for(i = 1; i &lt;= n; i++)
+        for(j = 1; j &lt;= n; j++)
+            cin &gt;&gt; a[i][j];
+
+    int max = -128;
+    for( i = 1 ; i &lt;= n ; i++ )
+    {
+        memset(sum, 0, sizeof(sum));        //数组置零
+        for(j = i ; j &lt;= n ; j++ )
+        {
+            for( k = 1 ; k &lt;= n ; k++ )
+                sum[k] += a[j][k];    //取出第 i, j两行，将这两行之间的列对应相加，形成另外一个数组sum，对数组 sum求最大子段和
+            int maxSum = DP(sum, n);
+            if(maxSum &gt; max)                //找出最大子矩阵和
+            {
+                rowI = i;
+                rowJ = j;
+                col = bestj;                //记录子矩阵的位置
+                max = maxSum;
+            }
+        }
+    }
+    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
+
+    /* 构造最优解: 打印出最大和的子矩阵 */
+    for(i = rowI; i &lt;= rowJ; i++)
+    {
+        for(j = 1; j &lt;= col; j++)
+        {
+            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><p><strong> 可以将以上代码简化 </strong></p>
+<pre><code>#define N 101
+int main()
+{
+    int a[N][N];        // N*N矩阵 
+    int b[N];             // 一维数组 
+
+    //构造最优解
+    int rowI = 0;        //最大子矩阵的行号
+    int rowJ = 0;        //最大子矩阵的行号
+    int col = 0;         //最大子矩阵的列号
+
+    int n;
+    cin &gt;&gt; n;
+
+    int max = -128;
+    for( i = 1; i &lt;= n; i++ )
+    {
+        memset(b, 0, sizeof(b));        //数组置零
+        for(j = i; j &lt;= n; j++ )
+        {
+            //下面是针对数组b求最大子段和的算法 
+            int sum = 0; 
+            for( k = 1; k &lt;= n; k++ )
+            {
+                b[k] += a[j][k];
+                sum += b[k];
+                if(sum &lt; b[k]) sum = b[k];
+                if(sum &gt; max)                //找出最大子矩阵和
+                {
+                    rowI = i;
+                    rowJ = j;
+                    col = bestj;            //记录子矩阵的位置
+                    max = sum;
+                }
+            }
+
+        }
+    }
+    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
+
+    return 0;
+}
+</code></pre><h2 id="算法的时间复杂度："><a href="#算法的时间复杂度：" class="headerlink" title="算法的时间复杂度："></a>算法的时间复杂度：</h2><blockquote>
+<p>有三重循环，时间复杂度为O(n^3)</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MatrixChain" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/10/07/MatrixChain/" class="article-date">
@@ -265,23 +434,12 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      MatrixChain
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/07/MatrixChain/">MatrixChain</a>
     </h1>
   
 
       </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -320,194 +478,39 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
 
       
       
-        <div class="page-reward">
-          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
-          <div class="hide_box"></div>
-          <div class="shang_box">
-            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
-            <div class="shang_tit">
-              <p>纯属好玩</p>
-            </div>
-            <div class="shang_payimg">
-              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
-            </div>
-              <div class="pay_explain">扫码打赏，你说多少就多少</div>
-            <div class="shang_payselect">
-              
-                <div class="pay_item checked" data-id="alipay">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
-                </div>
-              
-              
-                <div class="pay_item" data-id="wechat">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
-                </div>
-              
-            </div>
-            <div class="shang_info">
-              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-        <script type="text/javascript">
-          $(".pay_item").click(function(){
-            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-            var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
-            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-          });
-          function dashangToggle(){
-            
-            $(".hide_box").fadeToggle();
-            $(".shang_box").fadeToggle();
-          }
-        </script>
+    </div>
+    
+    <div class="article-info article-info-index">
       
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
     </div>
     
   </div>
   
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/07/MatrixChain/">MatrixChain</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 sichengLv 的个人博客">sichengLv</a></p>
-        <p><span>发布时间:</span>2016年10月07日 - 11时08分</p>
-        <p><span>最后更新:</span>2017年09月03日 - 16时56分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/07/MatrixChain/" title="MatrixChain">https://sichenglv.github.io/2016/10/07/MatrixChain/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sichenglv.github.io/2016/10/07/MatrixChain/　　作者: sichengLv" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-<nav id="article-nav">
-  
-    <a href="/2016/10/09/POJ-1050-To-the-Max/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          POJ-1050 To the Max
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划-——-矩阵连乘积问题"><span class="toc-number">1.</span> <span class="toc-text">动态规划 —— 矩阵连乘积问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析："><span class="toc-number">1.2.</span> <span class="toc-text">算法分析：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题的解空间："><span class="toc-number">1.2.1.</span> <span class="toc-text">问题的解空间：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优子结构："><span class="toc-number">1.2.2.</span> <span class="toc-text">最优子结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重叠子问题："><span class="toc-number">1.2.3.</span> <span class="toc-text">重叠子问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据动态规划方程设计数据结构："><span class="toc-number">1.2.4.</span> <span class="toc-text">根据动态规划方程设计数据结构：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算最优值"><span class="toc-number">1.2.5.</span> <span class="toc-text">计算最优值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造最优解"><span class="toc-number">1.2.6.</span> <span class="toc-text">构造最优解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自顶向下的递归算法-备忘录"><span class="toc-number">1.3.</span> <span class="toc-text">自顶向下的递归算法(备忘录)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种算法的比较与总结"><span class="toc-number">1.4.</span> <span class="toc-text">两种算法的比较与总结</span></a></li></ol></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
 
 
 
 
 
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
-
-    
-        <div id="gitments"></div>
-<script src="/js/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      owner: 'sichengLv',
-      repo: 'sichengLv.github.io',
-      oauth: {
-        client_id: 'null',
-        client_secret: 'null',
-      },
-    })
-    gitment.render('gitments')
-</script>
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/10/09/POJ-1050-To-the-Max/" title="上一篇: POJ-1050 To the Max">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/23/Linux常用命令-六/">Linux常用命令(六)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/23/Linux常用命令-五/">Linux常用命令(五)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/Linux常用命令-四/">Linux常用命令(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/Linux常用命令-三/">Linux常用命令(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/Linux常用命令-二/">Linux常用命令(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/Linux常用命令-一/">Linux常用命令(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/04/Linux下C-C-正则表达式详解-1/">Linux下C/C++正则表达式详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/ZOJ-1206-Win-the-Bonus/">ZJU-1206 Win the Bonus</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/09/POJ-1050-To-the-Max/">POJ-1050 To the Max</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/07/MatrixChain/">MatrixChain</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 </div>
       <footer id="footer">
     <div class="outer">

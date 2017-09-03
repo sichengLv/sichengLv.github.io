@@ -133,9 +133,9 @@
                             
                                 <a class="fl github" target="_blank" href="https://github.com/sichengLv" title="github">github</a>
                             
-                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/5373593069" title="weibo">weibo</a>
                             
-                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
                             
                                 <a class="fl QQ" target="_blank" href="#" title="QQ">QQ</a>
                             
@@ -213,9 +213,9 @@
                     
                         <a class="github" target="_blank" href="https://github.com/sichengLv" title="github">github</a>
                     
-                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                        <a class="weibo" target="_blank" href="http://weibo.com/5373593069" title="weibo">weibo</a>
                     
-                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
                     
                         <a class="QQ" target="_blank" href="#" title="QQ">QQ</a>
                     
@@ -253,9 +253,75 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
+        <h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
 <p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br>如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！</p>
-          
+<a id="more"></a>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>cut [选项] [文件名]</p>
+</blockquote>
+<p><strong>常用选项：</strong></p>
+<pre><code>**-b(bytes):** 以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志
+**-c(characters):** 以字符为单位进行分割
+**-d(delimiters):** 自定义分隔符，默认为制表符
+**-f(fields):** 与-d一起使用，指定显示哪些字段(区域)
+**-n:** 取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除
+</code></pre><p><strong><br>    <font style="background: #ffff99"> cut一般以什么为依据呢? 也就是说，我怎么告诉cut我想定位到的剪切内容呢?</font><br></strong></p>
+
+
+<p><strong>以字节定位：</strong></p>
+<p>cut命令如果使用了-b选项，那么执行此命令时，cut会先把-b后面所有的定位进行从小到大排序，然后再提取。可不能颠倒定位的顺序哦~</p>
+<pre><code>cat stu.txt | cut -b 3-5,8  提取第3，第4、第5和第8个字节，怎么办?
+cat stu.txt | cut -b 8,3-5  提取第3，第4、第5和第8个字节，结果还是一样
+
+cat stu.txt | cut -b -3        提取第一个字节到第三个字节
+cat stu.txt | cut -b 3-        提取从第三个字节到结尾
+
+想必你也看到了，-3表示从第一个字节到第三个字节，而3-表示从第三个字节到行尾。如果你细心，你可以看到这两种情况下，都包括了第三个字节“c”
+
+如果我执行who|cut -b -3,3-，你觉得会如何呢？答案是输出整行，不会出现连续两个重叠的c的
+cat stu.txt | cut -b -3,3-
+</code></pre><p><img src="http://i.imgur.com/Y2kgKxG.png" alt=""></p>
+<p><strong>以字符定位：</strong></p>
+<p>-b和-c的区别：如果你提取中文，区别就看出来了</p>
+<p><strong>域是怎么回事呢？解释解释:)</strong></p>
+<p>为什么会有“域”的提取呢，因为刚才提到的-b和-c只能在固定格式的文档中提取信息，而对于非固定格式的信息则束手无策。这时候“域”就派上用场了。如果你观察过/etc/passwd文件，你会发现，它并不像who的输出信息那样具有固定格式，而是比较零散的排放。但是，冒号在这个文件的每一行中都起到了非常重要的作用，冒号用来隔开每一个项。</p>
+<p>我们很幸运，cut命令提供了这样的提取方式，具体的说就是设置“间隔符”，再设置“提取第几个域”，就OK了！</p>
+<p><img src="http://i.imgur.com/9gFLNNM.png" alt=""></p>
+<blockquote>
+<p><strong><em>以/etc/passwd的前五行内容为例，提取文件中的相应字段</em></strong></p>
+</blockquote>
+<p><img src="http://i.imgur.com/voOzGK1.png" alt=""></p>
+<p><strong>cut有哪些缺陷和不足</strong></p>
+<p>如果文件里面的某些域是由若干个空格来间隔的，那么用cut就有点麻烦了，因为cut只擅长处理“以一个字符间隔”的文本内容</p>
+<p><strong><br>    <font style="background: #ccffcc"> 常用范例</font><br></strong></p>
+
+<blockquote>
+<p><strong>给任意一字符串 str，取出其最后一个字符，可以使用如下命令：</strong></p>
+</blockquote>
+<p><img src="http://i.imgur.com/M4vx0g3.png" alt=""></p>
+<font color="#00007f" size="6">补充知识~~</font>
+
+<p><span style="background: #ccffcc;font-size:25"> trailing newline </span></p>
+<p>很多软件或命令都会自动加上一个trailing newline，也就是c语言里的\n，ascii码为10</p>
+<p><strong>举例说明：</strong></p>
+<pre><code>echo abcde &gt; test1
+echo -n abcde &gt; test2
+vim test3，并写入abcde
+vim test4，并写入abcde，回车
+</code></pre><p><img src="http://i.imgur.com/63l3Yzg.png" alt=""></p>
+<p><strong>然后查看这些文件的大小：</strong><br><img src="http://i.imgur.com/n9WCac0.png" alt=""></p>
+<pre><code>文件大小为5，表示只有abcde这5个字符。
+文件大小为6的，表示文件内容为abcde\n。
+文件大小为7的，表示文件内容为abcde\n\n。
+</code></pre><p><strong>在vim和gedit创建文件时，自动加上了一个trailing newline，并且它始终是不可见的</strong></p>
+<p style="color: #0000af"><strong><br>除了vim和gedit，与<newline>有关的还有两个shell命令。一个是echo，一个是 wc -l<br><br>echo在默认情况下是会自动加上\n的，这也是为什么每次使用这个命令的时候最后都会有换行（终端里的\n都是可见的）。如果加上选项-n，则不会自动加上这个\n。<br>wc -l是一个统计<newline>的命令。以前，一直以为它是统计行数的，被欺骗了这么久~~<br></newline></newline></strong></p>
+
+<hr>
+<pre><code>因此：
+echo abcde | wc -l 结果为1
+echo -n abcde | wc -l 结果为0
+</code></pre>
       
       
     </div>
@@ -269,10 +335,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/23/Linux常用命令-六/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -317,7 +379,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>Linux系统下常用的文件压缩和备份命令</p>
+        <p>Linux系统下常用的文件压缩和备份命令</p>
 <h2 id="1-bzip2-命令"><a href="#1-bzip2-命令" class="headerlink" title="1. bzip2 命令"></a>1. bzip2 命令</h2><p>bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生<strong>.bz2</strong>的压缩文件，并删除原文件</p>
 <p><strong>命令格式：</strong></p>
 <blockquote>
@@ -328,7 +390,69 @@
 <p>-c: –stdout将压缩或解压缩的结果送到标准输出<br>-d: –decompress执行解压缩<br>-f: –force 遇到重复文件则选择覆盖<br>-k: –keep压缩或解压缩后，保留原文件</p>
 </blockquote>
 <hr>
-          
+<a id="more"></a>
+<h2 id="2-gzip-命令"><a href="#2-gzip-命令" class="headerlink" title="2. gzip 命令"></a>2. gzip 命令</h2><p>gzip是一个广泛使用的压缩程序，gzip压缩完文件后会产生<strong>.gz</strong>的压缩文件，并删除原文件</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>gzip [选项] [文件列表…]</p>
+</blockquote>
+<p><strong>常用选项：</strong></p>
+<blockquote>
+<p>-d: –decompress执行解压缩<br>-f: –force强行解压缩文件<br>-r: –recursive递归处理，将制定目录下的所以文件及子目录一并处理</p>
+</blockquote>
+<hr>
+<h2 id="3-tar-命令-–-tape-archive"><a href="#3-tar-命令-–-tape-archive" class="headerlink" title="3. tar 命令 – tape archive"></a>3. tar 命令 – tape archive</h2><p>tar是用来建立、还原备份文件的工具程序，可以加入、解开备份文件内的文件</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>tar [选项] [文件或目录列表…]</p>
+</blockquote>
+<pre><code>-A: --catenate 新增tar文件到已存在的备份文件
+-c: --create 新建备份文件
+-x: --extract 从备份文件中还原文件(解压)
+-f[文件列表...]: 指定生成的备份文件名
+-t: --list 列出备份文件的内容
+-v: --verbose 显示指令执行过程
+-r: 向压缩归档文件末尾追加文件
+-u: 更新原压缩包中的文件
+--delete: 从备份文件中删除指定文件
+
+-z: 有gzip属性的
+-j: 有bz2属性的
+-Z: 有compress属性的
+</code></pre><blockquote>
+<p><strong>tar -cf all.tar *.jpg</strong><br>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</p>
+<p><strong>tar -rf all.tar *.gif</strong><br>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
+<p><strong>tar -uf all.tar logo.gif</strong><br>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
+<p><strong>tar -tf all.tar</strong><br>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
+<p><strong>tar -xf all.tar</strong><br>这条命令是解出all.tar包中所有文件，-t是解开的意思</p>
+</blockquote>
+<hr>
+<h2 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h2><p><strong>压缩：</strong></p>
+<pre><code>tar -cvf jpg.tar *.jpg 
+//将目录里所有jpg文件打包成tar.jpg 
+
+tar -czf jpg.tar.gz *.jpg   
+//将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz
+
+tar -cjf jpg.tar.bz2 *.jpg 
+//将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2
+
+tar -cZf jpg.tar.Z *.jpg   
+//将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z
+
+rar a jpg.rar *.jpg 
+//rar格式的压缩，需要先下载rar for linux
+
+zip jpg.zip *.jpg 
+//zip格式的压缩，需要先下载zip for linux
+</code></pre><p><strong>解压：</strong></p>
+<pre><code>tar -xvf file.tar //解压 tar包
+tar -xzvf file.tar.gz //解压tar.gz
+tar -xjvf file.tar.bz2   //解压 tar.bz2
+tar -xZvf file.tar.Z   //解压tar.Z
+unrar e file.rar //解压rar
+unzip file.zip //解压zip
+</code></pre>
       
       
     </div>
@@ -342,10 +466,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/23/Linux常用命令-五/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -390,9 +510,156 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing</p>
+        <p>在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing</p>
 <h2 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h2><p><strong> which - locate a command </strong><br>在 PATH 变量指定的路径中搜索可执行文件的所在位置</p>
-          
+<a id="more"></a>
+<p><strong> Usage: </strong></p>
+<blockquote>
+<p>which  可执行文件名称</p>
+</blockquote>
+<h2 id="补充知识-到底什么是Shell命令？"><a href="#补充知识-到底什么是Shell命令？" class="headerlink" title="补充知识: 到底什么是Shell命令？"></a>补充知识: 到底什么是Shell命令？</h2><p>Linux系统中所有的可执行文件都可以作为Shell命令来解释执行</p>
+<p>命令可以是下面四种形式之一：</p>
+<ol>
+<li>是一个可执行程序：包括Linux命令，存放在 /bin, /sbin目录下; 还包括实用程序，存放在 /usr/bin, /usr/sbin, /usr/local/bin等目录下; 还包括经过编译生成的二进制文件，用C、C++语言写的程序</li>
+<li>是一个内建于 shell 自身的命令：bash 支持若干命令，内部叫做 shell 内部命令 (builtins)</li>
+<li>是一个 shell 函数：这些是小规模的 shell 脚本，它们混合到环境变量中</li>
+<li>是一个命令别名：我们可以定义自己的命令，建立在其它命令之上</li>
+</ol>
+<hr>
+<h2 id="whereis-命令"><a href="#whereis-命令" class="headerlink" title="whereis 命令"></a>whereis 命令</h2><p>whereis 命令主要用于定位可执行文件、源代码文件、帮助文件在文件系统中的位置。whereis 命令还具有搜索源代码、指定备用搜索路径和搜索不寻常项的能力</p>
+<p>whereis 命令查找速度非常快，这是因为它根本不是在磁盘中漫无目的乱找，而是在一个数据库中（<strong>/var/lib/mlocate/mlocate.db</strong>）查询。这个数据库是 Linux 系统自动创建的，包含有本地所有文件的信息，并且每天通过自动执行 updatedb 命令更新一次。也正是因为这个数据库要每天才更新一次，就会使得 whereis 命令的搜索结果有时候会不准确，比如刚添加的文件可能搜不到</p>
+<p><strong> whereis - locate the binary, source, and manual page files for a command </strong></p>
+<p><strong> whereis [-bmsu] [-BMS directory… -f] filename </strong></p>
+<p><strong> 常用参数：</strong></p>
+<blockquote>
+<p>-b 定位可执行文件<br>-m 定位帮助文件<br>-s 定位源代码文件<br>-u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件</p>
+</blockquote>
+<hr>
+<h2 id="locate-命令"><a href="#locate-命令" class="headerlink" title="locate 命令"></a>locate 命令</h2><p><strong> locate - find files by name </strong></p>
+<p>locate 命令跟 whereis 命令类似，且它们使用的是相同的数据库。但 whereis 命令只能搜索可执行文件、联机帮助文件和源代码文件，如果要获得更全面的搜索结果，可以使用 locate 命令。</p>
+<p>locate 命令使用了十分复杂的匹配语法，可以使用特殊字元（如’*’和’?’）来指定需要查找的样本。</p>
+<hr>
+<h2 id="find-命令"><a href="#find-命令" class="headerlink" title="find 命令"></a>find 命令</h2><p><strong>find - search for files in a directory hierarchy</strong></p>
+<p>find 命令主要作用是沿着文件层次结构向下遍历，匹配符合条件的文件，并执行相应的操作。<br>Linux 下 find 命令提供了相当多的查找条件，功能很强大，对应的学习难度也比较大</p>
+<p><strong> 命令格式：</strong></p>
+<blockquote>
+<p>find 【选项】 【搜索路径】 【表达式】</p>
+</blockquote>
+<p><em>默认路径是当前目录，默认表达式为-print。<br>表达式可能由下列成份组成：操作符、选项、测试表达式以及动作。</em></p>
+<p><strong> 常用参数：</strong></p>
+<pre><code>-print  find 命令将匹配的文件输出到标准输出
+-exec command {} \;   find 命令对匹配的文件执行**该参数所给出的 shell 命令**，即command操作，{}是占位符，\;是结束符，但是分号要转义
+-ok     和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行
+
+-name   按照文件名查找文件，-iname 选项跟-name 选项作用一样，不同在于-iname 会忽略字母大小写
+-type b/d/c/p/l/f   查找某一类型的文件
+-size n[c]  查长度为n块[或n字节]的文件
+-depth  使查找在进入子目录前先行查找完本目录
+-prune  忽略某个目录，使用这一选项可以使 find 命令不在当前指定的目录中查找，如果同时使用-depth 选项，那么-prune 将被 find 命令忽略
+-inum  根据 i节点查找
+
+-user username   按照文件所有者来查找文件
+-group groupname 按照文件所属组来查找文件
+-perm  按执行权限来查找
+
+-mtime [-n | +n] 按照文件的更改时间来查找文件，-n指n天以内，+n指n天以前
+-atime [-n | +n] 按文件访问时间来查找，-n指n天以内，+n指n天以前
+-ctime [-n | +n] 按文件创建时间来查找文件，-n指n天以内，+n指n天以前
+
+-amin [-n | +n] 访问时间 access -n指n分钟以内，+n指n分钟以前
+-cmin [-n | +n] 文件属性 change -n指n分钟以内，+n指n分钟以前
+-mmin [-n | +n] 文件内容 modify -n指n分钟以内，+n指n分钟以前
+</code></pre><p><strong> For example：</strong></p>
+<pre><code>find . -print 打印当前目录下所有文件的目录列表
+find . -name &quot;*.txt&quot; -print 打印当前目录下所有以.txt 结尾的文件名
+find ~ \(-name &quot;*.pdf&quot; or -name &quot;*.txt&quot;\) 打印主目录下所有**以.txt 或.pdf 结尾**的文件名
+</code></pre><p><img src="http://i.imgur.com/FZ2QDry.jpg" alt=""></p>
+<pre><code>find . -type l -name &quot;*.txt&quot; 以.txt 结尾的符号链接
+find . -type f -name &quot;*.php&quot; -perm 777 所有权限为 777 的 php 文件
+find . -type f -user root 当前目录下 root 用户拥有的所有文件
+find . -type f \( ! -perm 777 -and ! -perm 644 \) 当前目录下权限不是 777 和 664 的所有文件
+find /etc -cmin -5 在/etc下查找5分钟内被修改过属性的文件和目录
+</code></pre><p><img src="http://i.imgur.com/ut3PZ55.jpg" alt="">    </p>
+<pre><code>find / -size +204800 在根目录下查找大于100MB的文件
+</code></pre><p><img src="http://i.imgur.com/M2NPFAu.png" alt=""><br>注意：<strong>默认单位是b，而它代表的是512字节，所以2表示1K，1M则是2048</strong>，如果不想自己转换，可以使用其他单位，如c、K、M等。</p>
+<pre><code>查找当前目录下文件大小为2048(2k)字节的文件
+find . -size 4
+find . -size 2048c
+find . -size 2K
+find / -size +10M -a -size -20M 在根目录下查找大于10M小于20M的文件
+
+find /etc -perm 777 -exec ls -l {} \; 在/ect目录下查找权限为777的文件，并显示其详细信息
+find /work -name &quot;*.c&quot; -exec cat {} \; &gt; all_c_file 先查找到所有的 c 语言代码文件，然后将这些文件内容写入到一个文件中
+</code></pre><p>默认下，<strong>-exec 后面只能使用单个命令，如果想要多个命令，可以将多个命令写入脚本文件中</strong>，然后在-exec 中使用这个脚本，可以使用如下命令:</p>
+<blockquote>
+<p>find . -name “*.c” -exec sh ./command.sh {} \;</p>
+</blockquote>
+<p><strong>脚本内容：</strong></p>
+<pre><code>#! /bin/bash
+ls -l $1    # $1表示传进来的第一个参数
+cat $1
+</code></pre><p><img src="http://i.imgur.com/JM2k6xs.png" alt=""></p>
+<hr>
+<h2 id="wc-命令"><a href="#wc-命令" class="headerlink" title="wc 命令"></a>wc 命令</h2><p>wc 命令是一个统计的工具，主要用来显示文件所包含的行、字和字节数。</p>
+<p>wc 命令是 word count 的缩写</p>
+<p><strong> 命令格式：</strong></p>
+<blockquote>
+<p>wc [选项] [文件]</p>
+</blockquote>
+<p><strong> 常用参数：</strong></p>
+<blockquote>
+<p>-l  统计行数<br>-w  统计字数，一个字被定义为由空白、跳格或换行字符分隔的字符串<br>-c  统计字节数<br>-m  统计字符数，注意中文字符，不能与 -c 标志一起使用<br>-L  打印最长行的长度</p>
+</blockquote>
+<p><strong> 注意每行结尾的换行符也算一个字符，空格也算一个字符。另外，由于系统采用 UTF-8 编码，所以一个汉字为 3 字节，9 个汉字加上一个换行，一共 28 个字节 </strong></p>
+<p><strong> 统计/bin 目录下的命令个数，可以使用如下命令: ls /bin | wc -l </strong></p>
+<hr>
+<h2 id="grep-命令"><a href="#grep-命令" class="headerlink" title="grep 命令"></a>grep 命令</h2><p><strong> grep - global search regular expression and print lines matching a pattern </strong></p>
+<p>grep 是个很强大的命令，用来找到文件中的匹配文本，并且能够接受正则表达式和通配符，同时可以用多个 grep 命令选项来生成各种格式的输出。</p>
+<p>grep 的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件内容。</p>
+<p>grep 可用于 shell 脚本，因为 grep 通过返回一个状态值来说明搜索的状态，如果模板搜索成功，则返回 0，如果搜索不成功，则返回 1，如果搜索的文件不存在，则返回 2。我们利用这些返回值就可进行一些自动化的文本处理工作。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>grep 【选项】 pattern [file]</p>
+</blockquote>
+<p><strong>常用参数：</strong></p>
+<blockquote>
+<p>-c  计算找到 ‘搜寻字符串’(即 pattern) 的次数<br>-i  忽略大小写的不同，所以大小写视为相同<br>-n  输出行号<br>-v  反向选择，打印不匹配的行<br>-r  递归搜索<br>–color=auto  将找到的关键词部分加上颜色显示</p>
+</blockquote>
+<p><strong>常用范例：</strong></p>
+<pre><code>将/etc/passwd 文件中出现 root 的行取出来，关键词部分加上颜色显示
+grep &quot;root&quot; /etc/passwd [--color=auto]
+cat /etc/passwd | grep &quot;root&quot;
+
+验证固定电话，打印符合条件的电话
+grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
+</code></pre><p><strong>grep 与正则表达式</strong></p>
+<p><img src="http://i.imgur.com/p5BlFsB.jpg" alt=""></p>
+<hr>
+<h2 id="xargs-命令"><a href="#xargs-命令" class="headerlink" title="xargs 命令"></a>xargs 命令</h2><p>我们可以用管道将一个命令的stdout重定向到另一个命令的stdin，但有些命令只能以命令行参数<br>的形式接收数据，而无法通过stdin接收数据流。在这种情况下，无法通过管道将数据重定向给这些命令。</p>
+<p>这时 xargs 就可以发挥它的作用了，xargs命令可以从标准输入接收输入，并把输入转换为一个特定的参数列表。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>command | xargs [选项] [command]</p>
+</blockquote>
+<p>xargs 命令应该紧跟在管道操作符之后，因为它以标准输入作为主要的源数据流</p>
+<p><strong>常用参数：</strong></p>
+<pre><code>-n  指定每行最大的参数数量
+-d  指定分割符
+</code></pre><p><strong>常用范例：</strong></p>
+<pre><code>cat a.txt | xargs 
+将多行输入转换为单行输出
+</code></pre><p><img src="http://i.imgur.com/e1CDOQN.png" alt=""></p>
+<pre><code>echo &quot;1 2 3 4 5 6 7&quot; | xargs -n 3
+将单行输入转换为多行输出
+</code></pre><p><img src="http://i.imgur.com/HYLI0Ro.png" alt=""></p>
+<pre><code>cat b.txt | xargs -d i -n 3
+将单行输入转换为多行输出，指定分隔符为 i
+</code></pre><p><img src="http://i.imgur.com/vCzB4TC.png" alt=""></p>
+<pre><code>find . -type f -name &quot;*.c&quot; | xargs wc -l
+查找当前目录下所有 c 代码文件，统计总行数
+</code></pre><p><img src="http://i.imgur.com/SJkXf5L.png" alt=""></p>
+<p><img src="http://i.imgur.com/JiA0orB.png" alt=""></p>
+
       
       
     </div>
@@ -406,10 +673,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-四/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -454,7 +717,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h2><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
+        <h2 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h2><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
 <p><strong>常用参数:</strong></p>
 <pre><code>+n 从笫 n 行开始显示
 -n 定义屏幕大小为 n 行
@@ -463,8 +726,51 @@
 -d 提示“Press space to continue，’q’ to quit”，禁用响铃功能
 -p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似
 -s 把连续的多个空行显示为一行
-</code></pre>
-          
+</code></pre><a id="more"></a>
+<p><strong>常用操作:</strong></p>
+<blockquote>
+<p>=:   输出当前行的行号</p>
+<p>q:   退出 more </p>
+<p>空格键:   向下滚动一屏</p>
+<p>Ctrl+F或者b(back):   返回上一屏</p>
+</blockquote>
+<p><strong> ls -l /ect | more -dc -10 </strong> </p>
+<p>每页显示 10 个文件信息，按 Ctrl+F 或者 空格键 将会显示下 10 条文件信息。</p>
+<hr>
+<h2 id="2-less命令"><a href="#2-less命令" class="headerlink" title="2. less命令"></a>2. less命令</h2><p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是 linux 正统查看文件内容的工具，功能极其强大</p>
+<p><strong>常用参数:</strong></p>
+<blockquote>
+<p>-i: –ignore-case  搜索时忽略大小写，除非搜索串中包含大写字母<br>-m: –long-prompt  显示读取文件的百分比<br>-M: –LONG-PROMPT  显示读取文件的百分比、行号和总行数<br>-N  显示每行的行号<br>-p pattern:  定义一个字符串，在文件中查找</p>
+</blockquote>
+<p><strong>常用操作:</strong></p>
+<pre><code>/字符串 向下搜索“字符串”
+?字符串 向上搜索“字符串”
+b 向前翻一页
+d 向后翻半页
+向上键 向上翻动一行
+</code></pre><p><strong> ps -f | less </strong></p>
+<p><strong>ps 查看进程信息并通过 less 分页显示</strong></p>
+<hr>
+<p><strong> less more cat 的区别 </strong></p>
+<ol>
+<li>less命令允许用户向前或向后浏览文件，而more命令只能向前浏览。用less命令显示文件时，用PageUp键向上翻页，用PageDown键向下翻页</li>
+<li>more不能显示行号，但是可以限制显示的行数，可以选择清屏显示</li>
+<li>less的搜索功能比more好用</li>
+<li>cat 可以实现多个文件合并输出</li>
+</ol>
+<hr>
+<h2 id="3-head-and-tail命令"><a href="#3-head-and-tail命令" class="headerlink" title="3. head and tail命令"></a>3. head and tail命令</h2><p>head 命令主要是用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
+<p>tail 命令主要用于显示指定文件末尾内容。常用查看日志文件。</p>
+<p><strong> head -n 5 a.txt </strong> 文件中的前 5 行内容</p>
+<p><strong> head -n -5 a.txt </strong> 文件中除了最后 5 行的内容</p>
+<p><strong> tail -n 5 a.txt </strong> 文件中的最后 5 行内容</p>
+<p><strong> tail -n 5 -f lv.log </strong> </p>
+<p>当 lv.log 文件有新内容增加，自动更新显示</p>
+<p><img src="http://i.imgur.com/Pl6tYir.png" alt=""><br>ping 127.0.0.1 &gt;&gt; ping.log 这条命令作用是，ping 本地主机，并将信息追加到 ping.log 文件中</p>
+<p>使用 tail 命令的-f 选项可以即时输出文件变化后追加的内容，tail -f filename 会把 filename 里最尾部的内容显示在屏幕上，并且不但刷新，使你看到最新的文件内容</p>
+<p><img src="http://i.imgur.com/4NGM3VE.png" alt=""></p>
+<p>jobs 命令可以查看正在后台运行的任务。kill 命令可以杀死一个任务，但要使用任务的 id。任务的 id 可以通过 ps 命令查看获得</p>
+
       
       
     </div>
@@ -478,10 +784,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-三/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -658,7 +960,7 @@ nl -n rz -w 3 a.txt
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
+        <h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
 <p><strong>常用参数：</strong></p>
 <pre><code>-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件
 -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
@@ -667,8 +969,72 @@ nl -n rz -w 3 a.txt
 -t 以文件修改时间排序
 -i 显示文件或目录的i节点
 -R 递归列出子目录所有内容
-</code></pre>
-          
+</code></pre><a id="more"></a>
+<blockquote>
+<p>ls -l 详解</p>
+</blockquote>
+<p><img src="http://i.imgur.com/yRaIXh2.png" alt=""></p>
+<p><strong>第一行：总计(total)</strong></p>
+<p>当前目录下所有文件所占用的空间总和</p>
+<p><strong>第一字段：文件属性</strong></p>
+<p><strong>-rw-rw-r– 1 shiyanlou shiyanlou 12 Nov 22 14:39 a.txt</strong></p>
+<p>文件属性字段总共有10个字母组成；第一个字符代表文件的类型；剩下九个字母分别为该文件或目录的权限位</p>
+<p><strong>文件类型有： - d c b l p s</strong></p>
+<pre><code>-  表示该文件是一个普通文件
+d  directory表示该文件是一个目录
+c  character表示该文件是一个字符设备文件，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节
+b  block表示块设备文件，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)
+l  link表示该文件是一个链接文件
+p  pipe表示该文件为命令管道文件。与shell编程有关的文件
+s  socket表示该文件为socket文件。与shell编程有关的文件
+</code></pre><p><strong>第二字段：文件硬链接数</strong></p>
+<p>如果一个文件不是目录，此时这一字段表示这个文件所具有的硬链接数。</p>
+<p>如果是一个目录，则代表当前目录下所有子目录总个数，包括(.和..)</p>
+<h2 id="补充知识：软链接-amp-amp-硬链接"><a href="#补充知识：软链接-amp-amp-硬链接" class="headerlink" title="补充知识：软链接 &amp;&amp; 硬链接"></a>补充知识：软链接 &amp;&amp; 硬链接</h2><p>在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号inode 。<br>软连接，其实就是新建立一个文件，这个文件就是专门用来指向别的文件的（那就和windows 下的快捷方式的那个文件有很接近的意味）。<br>软连接产生的是一个新的文件，但这个文件的作用就是专门指向某个文件的，删了这个软连接文件，那就等于不需要这个连接，和原来的存在的实体原文件没有任何关系，<br>但删除原来的文件，则相应的软连接不可用（cat那个软链接文件，则提示“没有该文件或目录“）</p>
+<p>硬连接是不会建立inode的，他只是在文件原来的inode link count域再增加1而已，也因此硬链接是不可以跨越文件系统的。<br>相反都是软连接会重新建立一个inode，当然inode的结构跟其他的不一样，他只是一个指明源文件的字符串信息。<br>一旦删除源文件，那么软连接将变得毫无意义。而硬链接删除源文件的时候，系统调用会检查inode link count的数值，<br>如果他大于等于1，那么inode不会被回收，因此文件的内容不会被删除，相当于删除了一个索引。</p>
+<p>硬链接实际上是为文件建一个别名，链接文件和原文件实际上是同一个文件。<br>可以通过ls -i来查看一下，这两个文件的inode号是同一个，说明它们是同一个文件；<br>而软链接建立的是一个指向，即链接文件内的内容是指向原文件的指针，它们是两个文件。</p>
+<p>两种链接都可以通过命令 ln 来创建。ln 默认创建的是硬链接。使用 -s 开关可以创建软链接</p>
+<hr>
+<p><strong>软链接：</strong></p>
+<ol>
+<li>软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式</li>
+<li>软链接可以 跨文件系统 ，硬链接不可以</li>
+<li>软链接可以对一个不存在的文件名进行链接</li>
+<li>软链接可以对目录进行链接</li>
+</ol>
+<p><strong>硬链接：</strong></p>
+<ol>
+<li>硬链接，以文件副本的形式存在。但不占用实际空间</li>
+<li>不允许给目录创建硬链接</li>
+<li>硬链接只有在同一个文件系统中才能创建</li>
+</ol>
+<hr>
+<h2 id="ln-命令"><a href="#ln-命令" class="headerlink" title="ln 命令"></a>ln 命令</h2><p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.<br>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，<br>我们只要在某个固定的目录，放上该文件，然后在其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+<p><strong>命令格式：</strong></p>
+<blockquote>
+<p>ln [选项][源文件或目录][目标文件或目录]</p>
+</blockquote>
+<p><strong>为 a.txt文件创建一个软链接和硬链接</strong><br><img src="http://i.imgur.com/baU9TBt.png" alt=""></p>
+<p><img src="http://i.imgur.com/iHTyrGf.png" alt=""></p>
+<hr>
+<p><strong>第三、四字段：文件所有者、文件所属组</strong></p>
+<p><strong>第五字段：文件或目录所占磁盘块的大小(默认以字节为单位)</strong></p>
+<p><strong>第六字段：文件（目录）最近访问（修改）时间</strong></p>
+<p><strong>第七字段：文件名，如果是一个符号链接，那么会有一个 “-&gt;” 箭头符号，后面根一个它指向的文件名</strong></p>
+<hr>
+<h3 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a>cd 命令</h3><pre><code>cd    回到当前用户主目录
+cd -  回到上一个工作目录
+cd ~  回到当前用户主目录
+</code></pre><hr>
+<h3 id="pwd-命令"><a href="#pwd-命令" class="headerlink" title="pwd 命令"></a>pwd 命令</h3><p>pwd 命令是 print working directory 的缩写</p>
+<blockquote>
+<p>-P 显示实际物理路径，而非使用连接（link）路径</p>
+<p>-L 当目录为连接路径时，显示连接路径</p>
+</blockquote>
+<h2 id="思考题？"><a href="#思考题？" class="headerlink" title="思考题？"></a>思考题？</h2><p><img src="http://i.imgur.com/ArnopfI.jpg" alt=""></p>
+<p><strong><em>在当前目录下创建一个 lv/目录，然后cd 进入 lv/目录，然后删除这个目录，<br>再用 pwd命令查看当前工作目录时，任然在 lv/目录下。</em></strong></p>
+<p><img src="http://i.imgur.com/sX13RgZ.png" alt=""></p>
+
       
       
     </div>
@@ -682,10 +1048,6 @@ nl -n rz -w 3 a.txt
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-一/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -730,7 +1092,7 @@ nl -n rz -w 3 a.txt
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux C下如何使用正则表达式</p>
+        <p>标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux C下如何使用正则表达式</p>
 <p>C语言处理正则表达式常用的函数有regcomp()、regexec()、regfree()和regerror()，一般分为三个步骤，如下所示：</p>
 <h3 id="C语言中使用正则表达式一般分为三步："><a href="#C语言中使用正则表达式一般分为三步：" class="headerlink" title="C语言中使用正则表达式一般分为三步："></a>C语言中使用正则表达式一般分为三步：</h3><blockquote>
 <p>编译正则表达式 regcomp()</p>
@@ -738,7 +1100,64 @@ nl -n rz -w 3 a.txt
 <p>释放正则表达式 regfree()</p>
 </blockquote>
 <hr>
-          
+<a id="more"></a>
+<h4 id="1、编译正则表达式："><a href="#1、编译正则表达式：" class="headerlink" title="1、编译正则表达式："></a>1、编译正则表达式：</h4><blockquote>
+<p>int Regcomp(regex_t <em>compiled, const char </em>pattern, int cflags);</p>
+</blockquote>
+<p>这个函数把指定的正则表达式pattern编译成一种特定的数据格式compiled，这样可以使匹配更有效。函数regexec 会使用这个数据在目标文本串中进行模式匹配。执行成功返回０。</p>
+<p><strong> 参数说明：</strong><br>　　①compiled: regex_t 是一个结构体数据类型，用来存放编译后的正则表达式，它的成员re_nsub 用来存储正则表达式中的子正则表达式的个数，子正则表达式就是用圆括号包起来的部分表达式。</p>
+<p>　　②pattern: 指向我们写好的正则表达式的指针。</p>
+<p>　　③cflags: 编译开关控制细节，有如下4个值或者是它们或运算(|)后的值：<br>　　　　　REG_EXTENDED 以功能更加强大的扩展正则表达式的方式进行匹配。<br>　　　　　REG_ICASE 匹配字母时忽略大小写。<br>　　　　　REG_NOSUB 不用存储匹配后的结果。<br>　　　　　REG_NEWLINE 识别换行符，这样’$’就可以从行尾开始匹配，’^’就可以从行的开头开始匹配。</p>
+<hr>
+<h4 id="2、匹配正则表达式："><a href="#2、匹配正则表达式：" class="headerlink" title="2、匹配正则表达式："></a>2、匹配正则表达式：</h4><blockquote>
+<p>int regexec(regex_t <em>compiled, char </em>string, size_t nmatch, regmatch_t pmatch [], int eflags);</p>
+</blockquote>
+<p>当我们编译好正则表达式后，就可以用regexec 匹配我们的目标文本串了，如果在编译正则表达式的时候没有指定cflags的参数为REG_NEWLINE，则默认情况下是忽略换行符的，也就是把整个文本串当作一个字符串处理。执行成功返回０。</p>
+<p>regmatch_t 是一个结构体数据类型，在regex.h中定义：<br>typedef struct<br>{<br>   regoff_t rm_so;<br>   regoff_t rm_eo;<br>} regmatch_t;</p>
+<p>成员rm_so 存放匹配文本串在目标串中的开始位置，rm_eo 存放结束位置。通常我们以数组的形式定义一组这样的结构。因为往往我们的正则表达式中还包含子正则表达式。数组0单元存放主正则表达式位置，后边的单元依次存放子正则表达式位置。</p>
+<p><strong> 参数说明：</strong><br>　　①compiled: 是已经用regcomp函数编译好的正则表达式。</p>
+<p>　　②string: 是待匹配的字符串。</p>
+<p>　　③nmatch: 是regmatch_t结构体数组的长度，被匹配的个数。</p>
+<p>　　④pmatch: 匹配的结果数组。</p>
+<p>　　⑤eflags: 匹配的特性<br>　　　　　REG_NOTBOL 是否是第一行<br>　　　　　REG_NOTEOL 是否是最后一行</p>
+<hr>
+<h4 id="3、释放正则表达式："><a href="#3、释放正则表达式：" class="headerlink" title="3、释放正则表达式："></a>3、释放正则表达式：</h4><blockquote>
+<p>void regfree(regex_t *compiled);</p>
+</blockquote>
+<p>当我们使用完编译好的正则表达式后，或者要重新编译其他正则表达式的时候，我们可以用这个函数清空compiled指向的regex_t结构体的内容，<strong> 请记住，如果是重新编译的话，一定要先清空regex_t结构体。</strong></p>
+<hr>
+<h4 id="4、报告错误信息："><a href="#4、报告错误信息：" class="headerlink" title="4、报告错误信息："></a>4、报告错误信息：</h4><blockquote>
+<p>size_t regerror(int errcode, regex_t <em>compiled, char </em>buffer, size_t length);</p>
+</blockquote>
+<p>当执行regcomp 或者regexec 产生错误的时候，就可以调用这个函数而返回一个包含错误信息的字符串。</p>
+<p><strong> 参数说明： </strong><br>　　①errcode 是由regcomp 和 regexec 函数返回的错误代号。</p>
+<p>　　②compiled 是已经用regcomp函数编译好的正则表达式，这个值可以为NULL。</p>
+<p>　　③buffer 指向用来存放错误信息的字符串的内存空间。</p>
+<p>　　④length 指明buffer的长度，如果这个错误信息的长度大于这个值，则regerror 函数会自动截断超出的字符串，但他仍然会返回完整的字符串的长度。所以我们可以用如下的方法先得到错误字符串的长度。<br>　　size_t length = regerror (errcode, compiled, NULL, 0);</p>
+<hr>
+<h4 id="5、正则表达式框架："><a href="#5、正则表达式框架：" class="headerlink" title="5、正则表达式框架："></a>5、正则表达式框架：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">int mymatch(char *buf)</div><div class="line">&#123;</div><div class="line">    const char *pattern = &quot;&quot;;</div><div class="line">    regex_t reg;</div><div class="line">    </div><div class="line">    regmatch_t pmatch[10];</div><div class="line">    const size_t nmatch = 10;</div><div class="line"></div><div class="line">    int cflag = REG_EXTENDED;</div><div class="line"></div><div class="line">    /* 编译正则表达式 */</div><div class="line">    if(regcomp(&amp;reg, pattern, cflag) != 0) &#123;  //如果编译正则表达式失败</div><div class="line">       perror(&quot;regcomp failed!&quot;);</div><div class="line">       exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int status, i;</div><div class="line">    /* 执行匹配 */</div><div class="line">    status = regexec(&amp;reg, buf, nmatch, pmatch, 0);</div><div class="line">    if(status == REG_NOMATCH) &#123;</div><div class="line">       printf(&quot;No Match\n&quot;);</div><div class="line">       return 0;</div><div class="line">    &#125;</div><div class="line">    else if(status == 0) &#123;</div><div class="line">       printf(&quot;Match: \n&quot;);</div><div class="line">       /* 把匹配的字符串都提取出来 */</div><div class="line">       for(i = 0; i &lt; nmatch &amp;&amp; pmatch[i].rm_so != -1; i++) &#123;</div><div class="line"></div><div class="line">           //对匹配的字符串进行的操作</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">    regfree(&amp;reg); //释放正则表达式</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="6、正则表达式实例："><a href="#6、正则表达式实例：" class="headerlink" title="6、正则表达式实例："></a>6、正则表达式实例：</h4><blockquote>
+<p>1.参考代码</p>
+</blockquote>
+<p><img src="http://i.imgur.com/K0eCgFY.png" alt=""></p>
+<p><img src="http://i.imgur.com/bZtxbgl.png" alt=""></p>
+<p><img src="http://i.imgur.com/jeBnXFN.png" alt=""></p>
+<p><img src="http://i.imgur.com/06yFPQX.png" alt=""></p>
+<p><img src="http://i.imgur.com/D980JCq.png" alt=""></p>
+<p><img src="http://i.imgur.com/Sqs87fJ.png" alt=""></p>
+<blockquote>
+<p>2.编译运行</p>
+</blockquote>
+<p><strong> g++ -o regcomp regcomp.cpp </strong></p>
+<p><strong> ./regcomp </strong></p>
+<p>当前目录下的测试文件test.txt的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">　　lvsicheng@109&lt;html&gt;44&lt;b&gt;959&lt;/b&gt;kkk</div><div class="line">　　abc1234 jkx124988AAxkkk</div><div class="line">　　123456</div></pre></td></tr></table></figure></p>
+<p><img src="http://i.imgur.com/gOzSW3l.png" alt=""></p>
+<hr>
+<p><strong> 参考博客 </strong></p>
+<p><a href="http://c.biancheng.net/cpp/html/1428.html" target="_blank" rel="external">http://c.biancheng.net/cpp/html/1428.html</a></p>
+<p><a href="http://blog.csdn.net/taiyang1987912/article/details/49680907" target="_blank" rel="external">http://blog.csdn.net/taiyang1987912/article/details/49680907</a></p>
+
       
       
     </div>
@@ -752,10 +1171,6 @@ nl -n rz -w 3 a.txt
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/04/Linux下C-C-正则表达式详解-1/#more">阅读全文&gt;&gt; >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -800,13 +1215,42 @@ nl -n rz -w 3 a.txt
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p><strong> 原题链接: </strong><a href="http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;id=26497">ZJU 1206</a> </p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
+<p><strong> 原题链接: </strong><a href="http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;id=26497" target="_blank" rel="external">ZJU 1206</a> </p>
 <p>给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。</p>
 <p>要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。</p>
 <p>求一个权值最大的字符串。</p>
 </blockquote>
-          
+<a id="more"></a>
+<p><strong> 输入样例： </strong></p>
+<pre><code>2 5
+
+356 20
+
+674 -10
+</code></pre><p><strong> 输出样例：</strong></p>
+<pre><code>00356
+</code></pre><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><blockquote>
+<p>于 n多达 10 000位，枚举和搜索方法都很容易实现超时。</p>
+<p>如果前 k位数字串能够得到最优值，则构成 k+1(k~[3,n])位时肯定也能得到最优值。</p>
+<p>所以本题具有最优子结构，可使用动态规划算法求解。</p>
+</blockquote>
+<h3 id="数据结构定义"><a href="#数据结构定义" class="headerlink" title="数据结构定义"></a>数据结构定义</h3><p>设银行职员的人数为m，玩家的字符串长度为n</p>
+<p><strong> int banker, point;  //每个银行职员的数字串及相应的分值 </strong></p>
+<p><strong> int cost[1000];  //存放银行职员的数字串及相应的分值，数字串的长度为3 </strong></p>
+<p>//三维数组，opt[l][i][j]表示：当前长度为 l(l~[3-10000])的数字串，第一位数字是 i，第二位数字是 j(i,j~[1-9])的最优值 </p>
+<p><strong> int opt[10001][10][10]; </strong></p>
+<p><strong> 边界条件 </strong></p>
+<p>当数字串长度为 1,2时，最优值为0</p>
+<p>即opt[l][i][j] = 0; (l=1,2; i,j~[0-9])</p>
+<p><strong> 递推公式 </strong></p>
+<p>从右往左dp,只有这样才能保证最后得出的字符串是字典序最小的, ijk组成一个数字串</p>
+<p><strong> opt[l][i][j] = max {opt[l-1][j][k] + cost[i<em>100+j</em>10+k]}  (k~[3,n], i,j~[0-9]) </strong></p>
+<p><strong> 辅助数组 </strong></p>
+<p>int path[10001][10][10];  //记录 k值 </p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h3 id="dp算法的实现"><a href="#dp算法的实现" class="headerlink" title="dp算法的实现"></a>dp算法的实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">void DP(int n) </div><div class="line">&#123;</div><div class="line">	int l, i, j, k;</div><div class="line">	int max = 0;</div><div class="line">	//边界条件 ,只有一个字符和两个字符 </div><div class="line">	for(l = 1; l &lt;= 2; l++)</div><div class="line">		for(i = 0; i &lt;= 9; i++)</div><div class="line">			for(j = 0; j &lt;= 9; j++)</div><div class="line">				opt[l][i][j] = 0;</div><div class="line">	//递推计算3-n个字符时的最优值 </div><div class="line">	for(l = 3; l &lt;= n; l++)</div><div class="line">		for(i = 0; i &lt;= 9; i++)</div><div class="line">			for(j = 0; j &lt;= 9; j++)</div><div class="line">			&#123;</div><div class="line">				//长度为 l个字符时，计算由 ijk构成数字串的最优值</div><div class="line">				 opt[l][i][j] = -INF;</div><div class="line">				 for(k = 0; k &lt;= 9; k++) &#123;</div><div class="line">				 	max = opt[l-1][j][k] + cost[i*100+j*10+k];	//从右往左dp</div><div class="line">				 	if(max &gt; opt[l][i][j])</div><div class="line">				 	&#123;</div><div class="line">				 		opt[l][i][j] = max;</div><div class="line">				 		path[l][i][j] = k;</div><div class="line">				 	&#125;</div><div class="line">				 &#125;</div><div class="line">			&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="构造最优解，返回最优值"><a href="#构造最优解，返回最优值" class="headerlink" title="构造最优解，返回最优值"></a>构造最优解，返回最优值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">int traceback(int n)</div><div class="line">&#123;</div><div class="line">	int i, j;</div><div class="line">	int p, q;		//记录最优值对应数字串的第一第二个数字 </div><div class="line">	int ans = -INF;	//最优值 </div><div class="line">	</div><div class="line">	for(i = 0; i &lt;= 9; i++)</div><div class="line">		for(j = 0; j &lt;= 9; j++)</div><div class="line">		&#123;</div><div class="line">			if(opt[n][i][j] &gt; ans)</div><div class="line">			&#123;</div><div class="line">				ans = opt[n][i][j];</div><div class="line">				p = i;</div><div class="line">				q = j;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	for(i = n; i &gt;= 3; i--)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; p;</div><div class="line">		int k = path[i][p][q];	//找到后一个数字 </div><div class="line">		p = q;</div><div class="line">		q = k;	</div><div class="line">	&#125;	</div><div class="line">	//输出最后两位数字</div><div class="line">	cout &lt;&lt; p &lt;&lt; q &lt;&lt; endl; </div><div class="line">	return ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	freopen(&quot;zoj1206.txt&quot;, &quot;r&quot;, stdin);</div><div class="line">	</div><div class="line">	int m, n;	// m是银行职员的人数，n是玩家数字串长度 </div><div class="line">	int banker, point;</div><div class="line">	cin &gt;&gt; m &gt;&gt; n;</div><div class="line">	</div><div class="line">	int i;</div><div class="line">	for(i = 0; i &lt; m; i++) &#123;</div><div class="line">		cin &gt;&gt; banker &gt;&gt; point;</div><div class="line">		cost[banker] = point;		//将分值存入以银行职员的数字串为下标的元素中 </div><div class="line">	&#125;</div><div class="line">	//调用dp算法</div><div class="line">	DP(n) ;</div><div class="line">	//输出最优解</div><div class="line">	cout &lt;&lt; &quot;获胜字符串为：&quot;;</div><div class="line">	int ans = traceback(n);</div><div class="line">	cout &lt;&lt; &quot;最优值为：&quot; &lt;&lt; ans &lt;&lt; endl; </div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
       
     </div>
@@ -821,10 +1265,6 @@ nl -n rz -w 3 a.txt
     </div>
 
       
-        <p class="article-more-link">
-          <a  href="/2016/10/22/ZOJ-1206-Win-the-Bonus/#more">阅读全文&gt;&gt; >></a>
-        </p>
-      
       <div class="clearfix"></div>
     </div>
     
@@ -841,146 +1281,10 @@ nl -n rz -w 3 a.txt
 
 
   
-    <article id="post-POJ-1050-To-the-Max" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/10/09/POJ-1050-To-the-Max/" class="article-date">
-      <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/09/POJ-1050-To-the-Max/">POJ-1050 To the Max</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050">POJ-1050 To the Max</a></p>
-</blockquote>
-<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
-<ol>
-<li>首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)</li>
-<li>利用求最大子段和的算法，<strong> 将二维动态规划问题转化为一维动态规划问题 </strong><br>设一维数组b是二维数组a的i~j(0&lt;=i&lt;j&lt;n)行，对应列元素的和，然后对数组b计算最大子段和。</li>
-<li>构造最优解</li>
-</ol>
-</blockquote>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/10/09/POJ-1050-To-the-Max/#more">阅读全文&gt;&gt; >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MatrixChain" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/07/MatrixChain/" class="article-date">
-      <time datetime="2016-10-07T03:08:19.000Z" itemprop="datePublished">2016-10-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/07/MatrixChain/">MatrixChain</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
-</blockquote>
-<h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><h3 id="问题的解空间："><a href="#问题的解空间：" class="headerlink" title="问题的解空间："></a>问题的解空间：</h3><blockquote>
-<p>n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。</p>
-</blockquote>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/10/07/MatrixChain/#more">阅读全文&gt;&gt; >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">

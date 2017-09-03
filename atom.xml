@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2017-09-03T08:54:29.915Z</updated>
+  <updated>2017-09-03T09:38:54.093Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://sichenglv.github.io/2016/11/23/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%85%AD/"/>
     <id>https://sichenglv.github.io/2016/11/23/Linux常用命令-六/</id>
     <published>2016-11-23T13:04:43.000Z</published>
-    <updated>2017-09-03T08:54:29.915Z</updated>
+    <updated>2017-09-03T09:38:54.093Z</updated>
     
     <content type="html"><![CDATA[<h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
 <p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br>如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！</p>
@@ -94,8 +94,7 @@ echo -n abcde | wc -l 结果为0
     
     <summary type="html">
     
-      &lt;h2 id=&quot;cut-命令&quot;&gt;&lt;a href=&quot;#cut-命令&quot; class=&quot;headerlink&quot; title=&quot;cut 命令&quot;&gt;&lt;/a&gt;cut 命令&lt;/h2&gt;&lt;p&gt;cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。&lt;br&gt;cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。&lt;br&gt;cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。&lt;/p&gt;
-&lt;p&gt;如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。&lt;br&gt;如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！&lt;/p&gt;
+      &lt;h2 id=&quot;cut-命令&quot;&gt;&lt;a href=&quot;#cut-命令&quot; class=&quot;headerlink&quot; title=&quot;cut 命令&quot;&gt;&lt;/a&gt;cut 命令&lt;/h2&gt;&lt;p&gt;cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。&lt;br&gt;cut命令是一个将文本按列进行切分的小
     
     </summary>
     
@@ -191,16 +190,7 @@ unzip file.zip //解压zip
     <summary type="html">
     
       &lt;p&gt;Linux系统下常用的文件压缩和备份命令&lt;/p&gt;
-&lt;h2 id=&quot;1-bzip2-命令&quot;&gt;&lt;a href=&quot;#1-bzip2-命令&quot; class=&quot;headerlink&quot; title=&quot;1. bzip2 命令&quot;&gt;&lt;/a&gt;1. bzip2 命令&lt;/h2&gt;&lt;p&gt;bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生&lt;strong&gt;.bz2&lt;/strong&gt;的压缩文件，并删除原文件&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;命令格式：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;bzip2 [选项] [要压缩的文件]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;常用选项：&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;-c: –stdout将压缩或解压缩的结果送到标准输出&lt;br&gt;-d: –decompress执行解压缩&lt;br&gt;-f: –force 遇到重复文件则选择覆盖&lt;br&gt;-k: –keep压缩或解压缩后，保留原文件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
+&lt;h2 id=&quot;1-bzip2-命令&quot;&gt;&lt;a href=&quot;#1-bzip2-命令&quot; class=&quot;headerlink&quot; title=&quot;1. bzip2 命令&quot;&gt;&lt;/a&gt;1. bzip2 命令&lt;/h2&gt;&lt;p&gt;bzip2采用新
     
     </summary>
     
@@ -371,8 +361,7 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
     
     <summary type="html">
     
-      &lt;p&gt;在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing&lt;/p&gt;
-&lt;h2 id=&quot;which-命令&quot;&gt;&lt;a href=&quot;#which-命令&quot; class=&quot;headerlink&quot; title=&quot;which 命令&quot;&gt;&lt;/a&gt;which 命令&lt;/h2&gt;&lt;p&gt;&lt;strong&gt; which - locate a command &lt;/strong&gt;&lt;br&gt;在 PATH 变量指定的路径中搜索可执行文件的所在位置&lt;/p&gt;
+      &lt;p&gt;在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing
     
     </summary>
     
@@ -447,16 +436,7 @@ d 向后翻半页
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1-more命令&quot;&gt;&lt;a href=&quot;#1-more命令&quot; class=&quot;headerlink&quot; title=&quot;1. more命令&quot;&gt;&lt;/a&gt;1. more命令&lt;/h2&gt;&lt;p&gt;more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。&lt;br&gt;more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能&lt;br&gt;more 命令从前向后读取文件，因此在启动时就加载整个文件。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;常用参数:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;+n 从笫 n 行开始显示
--n 定义屏幕大小为 n 行
-+/pattern 在查看文件内容之前，进行字符串匹配，然后从该字串前两行之后开始显示
--c 从顶部清屏，然后显示
--d 提示“Press space to continue，’q’ to quit”，禁用响铃功能
--p 通过清除窗口而不是滚屏来对文件进行换页，与-c 选项相似
--s 把连续的多个空行显示为一行
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h2 id=&quot;1-more命令&quot;&gt;&lt;a href=&quot;#1-more命令&quot; class=&quot;headerlink&quot; title=&quot;1. more命令&quot;&gt;&lt;/a&gt;1. more命令&lt;/h2&gt;&lt;p&gt;more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。
     
     </summary>
     
@@ -649,16 +629,7 @@ cd ~  回到当前用户主目录
     
     <summary type="html">
     
-      &lt;h2 id=&quot;ls-命令&quot;&gt;&lt;a href=&quot;#ls-命令&quot; class=&quot;headerlink&quot; title=&quot;ls 命令&quot;&gt;&lt;/a&gt;ls 命令&lt;/h2&gt;&lt;p&gt;ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。&lt;br&gt;ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。&lt;br&gt;通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;常用参数：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-a –all 列出目录下的所有文件，包括以 . 开头的隐含文件
--l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
--d –directory 将目录象文件一样显示，而不是显示其下的文件
--h –human-readable 以容易理解的格式列出文件大小 (例如 1K 234M 2G)
--t 以文件修改时间排序
--i 显示文件或目录的i节点
--R 递归列出子目录所有内容
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h2 id=&quot;ls-命令&quot;&gt;&lt;a href=&quot;#ls-命令&quot; class=&quot;headerlink&quot; title=&quot;ls 命令&quot;&gt;&lt;/a&gt;ls 命令&lt;/h2&gt;&lt;p&gt;ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。&lt;br&gt;ls 用来打印出当前目录的清单。
     
     </summary>
     
@@ -745,14 +716,7 @@ cd ~  回到当前用户主目录
     
     <summary type="html">
     
-      &lt;p&gt;标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux C下如何使用正则表达式&lt;/p&gt;
-&lt;p&gt;C语言处理正则表达式常用的函数有regcomp()、regexec()、regfree()和regerror()，一般分为三个步骤，如下所示：&lt;/p&gt;
-&lt;h3 id=&quot;C语言中使用正则表达式一般分为三步：&quot;&gt;&lt;a href=&quot;#C语言中使用正则表达式一般分为三步：&quot; class=&quot;headerlink&quot; title=&quot;C语言中使用正则表达式一般分为三步：&quot;&gt;&lt;/a&gt;C语言中使用正则表达式一般分为三步：&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;编译正则表达式 regcomp()&lt;/p&gt;
-&lt;p&gt;匹配正则表达式 regexec()&lt;/p&gt;
-&lt;p&gt;释放正则表达式 regfree()&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
+      &lt;p&gt;标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex
     
     </summary>
     
@@ -812,11 +776,7 @@ cd ~  回到当前用户主目录
     <summary type="html">
     
       &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt; 原题链接: &lt;/strong&gt;&lt;a href=&quot;http://acm.hrbust.edu.cn/vj/index.php?c=problem-problem&amp;amp;id=26497&quot;&gt;ZJU 1206&lt;/a&gt; &lt;/p&gt;
-&lt;p&gt;给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。&lt;/p&gt;
-&lt;p&gt;要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。&lt;/p&gt;
-&lt;p&gt;求一个权值最大的字符串。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt; 原题链接: &lt;/strong&gt;&lt;a href=&quot;http://acm.hrbus
     
     </summary>
     
@@ -972,16 +932,7 @@ int main()
     
     <summary type="html">
     
-      &lt;h1 id=&quot;动态规划-——-最大子矩阵和&quot;&gt;&lt;a href=&quot;#动态规划-——-最大子矩阵和&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 最大子矩阵和&quot;&gt;&lt;/a&gt;动态规划 —— 最大子矩阵和&lt;/h1&gt;&lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#问题描述：&quot; class=&quot;headerlink&quot; title=&quot;问题描述：&quot;&gt;&lt;/a&gt;问题描述：&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。&lt;br&gt;原题地址: &lt;a href=&quot;http://poj.org/problem?id=1050&quot;&gt;POJ-1050 To the Max&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;算法分析：&quot;&gt;&lt;a href=&quot;#算法分析：&quot; class=&quot;headerlink&quot; title=&quot;算法分析：&quot;&gt;&lt;/a&gt;算法分析：&lt;/h2&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)&lt;/li&gt;
-&lt;li&gt;利用求最大子段和的算法，&lt;strong&gt; 将二维动态规划问题转化为一维动态规划问题 &lt;/strong&gt;&lt;br&gt;设一维数组b是二维数组a的i~j(0&amp;lt;=i&amp;lt;j&amp;lt;n)行，对应列元素的和，然后对数组b计算最大子段和。&lt;/li&gt;
-&lt;li&gt;构造最优解&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+      &lt;h1 id=&quot;动态规划-——-最大子矩阵和&quot;&gt;&lt;a href=&quot;#动态规划-——-最大子矩阵和&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 最大子矩阵和&quot;&gt;&lt;/a&gt;动态规划 —— 最大子矩阵和&lt;/h1&gt;&lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#
     
     </summary>
     
@@ -1033,12 +984,7 @@ int main()
     
     <summary type="html">
     
-      &lt;h1 id=&quot;动态规划-——-矩阵连乘积问题&quot;&gt;&lt;a href=&quot;#动态规划-——-矩阵连乘积问题&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 矩阵连乘积问题&quot;&gt;&lt;/a&gt;动态规划 —— 矩阵连乘积问题&lt;/h1&gt;&lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#问题描述：&quot; class=&quot;headerlink&quot; title=&quot;问题描述：&quot;&gt;&lt;/a&gt;问题描述：&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;算法分析：&quot;&gt;&lt;a href=&quot;#算法分析：&quot; class=&quot;headerlink&quot; title=&quot;算法分析：&quot;&gt;&lt;/a&gt;算法分析：&lt;/h2&gt;&lt;h3 id=&quot;问题的解空间：&quot;&gt;&lt;a href=&quot;#问题的解空间：&quot; class=&quot;headerlink&quot; title=&quot;问题的解空间：&quot;&gt;&lt;/a&gt;问题的解空间：&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。&lt;/p&gt;
-&lt;/blockquote&gt;
+      &lt;h1 id=&quot;动态规划-——-矩阵连乘积问题&quot;&gt;&lt;a href=&quot;#动态规划-——-矩阵连乘积问题&quot; class=&quot;headerlink&quot; title=&quot;动态规划 —— 矩阵连乘积问题&quot;&gt;&lt;/a&gt;动态规划 —— 矩阵连乘积问题&lt;/h1&gt;&lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a hre
     
     </summary>
     
