@@ -111,7 +111,7 @@ echo -n abcde | wc -l 结果为0
     <link href="https://sichenglv.github.io/2016/11/23/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%BA%94/"/>
     <id>https://sichenglv.github.io/2016/11/23/Linux常用命令-五/</id>
     <published>2016-11-23T13:03:32.000Z</published>
-    <updated>2017-09-03T08:54:57.939Z</updated>
+    <updated>2017-09-03T10:27:13.170Z</updated>
     
     <content type="html"><![CDATA[<p>Linux系统下常用的文件压缩和备份命令</p>
 <h2 id="1-bzip2-命令"><a href="#1-bzip2-命令" class="headerlink" title="1. bzip2 命令"></a>1. bzip2 命令</h2><p>bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生<strong>.bz2</strong>的压缩文件，并删除原文件</p>
@@ -216,7 +216,7 @@ unzip file.zip //解压zip
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%9B%9B/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-四/</id>
     <published>2016-11-22T08:09:19.000Z</published>
-    <updated>2017-09-03T08:55:29.667Z</updated>
+    <updated>2017-09-03T10:27:19.626Z</updated>
     
     <content type="html"><![CDATA[<p>在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing</p>
 <h2 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h2><p><strong> which - locate a command </strong><br>在 PATH 变量指定的路径中搜索可执行文件的所在位置</p>
@@ -388,7 +388,7 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%89/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-三/</id>
     <published>2016-11-22T08:09:07.000Z</published>
-    <updated>2017-09-03T08:55:44.323Z</updated>
+    <updated>2017-09-03T10:28:50.210Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-more命令"><a href="#1-more命令" class="headerlink" title="1. more命令"></a>1. more命令</h2><p>more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。<br>more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能<br>more 命令从前向后读取文件，因此在启动时就加载整个文件。</p>
 <p><strong>常用参数:</strong></p>
@@ -472,7 +472,7 @@ d 向后翻半页
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%BA%8C/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-二/</id>
     <published>2016-11-22T08:08:54.000Z</published>
-    <updated>2016-11-22T12:14:56.898Z</updated>
+    <updated>2017-09-03T10:28:31.851Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h2><pre><code>mkdir -m 777 lv  设置权限
 mkdir -p lvsicheng/test/abc/java  递归创建多个目录
@@ -480,6 +480,7 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 </code></pre><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
 </code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
+<a id="more"></a>
 <h2 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h2><blockquote>
 <p>rm -r lv/  –recursive 递归地删除</p>
 <p>rm -f a.txt  强势删除</p>
@@ -553,7 +554,11 @@ nl -n rz -w 3 a.txt
     <summary type="html">
     
       &lt;h2 id=&quot;1-mkdir命令&quot;&gt;&lt;a href=&quot;#1-mkdir命令&quot; class=&quot;headerlink&quot; title=&quot;1. mkdir命令&quot;&gt;&lt;/a&gt;1. mkdir命令&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;mkdir -m 777 lv  设置权限
-mkdir -p l
+mkdir -p lvsicheng/test/abc/java  递归创建多个目录
+mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;思考题&quot;&gt;&lt;a href=&quot;#思考题&quot; class=&quot;headerlink&quot; title=&quot;思考题&quot;&gt;&lt;/a&gt;思考题&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+tree shiyanlou/
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;在当前shell下执行，递归地创建多个目录，然后通过tree命令显示&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -569,7 +574,7 @@ mkdir -p l
     <link href="https://sichenglv.github.io/2016/11/22/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%80/"/>
     <id>https://sichenglv.github.io/2016/11/22/Linux常用命令-一/</id>
     <published>2016-11-22T08:08:38.000Z</published>
-    <updated>2017-09-03T08:55:52.452Z</updated>
+    <updated>2017-09-03T10:27:41.035Z</updated>
     
     <content type="html"><![CDATA[<h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><p>ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。<br>ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。<br>通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等</p>
 <p><strong>常用参数：</strong></p>

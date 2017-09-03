@@ -271,7 +271,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/23/Linux常用命令-六/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/23/Linux常用命令-六/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -344,7 +344,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/23/Linux常用命令-五/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/23/Linux常用命令-五/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -408,7 +408,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-四/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/22/Linux常用命令-四/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -480,7 +480,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-三/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/22/Linux常用命令-三/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -526,81 +526,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h2><pre><code>mkdir -m 777 lv  设置权限
+              <h2 id="1-mkdir命令"><a href="#1-mkdir命令" class="headerlink" title="1. mkdir命令"></a>1. mkdir命令</h2><pre><code>mkdir -m 777 lv  设置权限
 mkdir -p lvsicheng/test/abc/java  递归创建多个目录
 mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 </code></pre><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
 </code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
-<h2 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h2><blockquote>
-<p>rm -r lv/  –recursive 递归地删除</p>
-<p>rm -f a.txt  强势删除</p>
-<p>rm -vrf lv/  详细显示进行的步骤</p>
-</blockquote>
-<pre><code>myrm() { 
-   D=/tmp/$(date +%Y%m%d%H%M%S); 
-   mkdir -p $D; 
-   mv &quot;$@&quot; $D &amp;&amp; echo &quot;moved to $D ok&quot;;
-}
-</code></pre><p><em>在/tmp目录下创建一个由时间命名的目录，然后将当前目录下的一个文件或目录mv过去，实现自定义的myrm函数 </em></p>
-<h2 id="3-mv命令"><a href="#3-mv命令" class="headerlink" title="3. mv命令"></a>3. mv命令</h2><blockquote>
-<p>mv [选项] 源文件或目录  目标文件或目录</p>
-</blockquote>
-<ul>
-<li>当第二个参数类型是文件时，mv完成文件重命名</li>
-<li>当第二个参数类型是目录时，mv将各参数指定的源文件均移至目标目录中</li>
-</ul>
-<p><strong> 常用参数 </strong></p>
-<blockquote>
-<p>-b –back 若需覆盖文件，则覆盖前先行备份</p>
-<p>-i –interactive 交互式</p>
-<p>-u –update 若目标文件已经存在，且源文件比较新，才会更新</p>
-</blockquote>
-<h2 id="4-cp命令"><a href="#4-cp命令" class="headerlink" title="4. cp命令"></a>4. cp命令</h2><blockquote>
-<p>cp [选项] 源文件或目录 目标文件或目录</p>
-</blockquote>
-<pre><code>-a: --archive 等同于-dpR
--d: 复制符号链接时，把目标文件或目录也建立为符号链接
--p: 复制源文件或目录内容的同时也复制文件属性
--R: -r --recursive 递归复制目录
--n: --no-clobber 不要覆盖已存在的文件
--s: --symbolic-link 对源文件建立符号链接，而非复制文件
--u: --update 只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件
-</code></pre><p><strong> 将 test1 目录下的所有文件和子目录复制到 test2 目录下，覆盖前询问 </strong></p>
-<p><strong> cp -iR test1/* test2 </strong></p>
-<h2 id="5-cat命令-concatenate"><a href="#5-cat命令-concatenate" class="headerlink" title="5. cat命令(concatenate)"></a>5. cat命令(concatenate)</h2><p>cat 命令的功能是将文件或标准输入组合输出到标准输出。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。</p>
-<blockquote>
-<p>-A –show-all 等价于 -vET</p>
-<p>-v –show-nonprinting </p>
-<p>-E –show-ends 在每行结束处显示 $</p>
-<p>-T –show-tabs 将跳格字符显示为 ^I</p>
-<p>-b –number-nonblank 对非空输出行编号</p>
-<p>-n –number 对输出的所有行编号,由 1 开始对所有输出的行数编号</p>
-<p>-s –squeeze-blank 有连续两行以上的空白行，就代换为一行的空白行 </p>
-</blockquote>
-<h3 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h3><pre><code>cat -A &lt;&lt; EOF
-&gt; `ls -l`
-&gt; EOF
-</code></pre><p>执行该命令会输出什么？</p>
-<p><em>想知道这题答案，必须要先了解什么是heredoc</em></p>
-<h3 id="heredoc-here-document"><a href="#heredoc-here-document" class="headerlink" title="heredoc = here document"></a>heredoc = here document</h3><p>Here Document 是在Linux Shell中的一种特殊的重定向方式，它的基本形式如下：</p>
-<pre><code>cmd &lt;&lt; delimiter(这里一定是&quot;&lt;&lt;&quot;)
-    Here Document Content
-delimiter
-</code></pre><p>它的作用就是将两个 delimiter 之间的内容(Here Document Content 部分) 传递给cmd 作为输入参数。</p>
-<h2 id="6-nl命令"><a href="#6-nl命令" class="headerlink" title="6. nl命令"></a>6. nl命令</h2><p><strong> nl = numbers of lines </strong></p>
-<pre><code>nl 命令在 linux 系统中用来计算文件中行号。
-nl 可以将输出的文件内容自动的加上行号。
-其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，
-包括位数与是否自动补齐 0 等等的功能
-</code></pre><p><strong> eg: </strong></p>
-<pre><code>nl -n ln a.txt
-nl -n rn a.txt
-nl -n rz a.txt
-nl -n rz -w 3 a.txt
-</code></pre><h2 id="Bash实用技巧"><a href="#Bash实用技巧" class="headerlink" title="Bash实用技巧"></a>Bash实用技巧</h2><p><a href="http://www.cnblogs.com/napoleon_liu/articles/1952228.html" target="_blank" rel="external">Bash实用技巧</a></p>
-<p><a href="http://www.techug.com/ten-tips-for-wonderful-bash-productivity" target="_blank" rel="external">Bash十大技巧</a></p>
-
+          
       
       
     </div>
@@ -614,6 +546,10 @@ nl -n rz -w 3 a.txt
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux常用命令/">Linux常用命令</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/11/22/Linux常用命令-二/#more">Read more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -684,7 +620,7 @@ nl -n rz -w 3 a.txt
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/22/Linux常用命令-一/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/22/Linux常用命令-一/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -754,7 +690,7 @@ nl -n rz -w 3 a.txt
 
       
         <p class="article-more-link">
-          <a  href="/2016/11/04/Linux下C-C-正则表达式详解-1/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/11/04/Linux下C-C-正则表达式详解-1/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -822,7 +758,7 @@ nl -n rz -w 3 a.txt
 
       
         <p class="article-more-link">
-          <a  href="/2016/10/22/ZOJ-1206-Win-the-Bonus/#more">Read more&gt;&gt; >></a>
+          <a  href="/2016/10/22/ZOJ-1206-Win-the-Bonus/#more">Read more >></a>
         </p>
       
       <div class="clearfix"></div>

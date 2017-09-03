@@ -418,6 +418,7 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
 </code></pre><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><pre><code>mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
 tree shiyanlou/
 </code></pre><p><strong>在当前shell下执行，递归地创建多个目录，然后通过tree命令显示</strong></p>
+<a id="more"></a>
 <h2 id="2-rm命令"><a href="#2-rm命令" class="headerlink" title="2. rm命令"></a>2. rm命令</h2><blockquote>
 <p>rm -r lv/  –recursive 递归地删除</p>
 <p>rm -f a.txt  强势删除</p>
