@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sichenglv.github.io/"/>
-  <updated>2017-09-03T09:38:54.093Z</updated>
+  <updated>2017-09-03T10:00:07.502Z</updated>
   <id>https://sichenglv.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://sichenglv.github.io/2016/11/23/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%85%AD/"/>
     <id>https://sichenglv.github.io/2016/11/23/Linux常用命令-六/</id>
     <published>2016-11-23T13:04:43.000Z</published>
-    <updated>2017-09-03T09:38:54.093Z</updated>
+    <updated>2017-09-03T10:00:07.502Z</updated>
     
     <content type="html"><![CDATA[<h2 id="cut-命令"><a href="#cut-命令" class="headerlink" title="cut 命令"></a>cut 命令</h2><p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。<br>cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。<br>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
 <p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。<br>如果一行数据包含多个字段，现在想要提取其中的一列或多列，这时候cut命令就可以大显身手了，有的类似于SQL语句中的select，哈哈！</p>
