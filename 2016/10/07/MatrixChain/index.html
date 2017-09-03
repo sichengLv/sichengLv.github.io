@@ -9,10 +9,7 @@
 给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
 
 算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-最优子结构：
- 设计算A[i:">
+n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MatrixChain">
 <meta property="og:url" content="https://sichenglv.github.io/2016/10/07/MatrixChain/index.html">
@@ -21,23 +18,17 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
 给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
 
 算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-最优子结构：
- 设计算A[i:">
+n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。">
 <meta property="og:image" content="http://i.imgur.com/UK0G4Fo.jpg">
 <meta property="og:image" content="http://i.imgur.com/nxpDdiH.jpg">
-<meta property="og:updated_time" content="2016-10-16T06:55:08.809Z">
+<meta property="og:updated_time" content="2017-09-03T08:56:16.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MatrixChain">
 <meta name="twitter:description" content="动态规划 —— 矩阵连乘积问题问题描述：
 给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
 
 算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。
-
-最优子结构：
- 设计算A[i:">
+n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。">
 <meta name="twitter:image" content="http://i.imgur.com/UK0G4Fo.jpg">
   
     <link rel="alternative" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
@@ -290,6 +281,7 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
 <h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><h3 id="问题的解空间："><a href="#问题的解空间：" class="headerlink" title="问题的解空间："></a>问题的解空间：</h3><blockquote>
 <p>n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="最优子结构："><a href="#最优子结构：" class="headerlink" title="最优子结构："></a>最优子结构：</h3><blockquote>
 <p> 设计算A[i:j]，1≤i≤j≤n，所需要的最少数乘次数m[i,j]，则原问题的最优值为m[1,n]。</p>
 <p>当i=j时，A[i:j]=Ai，因此，m[i][i]=0，i=1,2,…,n</p>
@@ -371,7 +363,7 @@ n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n
         <p><span>本文标题:</span><a href="/2016/10/07/MatrixChain/">MatrixChain</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 sichengLv 的个人博客">sichengLv</a></p>
         <p><span>发布时间:</span>2016年10月07日 - 11时08分</p>
-        <p><span>最后更新:</span>2016年10月16日 - 14时55分</p>
+        <p><span>最后更新:</span>2017年09月03日 - 16时56分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/07/MatrixChain/" title="MatrixChain">https://sichenglv.github.io/2016/10/07/MatrixChain/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sichenglv.github.io/2016/10/07/MatrixChain/　　作者: sichengLv" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
