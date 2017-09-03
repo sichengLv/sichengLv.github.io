@@ -36,8 +36,6 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
     <link rel="icon" href="/img/favicon.png">
   
   
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -52,7 +50,7 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
       var yiliaConfig = {
           rootUrl: '/',
           fancybox: true,
-          animate: true,
+          animate: false,
           isHome: false,
           isPost: true,
           isArchive: false,
@@ -70,7 +68,7 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
     <header id="header" class="inner">
         <a href="/" class="profilepic">
             
-            <img lazy-src="/img/head.jpg" class="js-avatar">
+            <img src="/img/head.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
             
         </a>
 
@@ -151,7 +149,7 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
                             
                                 <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
                             
-                                <a class="fl QQ" target="_blank" href="/1094423959" title="QQ">QQ</a>
+                                <a class="fl QQ" target="_blank" href="#" title="QQ">QQ</a>
                             
                         </ul>
                     </nav>
@@ -197,7 +195,7 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
         <header id="header" class="inner">
             <a href="/" class="profilepic">
                 
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                    <img src="/img/head.jpg" class="js-avatar" style="width: 100%; height: 100%; opacity: 1;">
                 
             </a>
             <hgroup>
@@ -231,7 +229,7 @@ which 命令 which - locate a command 在 PATH 变量指定的路径中搜索可
                     
                         <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
                     
-                        <a class="QQ" target="_blank" href="/1094423959" title="QQ">QQ</a>
+                        <a class="QQ" target="_blank" href="#" title="QQ">QQ</a>
                     
                 </div>
             </nav>
@@ -566,25 +564,20 @@ grep “^0[0-9]{2,3}-[0-9]{7,8}(-[0-9]{3,4})?$” telphone.txt
 
 
     
-      <div class="duoshuo" id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/11/22/Linux常用命令-四/" data-title="Linux常用命令(四)" data-url="https://sichenglv.github.io/2016/11/22/Linux常用命令-四/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sichenglv"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = '/js/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-    <!-- 多说公共JS代码 end -->
-</div>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'sichengLv',
+      repo: 'sichengLv.github.io',
+      oauth: {
+        client_id: 'null',
+        client_secret: 'null',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
