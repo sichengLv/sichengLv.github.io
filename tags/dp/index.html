@@ -1,199 +1,186 @@
-
-  <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html class="full-height">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-    <title>Tag: dp | sicheng Lv&#39;s blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="sicheng Lv">
-    
-    <meta name="description" content="des">
-    
-    
-    
-    
+  <title>Tag: dp | sicheng Lv&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="des">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sicheng Lv's blog">
+<meta property="og:url" content="https://sichenglv.github.io/tags/dp/index.html">
+<meta property="og:site_name" content="sicheng Lv's blog">
+<meta property="og:description" content="des">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sicheng Lv's blog">
+<meta name="twitter:description" content="des">
+  
     <link rel="alternate" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
-    
-    
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
 </head>
 
-    <body>
-      <header>
-        <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="sicheng Lv&#39;s blog" title="sicheng Lv&#39;s blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="sicheng Lv&#39;s blog">sicheng Lv&#39;s blog</a></h1>
-				<h2 class="blog-motto">静止了所有的花开，你好久都没有再来 、</h2>
-
-			</div>
-			
-
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About Me</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:sichenglv.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-
-
-      </header>
-      <div id="container">
-        
-
-<div class="archive-title" >
-  <h2 class="tag-icon">dp</h2>
-  
-</div>
-<div id="main" class="archive-part clearfix">
-  <div id="archive-page">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZJU-1206 Win the Bonus" itemprop="url">
-  
-    <h1 itemprop="name">ZJU-1206 Win the Bonus</h1>
-    
-    <time datetime="2016-10-22T11:28:36.000Z" itemprop="datePublished">2016-10-22</time>
-  </a>
-</section>
-
-
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">sicheng Lv</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
   </div>
-</div>
+</header>
 
-      </div>
-      <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-
-	
-	<section class="info">
-		<p> Hello ! I&#39;m sicheng Lv ~ This is my blog on Github. <br/>
-			I will share what I have learned with you at this blog.</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		<a href="http://weibo.com/5373593069" target="_blank" title="weibo"></a>
-		
-		
-		
-		<a href="https://github.com/sichengLv" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
-		
-		<a href="https://sichenglv.github.io" target="_blank" title="sicheng Lv">sicheng Lv</a>
-		
-		</p>
-</div>
-
-<script type="text/javascript" src="http://blogparts.giffy.me/0013/parts.js"></script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span></footer>
-      <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <style>
+    .container.tag-cate-wrap {
+        min-height: 93vh;
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+
+    .category-title-inner {
+        padding-top: 50px;
+    }
+
+    strong {
+        text-transform: capitalize;
+    }
+</style>
 
 
+<div class="container tag-cate-wrap">
+    <div class="category-title-inner content has-text-centered">
+        <h1><strong style="border-top: 2px solid; border-bottom: 2px solid;">tag·dp</strong></h1>
+    </div>
 
+    
+    
+        <div class="box">
+            <article class="media">
+                
+                <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/">
+                    
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>ZJU-1206 Win the Bonus</strong> <small class="post-date">at: 2016-10-22</small>
+                                <br>
+                                问题描述
+ 原题链接: ZJU 1206 
+给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。
+要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。
+求一个权值最大的字符串。
 
+ 输入样例： 
+2 5
 
+356 20
 
-
-
-<!-- totop -->  
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+674 -10
+ 输出样例：
+00356
+算法分析
+于 n多达 10 0..
+                            </p>
+                            <button class="button is-info">Read</button>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+    
 </div>
-<script src="/js/totop.js"></script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
 
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © sicheng Lv 2017
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<script src="/js/star.js"></script>
-    </body>
-   </html>
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,99 +1,301 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html class="full-height">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-    <title>sicheng Lv&#39;s blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="sicheng Lv">
-    
-    <meta name="description" content="des">
-    
-    
-    
-    
+  <title>sicheng Lv&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="des">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sicheng Lv's blog">
+<meta property="og:url" content="https://sichenglv.github.io/index.html">
+<meta property="og:site_name" content="sicheng Lv's blog">
+<meta property="og:description" content="des">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sicheng Lv's blog">
+<meta name="twitter:description" content="des">
+  
     <link rel="alternate" href="/atom.xml" title="sicheng Lv&#39;s blog" type="application/atom+xml">
-    
-    
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
 </head>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="sicheng Lv&#39;s blog" title="sicheng Lv&#39;s blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="sicheng Lv&#39;s blog">sicheng Lv&#39;s blog</a></h1>
-				<h2 class="blog-motto">静止了所有的花开，你好久都没有再来 、</h2>
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">sicheng Lv</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
 
-			</div>
-			
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <style>
+    .post-hover:hover {
+        box-shadow: inset 0 0 100px #000;
+        transition: box-shadow .2s;
+    }
 
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About Me</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:sichenglv.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+    .sub-post-container .post-hover:hover h3 {
+        text-decoration: underline gray;
+    }
+
+
+    .primary-item-main {
+        height: 330px;
+        background-size: cover;
+    }
+
+    .primary-container .title,
+    .primary-container .sub-title,
+    .primary-container .post-content-text,
+    .primary-container .date {
+        color: #fff;
+    }
+
+    .post-content-text {
+        color: #f1f1f1!important;
+    }
+
+    .primary-container .post-hover {
+        background: black;
+    }
+
+    .content-bg-mask {
+        background: rgba(0,0,0,.4);
+    }
+
+</style>
+
+<div style="background: #f5f8f9;">
+    <div id="main-container" class="container" style="padding-top: 20px;">
+        <div class="is-flex main-content justify-center">
+            <section class="column is-9">
+                
+<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
+    <div class="column  is-7-desktop">
+        <a href="/2016/11/23/Linux常用命令-六/">
+            <div class="full-height post-hover"
+                 style="
+                         background-image: url('http://i.imgur.com/Y2kgKxG.png');
+                         height: 350px;
+                         background-size: cover;
+                         background-repeat: no-repeat;
+                         ">
+                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
+                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
+                            Linux常用命令(六)
+                        </h1>
+                        <div>
+                        
+                            `
+                                <span class="tag is-post-tag">Linux</span>
+                            `
+                                <span class="tag is-post-tag">Linux常用命令</span>
+                            
+                        
+                        </div>
+                        <p class="post-content-text is-marginless has-padding text-shadow">
+                            cut 命令cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。
+如果..
+                        </p>
+                        <p class="date text-shadow">2016-11-23</p>
+                        <button class="button is-info is-small">Read More</button>
+                    </div>
+            </div>
+        </a>
+    </div>
+    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
+        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
+            
+                
+<a class="post-hover" href="/2016/11/23/Linux常用命令-五/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Linux常用命令(五)
+            </h3>
+            
+            
+            <span class="tag is-post-tag">Linux</span>
+            
+            <span class="tag is-post-tag">Linux常用命令</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                Linux系统下常用的文件压缩和备份命令
+1. bzip2 命令bzip2采用新的压缩演算法，若..
+            </p>
+            <p class="date text-shadow is-marginless">2016-11-23</p>
+        </div>
+    </div>
+</a>
+            
+            
+                
+<a class="post-hover" href="/2016/11/22/Linux常用命令-四/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('http://i.imgur.com/FZ2QDry.jpg')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Linux常用命令(四)
+            </h3>
+            
+            
+            <span class="tag is-post-tag">Linux</span>
+            
+            <span class="tag is-post-tag">Linux常用命令</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，..
+            </p>
+            <p class="date text-shadow is-marginless">2016-11-22</p>
+        </div>
+    </div>
+</a>
+            
+        </div>
+    </div>
+    <div class="column is-12 is-hidden-desktop">
+        
+        
+<a class="post-hover" href="/2016/11/23/Linux常用命令-五/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Linux常用命令(五)
+            </h3>
+            
+            
+            <span class="tag is-post-tag">Linux</span>
+            
+            <span class="tag is-post-tag">Linux常用命令</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                Linux系统下常用的文件压缩和备份命令
+1. bzip2 命令bzip2采用新的压缩演算法，若..
+            </p>
+            <p class="date text-shadow is-marginless">2016-11-23</p>
+        </div>
+    </div>
+</a>
+        
+        
+        
+<a class="post-hover" href="/2016/11/22/Linux常用命令-四/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('http://i.imgur.com/FZ2QDry.jpg')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Linux常用命令(四)
+            </h3>
+            
+            
+            <span class="tag is-post-tag">Linux</span>
+            
+            <span class="tag is-post-tag">Linux常用命令</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，..
+            </p>
+            <p class="date text-shadow is-marginless">2016-11-22</p>
+        </div>
+    </div>
+</a>
+        
+    </div>
 </div>
 
-
-
-    </header>
-    <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/23/Linux常用命令-六/" title="Linux常用命令(六)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(六)</h1>
-    
-     
-           <p itemprop="description" >cut 命令cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。cut命令是一个将文本按列进行切分的小工具，它可以指定分隔每列的定界符。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。
-如果不指定 File 参数，cut 命令将读取标</p>
-        
-    
-    <time datetime="2016-11-23T13:04:43.000Z" itemprop="datePublished">2016-11-23</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/23/Linux常用命令-五/" title="Linux常用命令(五)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(五)</h1>
-    
-     
-           <p itemprop="description" >Linux系统下常用的文件压缩和备份命令
+                    
+                    
+                
+                    
+                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/23/Linux常用命令-五/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux常用命令(五)</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">Linux常用命令</span>
+                                            
+                                        </p>
+                                        <p>
+                                            Linux系统下常用的文件压缩和备份命令
 1. bzip2 命令bzip2采用新的压缩演算法，若未加任何参数，bzip2压缩完文件后会产生.bz2的压缩文件，并删除原文件
 命令格式：
 
@@ -101,95 +303,203 @@ bzip2 [选项] [要压缩的文件]
 
 常用选项：
 
--c: –stdout将压缩或解压缩的</p>
-        
-    
-    <time datetime="2016-11-23T13:03:32.000Z" itemprop="datePublished">2016-11-23</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/22/Linux常用命令-四/" title="Linux常用命令(四)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(四)</h1>
-    
-     
-           <p itemprop="description" >在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing
-wh</p>
-        
-    
-    <time datetime="2016-11-22T08:09:19.000Z" itemprop="datePublished">2016-11-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/22/Linux常用命令-三/" title="Linux常用命令(三)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(三)</h1>
-    
-     
-           <p itemprop="description" >1. more命令more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能mor</p>
-        
-    
-    <time datetime="2016-11-22T08:09:07.000Z" itemprop="datePublished">2016-11-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/22/Linux常用命令-二/" title="Linux常用命令(二)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(二)</h1>
-    
-     
-           <p itemprop="description" >1. mkdir命令mkdir -m 777 lv  设置权限
+-c: –stdout将压缩或解压缩的结果送到标准输出-d: –decompress执行解压缩-f: –force..
+                                        </p>
+                                        <p>2016-11-23</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/22/Linux常用命令-四/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://i.imgur.com/FZ2QDry.jpg')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux常用命令(四)</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">Linux常用命令</span>
+                                            
+                                        </p>
+                                        <p>
+                                            在使用UNIX和MS-DOS命令行时，已经引入了一些shell元字符，它们用于扩展文件名。其中，星号（*）用于匹配文件名中的所有字符，问号（?）负责匹配文件中的单个字符，而方括号则匹配文件名中某一组字符中的一个。将这些shell元字符扩展为文件名的过程就称作globbing
+which 命令 which - locate a command 在 PATH..
+                                        </p>
+                                        <p>2016-11-22</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/22/Linux常用命令-三/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://i.imgur.com/Pl6tYir.png')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux常用命令(三)</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">Linux常用命令</span>
+                                            
+                                        </p>
+                                        <p>
+                                            1. more命令more 命令，功能类似 cat ，cat 命令是将整个文件的内容从上到下显示在屏幕上。more 命令会一页一页的显示，方便使用者逐页阅读，而最基本的指令就是按空白键（space）往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能more 命令从前向后读取文件，因此在启动时就加载整个文件。
+常用参数:
++n 从..
+                                        </p>
+                                        <p>2016-11-22</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/22/Linux常用命令-二/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux常用命令(二)</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">Linux常用命令</span>
+                                            
+                                        </p>
+                                        <p>
+                                            1. mkdir命令mkdir -m 777 lv  设置权限
 mkdir -p lvsicheng/test/abc/java  递归创建多个目录
 mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
-思考题mkdir -vp shiya</p>
-        
-    
-    <time datetime="2016-11-22T08:08:54.000Z" itemprop="datePublished">2016-11-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/22/Linux常用命令-一/" title="Linux常用命令(一)" itemprop="url">
-  
-    <h1 itemprop="name">Linux常用命令(一)</h1>
-    
-     
-           <p itemprop="description" >ls 命令ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文</p>
-        
-    
-    <time datetime="2016-11-22T08:08:38.000Z" itemprop="datePublished">2016-11-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/11/04/Linux下C-C-正则表达式详解-1/" title="Linux下C/C++正则表达式详解" itemprop="url">
-  
-    <h1 itemprop="name">Linux下C/C++正则表达式详解</h1>
-    
-     
-           <p itemprop="description" >标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函</p>
-        
-    
-    <time datetime="2016-11-04T10:56:44.000Z" itemprop="datePublished">2016-11-04</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/10/22/ZOJ-1206-Win-the-Bonus/" title="ZJU-1206 Win the Bonus" itemprop="url">
-  
-    <h1 itemprop="name">ZJU-1206 Win the Bonus</h1>
-    
-     
-           <p itemprop="description" >问题描述
+思考题mkdir -vp shiyanlou/{lib/,bin/,doc/{info,product}}
+tr..
+                                        </p>
+                                        <p>2016-11-22</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/22/Linux常用命令-一/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://i.imgur.com/yRaIXh2.png')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux常用命令(一)</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">Linux常用命令</span>
+                                            
+                                        </p>
+                                        <p>
+                                            ls 命令ls 命令是 linux 下最常用的命令，ls 命令就是 list 的缩写。ls 用来打印出当前目录的清单。如果 ls 指定其他目录，那么就会显示指定目录里的文件及文件夹清单。通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等
+常用参数：
+-a –all 列出目录下的所..
+                                        </p>
+                                        <p>2016-11-22</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/11/04/Linux下C-C-正则表达式详解-1/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://i.imgur.com/K0eCgFY.png')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Linux下C/C++正则表达式详解</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Linux</span>
+                                            
+                                                <span class="tag is-post-tag">正则表达式</span>
+                                            
+                                                <span class="tag is-post-tag">C/C++</span>
+                                            
+                                        </p>
+                                        <p>
+                                            标准的C和C++都不支持正则表达式，但有一些函数库可以辅助C/C++程序员完成这一功能，其中最著名的当数Philip Hazel的Perl-Compatible Regular Expression库，许多Linux发行版本都带有这个函数库。以POSIX函数库中的Regex系列函数来说明在Linux C下如何使用正则表达式
+C语言处理正则表达式常用的函数..
+                                        </p>
+                                        <p>2016-11-04</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/10/22/ZOJ-1206-Win-the-Bonus/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>ZJU-1206 Win the Bonus</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">动态规划</span>
+                                            
+                                                <span class="tag is-post-tag">dp</span>
+                                            
+                                        </p>
+                                        <p>
+                                            问题描述
  原题链接: ZJU 1206 
 给出 m个长度为3的由 0~9组成的字符串，每个字符串有一个权值，可正可负。
 要求构造出一个长度为n的字符串，若字符串中包含题目给出的某个字符串，则获得该字符串的权值。
@@ -198,209 +508,304 @@ mkdir -v lvsicheng/test/abc/java  每次创建新目录都显示信息
  输入样例： 
 2 5
 
-356 20</p>
-        
-    
-    <time datetime="2016-10-22T11:28:36.000Z" itemprop="datePublished">2016-10-22</time>
-  </a>
-</section>
+356 20
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/10/09/POJ-1050-To-the-Max/" title="POJ-1050 To the Max" itemprop="url">
-  
-    <h1 itemprop="name">POJ-1050 To the Max</h1>
-    
-     
-           <p itemprop="description" >动态规划 —— 最大子矩阵和问题描述：
+674 -10
+ 输出样例：
+00356
+算法分析
+于 n多达 10 0..
+                                        </p>
+                                        <p>2016-10-22</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/10/09/POJ-1050-To-the-Max/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>POJ-1050 To the Max</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">algorithm</span>
+                                            
+                                                <span class="tag is-post-tag">动态规划</span>
+                                            
+                                        </p>
+                                        <p>
+                                            动态规划 —— 最大子矩阵和问题描述：
 给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。原题地址: POJ-1050 To the Max
 
 算法分析：
 
 首先要学会最大子段和的求法(这道题的动态规划思想就体现在这里)
-利用求最大子段和的算法， 将二维动态规划问</p>
-        
-    
-    <time datetime="2016-10-09T01:21:42.000Z" itemprop="datePublished">2016-10-09</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/10/07/MatrixChain/" title="MatrixChain" itemprop="url">
-  
-    <h1 itemprop="name">MatrixChain</h1>
-    
-     
-           <p itemprop="description" >动态规划 —— 矩阵连乘积问题问题描述：
+利用求最大子段和的算法， 将二维动态规划问题转化为一维动态规划问题 设一维数组b是二维数组a的i~j(0&lt;=i&..
+                                        </p>
+                                        <p>2016-10-09</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                    
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2016/10/07/MatrixChain/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://i.imgur.com/UK0G4Fo.jpg')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>MatrixChain</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">algorithm</span>
+                                            
+                                        </p>
+                                        <p>
+                                            动态规划 —— 矩阵连乘积问题问题描述：
 给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。
 
 算法分析：问题的解空间：
-n个矩阵可能的完全加括号方式有P(n)=Ca</p>
-        
-    
-    <time datetime="2016-10-07T03:08:19.000Z" itemprop="datePublished">2016-10-07</time>
-  </a>
-</section>
-
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>7</sup></a></li>
-		
-			<li><a href="/tags/Linux常用命令/" title="Linux常用命令">Linux常用命令<sup>6</sup></a></li>
-		
-			<li><a href="/tags/algorithm/" title="algorithm">algorithm<sup>2</sup></a></li>
-		
-			<li><a href="/tags/dp/" title="dp">dp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/动态规划/" title="动态规划">动态规划<sup>2</sup></a></li>
-		
-			<li><a href="/tags/正则表达式/" title="正则表达式">正则表达式<sup>1</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-  <div class="archiveslist">
-    <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
-  </div>
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
-      <li><a href="http://github.com" target="_blank" title="GitHub">GitHub</a></li>
-      <li><a href="http://www.jianshu.com/users/b775f1bcda84/latest_articles" target="_blank">Lv_小诚的简书</a></li>
-      <li><a href="http://www.mrvstudio.icoc.me" target="_blank">Mr_V微电影工作室</a></li>
-    </ul>
-</div>
-
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-
-	
-	<section class="info">
-		<p> Hello ! I&#39;m sicheng Lv ~ This is my blog on Github. <br/>
-			I will share what I have learned with you at this blog.</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		<a href="http://weibo.com/5373593069" target="_blank" title="weibo"></a>
-		
-		
-		
-		<a href="https://github.com/sichengLv" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
-		
-		<a href="https://sichenglv.github.io" target="_blank" title="sicheng Lv">sicheng Lv</a>
-		
-		</p>
-</div>
-
-<script type="text/javascript" src="http://blogparts.giffy.me/0013/parts.js"></script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span></footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
+n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有..
+                                        </p>
+                                        <p>2016-10-07</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    
+                
+                <!--翻頁-->
+                <nav class="pagination is-flex" style="justify-content: flex-end">
+                    
+                        
+                        
+                    
+                </nav>
+            </section>
+            
+                <style>
+    /*user info start*/
+    .user-info {
+        padding: 15px 0 0;
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
 
+    .user-info .avatar {
+        width: 155px;
+        height: 155px;
+        border-radius: 50%;
+    }
 
+    .sns-container {
+        flex-wrap: wrap;
+    }
 
+    .sns-container a{
+        color: black;
+    }
+    /*user info end*/
 
+    /*Tag start*/
+    #tag_cloud .tags-item{
+        display: inline-block;
+        color: #000;
+        border: 1px solid gray;
 
+        margin: 4px 2px;
+        padding: 0 4px;
+        border-radius: 6px;
+    }
+    /*Tag end*/
 
+    /*Site box start*/
+    .site-box {
+        height: 60px;
+    }
+    /*Site box end*/
 
+    .category-list-item,
+    .archive-list-item {
+        display: flex;
+        margin-bottom: 4px;
+        justify-content: space-between;
+    }
+    .category-list-link,
+    .archive-list-link {
+        color: black;
+    }
 
-<!-- totop -->  
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+    .category-list-count,
+    .archive-list-count {
+        width: 32px;
+        text-align: center;
+        border-radius: 4px;
+        color: #fff;
+        background-color: gray;
+    }
+</style>
+<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
+    <div class="content-box user-info">
+        <div class="has-padding">
+            <header class="has-text-centered">
+                <img class="avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
+            </header>
+            <section class="has-text-centered">
+                <h3><strong>sicheng Lv</strong></h3>
+                <p class="sub-title">静止了所有的花开、你好久都没有再来</p>
+                
+                <p class="is-flex center" style=" color: gray">
+                    <i class="fa fa-map-marker" style="padding: 5px"></i>
+                    Earth
+                </p>
+                
+            </section>
+        </div>
+        <div class="top-line">
+            <ul class="sns-container justify-center is-flex has-padding">
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+                <li>
+                    <a target="_blank" href="https://github.com/sicheng Lv">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                    </a>
+                </li>
+                
+
+                
+            </ul>
+        </div>
+    </div>
+    <div class="content-box">
+        <!--post数量和tag category 数量-->
+        <div class="site-box is-flex">
+            <div class="flex-1 is-flex flex-column center full-height right-line">
+                <strong>10</strong>
+                <p>Posts</p>
+            </div>
+            <div class="flex-1 is-flex flex-column center full-height">
+                <strong>7</strong>
+                <p>Tags</p>
+            </div>
+        </div>
+    </div>
+    <div id='tag_cloud' class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Tags</strong>
+        </div>
+        <div class="content-inner is-flex flex-wrap justify-space-between">
+            
+                <a class="tags-item" href="tags/Linux/" title="Linux" rel="7">
+                    Linux
+                </a>
+            
+                <a class="tags-item" href="tags/正则表达式/" title="正则表达式" rel="1">
+                    正则表达式
+                </a>
+            
+                <a class="tags-item" href="tags/C-C/" title="C/C++" rel="1">
+                    C/C++
+                </a>
+            
+                <a class="tags-item" href="tags/Linux常用命令/" title="Linux常用命令" rel="6">
+                    Linux常用命令
+                </a>
+            
+                <a class="tags-item" href="tags/algorithm/" title="algorithm" rel="2">
+                    algorithm
+                </a>
+            
+                <a class="tags-item" href="tags/动态规划/" title="动态规划" rel="2">
+                    动态规划
+                </a>
+            
+                <a class="tags-item" href="tags/dp/" title="dp" rel="1">
+                    dp
+                </a>
+            
+        </div>
+    </div>
+    <div class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Categories</strong>
+        </div>
+        <div class="content-inner">
+            
+        </div>
+    </div>
+    <div class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Archives</strong>
+        </div>
+        <div class="content-inner">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+</aside>
+            
+        </div>
+    </div>
 </div>
-<script src="/js/totop.js"></script>
 
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
 
-<script src="/js/star.js"></script>
-  </body>
- </html>
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © sicheng Lv 2017
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
