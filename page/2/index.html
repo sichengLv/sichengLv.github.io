@@ -253,8 +253,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
-<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050" target="_blank" rel="external">POJ-1050 To the Max</a></p>
+              <h1 id="动态规划-——-最大子矩阵和"><a href="#动态规划-——-最大子矩阵和" class="headerlink" title="动态规划 —— 最大子矩阵和"></a>动态规划 —— 最大子矩阵和</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
+<p>给你一个N*N的矩阵，要求找出其一个子矩阵，使其各元素之和为最大。<br>原题地址: <a href="http://poj.org/problem?id=1050">POJ-1050 To the Max</a></p>
 </blockquote>
 <h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><blockquote>
 <ol>
@@ -263,131 +263,7 @@
 <li>构造最优解</li>
 </ol>
 </blockquote>
-<a id="more"></a>
-<h2 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h2><p><strong> 计算最大子段和算法 </strong></p>
-<pre><code>/* besti, bestj 记录最大子段和的范围，用于构造最优解 */
-int DP(int a[], int n, int&amp; besti, int&amp; bestj)
-{
-    int i;
-    int max = -200000000;
-
-    //当b[i-1]&lt;=0时，记录b[i]=a[i]的位置
-    int begin = 0;
-    for(i = 1 ; i &lt;= n ; i++ )
-    {
-        if (b &gt; 0)
-            b += a[i];
-        else
-        {
-            b = a[i];
-            begin = i;        //新的起始边界
-        }
-        if (b &gt; max)
-        {
-            max = b;
-            besti = begin;
-            bestj = i;        //更新左右边界
-        }
-    }
-    return max;
-}
-</code></pre><p><strong> 计算最大子矩阵和的动态规划算法 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];            // N*N矩阵 
-    int sum[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;            //最大子矩阵的行号
-    int rowJ = 0;            //最大子矩阵的行号
-    int col = 0;             //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-    int i, j, k;
-    for(i = 1; i &lt;= n; i++)
-        for(j = 1; j &lt;= n; j++)
-            cin &gt;&gt; a[i][j];
-
-    int max = -128;
-    for( i = 1 ; i &lt;= n ; i++ )
-    {
-        memset(sum, 0, sizeof(sum));        //数组置零
-        for(j = i ; j &lt;= n ; j++ )
-        {
-            for( k = 1 ; k &lt;= n ; k++ )
-                sum[k] += a[j][k];    //取出第 i, j两行，将这两行之间的列对应相加，形成另外一个数组sum，对数组 sum求最大子段和
-            int maxSum = DP(sum, n);
-            if(maxSum &gt; max)                //找出最大子矩阵和
-            {
-                rowI = i;
-                rowJ = j;
-                col = bestj;                //记录子矩阵的位置
-                max = maxSum;
-            }
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    /* 构造最优解: 打印出最大和的子矩阵 */
-    for(i = rowI; i &lt;= rowJ; i++)
-    {
-        for(j = 1; j &lt;= col; j++)
-        {
-            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
-        }
-        cout &lt;&lt; endl;
-    }
-    return 0;
-}
-</code></pre><p><strong> 可以将以上代码简化 </strong></p>
-<pre><code>#define N 101
-int main()
-{
-    int a[N][N];        // N*N矩阵 
-    int b[N];             // 一维数组 
-
-    //构造最优解
-    int rowI = 0;        //最大子矩阵的行号
-    int rowJ = 0;        //最大子矩阵的行号
-    int col = 0;         //最大子矩阵的列号
-
-    int n;
-    cin &gt;&gt; n;
-
-    int max = -128;
-    for( i = 1; i &lt;= n; i++ )
-    {
-        memset(b, 0, sizeof(b));        //数组置零
-        for(j = i; j &lt;= n; j++ )
-        {
-            //下面是针对数组b求最大子段和的算法 
-            int sum = 0; 
-            for( k = 1; k &lt;= n; k++ )
-            {
-                b[k] += a[j][k];
-                sum += b[k];
-                if(sum &lt; b[k]) sum = b[k];
-                if(sum &gt; max)                //找出最大子矩阵和
-                {
-                    rowI = i;
-                    rowJ = j;
-                    col = bestj;            //记录子矩阵的位置
-                    max = sum;
-                }
-            }
-
-        }
-    }
-    cout &lt;&lt; max &lt;&lt; endl;                    //输出最大子矩阵和
-
-    return 0;
-}
-</code></pre><h2 id="算法的时间复杂度："><a href="#算法的时间复杂度：" class="headerlink" title="算法的时间复杂度："></a>算法的时间复杂度：</h2><blockquote>
-<p>有三重循环，时间复杂度为O(n^3)</p>
-</blockquote>
-
+          
       
       
     </div>
@@ -401,6 +277,10 @@ int main()
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/10/09/POJ-1050-To-the-Max/#more">Read more&gt;&gt; >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -445,37 +325,13 @@ int main()
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
+              <h1 id="动态规划-——-矩阵连乘积问题"><a href="#动态规划-——-矩阵连乘积问题" class="headerlink" title="动态规划 —— 矩阵连乘积问题"></a>动态规划 —— 矩阵连乘积问题</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><blockquote>
 <p>给定n个矩阵{A1,A2,…,An}，其中Ai和Ai+1是可乘的，i=1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
 </blockquote>
 <h2 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a>算法分析：</h2><h3 id="问题的解空间："><a href="#问题的解空间：" class="headerlink" title="问题的解空间："></a>问题的解空间：</h3><blockquote>
 <p>n个矩阵可能的完全加括号方式有P(n)=Catalan(n-1)，所以P(n)是随n的指数级增长的，因此穷举法不是一个有效的算法。</p>
 </blockquote>
-<a id="more"></a>
-<h3 id="最优子结构："><a href="#最优子结构：" class="headerlink" title="最优子结构："></a>最优子结构：</h3><blockquote>
-<p> 设计算A[i:j]，1≤i≤j≤n，所需要的最少数乘次数m[i,j]，则原问题的最优值为m[1,n]。</p>
-<p>当i=j时，A[i:j]=Ai，因此，m[i][i]=0，i=1,2,…,n</p>
-<p>当i&lt;j时，若A[i:j]的最优次序在Ak和Ak+1之间断开，i&lt;=k&lt;j,则：m[i][j]=m[i][k]+m[k+1][j]+pi-1pkpj。</p>
-<p>由于在计算是并不知道断开点k的位置，所以k还未定。不过k的位置只有j-i个可能。因此，k是这j-i个位置使计算量达到最小的那个位置。</p>
-<blockquote>
-<p>递归的定义最优解<br><img src="http://i.imgur.com/UK0G4Fo.jpg" alt=""></p>
-</blockquote>
-</blockquote>
-<h3 id="重叠子问题："><a href="#重叠子问题：" class="headerlink" title="重叠子问题："></a>重叠子问题：</h3><blockquote>
-<p>一般取原问题规模为4-6的来验证是否存在重叠子问题<br><img src="http://i.imgur.com/nxpDdiH.jpg" alt=""></p>
-</blockquote>
-<h3 id="根据动态规划方程设计数据结构："><a href="#根据动态规划方程设计数据结构：" class="headerlink" title="根据动态规划方程设计数据结构："></a>根据动态规划方程设计数据结构：</h3><blockquote>
-<p>1)很显然这里使用二维数组，然后根据递归方程的特点确定填表的方式，这里采用 <strong> 对角线填法</strong><br>2)<strong> 填充顺序原则：</strong> 要保证当前填充的这个格子的子问题都已经计算出来了。</p>
-</blockquote>
-<h3 id="计算最优值"><a href="#计算最优值" class="headerlink" title="计算最优值"></a>计算最优值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/* 计算矩阵连乘积的动态规划算法 */</div><div class="line">#define N 51</div><div class="line"></div><div class="line">int p[N];		//存放矩阵的阶 </div><div class="line">int m[N][N];	//m[i][j]代表A[i,j]最少的乘法次数, 即最优值 </div><div class="line">int s[N][N];	//s[i][j]代表A[i,j]的最优次序中的断开位置 k, 根据s[i][j]的值可构造出相应的最优解</div><div class="line"></div><div class="line">void MatrixChain(int n)		//n表示矩阵个数 </div><div class="line">&#123;</div><div class="line">	for(int i = 1; i &lt;= n; i++)</div><div class="line">	&#123;</div><div class="line">		m[i][i] = 0;	//r = 1, 只有一个矩阵的情况 </div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	// 填表：对角线填法 </div><div class="line">	// r表示矩阵链的长度 </div><div class="line">	for(int r = 2; r &lt;= n; r++)</div><div class="line">	&#123;</div><div class="line">		for(int i = 1; i &lt;= n-r+1; i++)	// n-r+1是对角线的长度 </div><div class="line">		&#123;</div><div class="line">			int j = i + r - 1;			//i, j表示对角线的下标 </div><div class="line">			m[i][j] = 2000000000;</div><div class="line">			//搜寻最优值 </div><div class="line">			for(int k = i; k &lt; j; k++)	//寻找代价最小的那个 k </div><div class="line">			&#123;</div><div class="line">				int t = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j];</div><div class="line">				if( t &lt; m[i][j] )</div><div class="line">				&#123;</div><div class="line">					m[i][j] = t;		//保存最优值 </div><div class="line">					s[i][j] = k;		//记录最优值的那个k </div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="构造最优解"><a href="#构造最优解" class="headerlink" title="构造最优解"></a>构造最优解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/* 构造最优解 */</div><div class="line">void TrackBack(int i, int j)</div><div class="line">&#123;</div><div class="line">	if( i == j )</div><div class="line">		printf(&quot;A%d&quot;, i);</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; &quot;(&quot;;</div><div class="line">		TrackBack(i, s[i][j]);</div><div class="line">		TrackBack(s[i][j]+1, j);</div><div class="line">		cout &lt;&lt; &quot;)&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="自顶向下的递归算法-备忘录"><a href="#自顶向下的递归算法-备忘录" class="headerlink" title="自顶向下的递归算法(备忘录)"></a>自顶向下的递归算法(备忘录)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#define N 51</div><div class="line">int p[N];		//存放矩阵的阶 </div><div class="line">int m[N][N];	//m[i][j]代表A[i,j]最少的乘法次数, 即最优值 </div><div class="line">int s[N][N];	//s[i][j]代表A[i,j]的最优次序中的断开位置 k, 根据s[i][j]的值可构造出相应的最优解</div><div class="line"></div><div class="line">int Recurve(int i, int j)</div><div class="line">&#123;</div><div class="line">	if(m[i][j] &gt; 0)</div><div class="line">		return m[i][j];</div><div class="line">	if(i == j)</div><div class="line">		return 0;</div><div class="line">		</div><div class="line">	int u = Recurve(i, i) + Recurve(i+1, j) + p[i-1] * p[i] * p[j];</div><div class="line">	s[i][j] = i;</div><div class="line">	</div><div class="line">	for(int k = i+1; k &lt; j; k++)</div><div class="line">	&#123;</div><div class="line">		int t = Recurve(i, k) + Recurve(k+1, j) + p[i-1] * p[k] * p[j];</div><div class="line">		if(t &lt; u)</div><div class="line">		&#123;</div><div class="line">			u = t;</div><div class="line">			s[i][j] = k;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	m[i][j] = u;	//将结果存入备忘录 </div><div class="line">	return u;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="两种算法的比较与总结"><a href="#两种算法的比较与总结" class="headerlink" title="两种算法的比较与总结"></a>两种算法的比较与总结</h2><blockquote>
-<p>动态规划算法采用的是自底向上的非递归式</p>
-<p>备忘录方法采用的是自顶向下的递归方式</p>
-<p>两者的时间复杂度都是O(n^3)</p>
-</blockquote>
-
+          
       
       
     </div>
@@ -489,6 +345,10 @@ int main()
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/10/07/MatrixChain/#more">Read more&gt;&gt; >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
